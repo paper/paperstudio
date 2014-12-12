@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>加个逗号存入</title>
+	<script type="text/javascript" src="../../js/jq-1.7.1-min.js"></script>
+</head>
+<body>
+		<input type="button" value="Read!" id="read_btn" /><br />      
+		<textarea id="show" name="show" style="width:500px;height:500px;" autocomplete="off"></textarea> 
+		
+		<script type="text/javascript">
+
+			$("#read_btn").click(function(){
+				$.ajax({
+					url:"20120823.txt",
+					success:function(data){
+						
+						data=data.replace(/(\s)(\d)/g,',$2').replace(/(\d)(\s)/g,'$1,');
+						
+						$("#show").val(data);
+						
+					}
+				})
+				
+			});
+		</script>
+		
+</body>
+</html>
+

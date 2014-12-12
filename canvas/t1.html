@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>t1</title>
+        <link rel="stylesheet" href="../css/reset.css" type="text/css" />
+        <style type="text/css">
+            #myCanvas {
+				border:1px solid #000;
+				margin:20px 0 0 20px;
+				position:relative;
+            }
+			#msg{
+				margin:20px 0 0 20px;
+				width:50px;
+				height:50px;
+				border:1px solid #000;
+			}
+        </style>
+        <script type="text/javascript" src="../js/Fuee-1.1.js">
+        </script>
+    </head>
+    <body>
+    	<img src="images/2.jpg" id="img" alt="opera" style="display:none;" />
+        <canvas id="myCanvas" height="500" width="500">
+            Fallback content, in case the browser does not support Canvas.
+        </canvas>
+		<div id="msg"></div>
+		<div id="msg2"></div>
+        <script type="text/javascript">
+        	//var num=0;
+        	//alert(num.toString(16));
+			
+			function numTo16(num){
+				var s=num.toString(16);
+				
+				if(s=='0'){
+					return s='00';
+				}
+				else if(s.length==1){
+					return s='0'+s;
+				}else{
+					return s;
+				}
+			};
+			
+            var elem = document.getElementById('myCanvas');
+			var img=document.getElementById('img');
+			var msg=document.getElementById('msg');
+			var msg2=document.getElementById('msg2');
+			var context = elem.getContext('2d');
+		
+			
+//			context.drawImage(img, x, y);
+//			var imgd = context.getImageData(x, y,w,h);
+//			var pix = imgd.data;		//像素的细分	150*150*4
+//			var pix_p=pix.length/4;		//像素		150*150
+			//context.putImageData(imgd, x, y);
+			
+		var x=0,y=0,w=500,h=500;	
+		var img = new Image();
+
+		  // Once it's loaded draw the image on canvas and invert the colors.
+		  img.addEventListener('load', function () {
+		
+		    // Draw the image on canvas.
+		    context.drawImage(this, x, y);
+		
+		    // Get the pixels.
+		    var imgd = context.getImageData(x, y, this.width, this.height);
+		    var pix = imgd.data;
+		
+		    // Draw the ImageData object.
+		    context.putImageData(imgd, x, y);
+			
+			Fuee(elem).bind({
+				'mousemove':function(e){
+					var mx=Fuee.getMouse(e).x,
+						my=Fuee.getMouse(e).y;
+					
+					var img_x=mx-x,
+						img_y=my-y;
+					
+					var point=w*(img_y-1)+img_x;
+
+					var i=(point-1)*4;
+
+					msg.style.backgroundColor='rgb('+pix[i]+','+pix[i+1]+','+pix[i+2]+')';
+					msg2.innerHTML='#'+numTo16(pix[i])+numTo16(pix[i+1])+numTo16(pix[i+2]);
+				}
+			});
+			
+		  }, false);
+		  img.src = 'images/2.jpg';
+			
+			
+//			for (var i = 0, n = pix.length; i < n; i += 4) {
+//				pix[i] = 255 - pix[i]; // red
+//				pix[i + 1] = 255 - pix[i + 1]; // green
+//				pix[i + 2] = 255 - pix[i + 2]; // blue
+//			}
+//			// Draw the ImageData object.
+//			context.putImageData(imgd, 20, 20);
+							
+			
+			
+			
+//			context.strokeStyle = '#000';
+//			context.fillStyle='#00f';
+//			context.fillStyle     = '#00f';
+//            context.shadowOffsetX = 5;
+//			context.shadowOffsetY = 5;
+//			context.shadowBlur    = 4;
+//			context.shadowColor   = 'rgba(255, 0, 0, 0.5)';
+//			context.fillRect(20, 20, 150, 100);
+
+            //var started = false;
+//            bind(elem, {
+//                'mousemove': function(e){
+//                    var x = getMouse(e).x, y = getMouse(e).y;
+//                    
+//					
+//					
+////                    if (started) {
+////                        context.lineTo(x, y);
+////                        context.stroke();
+////						
+////                    }
+//                },
+//                'mousedown': function(e){
+////					context.clearRect(0,0,500,500);
+////					
+////                    var x = getMouse(e).x, y = getMouse(e).y;
+////                    
+////                    context.beginPath();
+////                    started = true;
+//                },
+//                'mouseup': function(e){
+////                    started = false;
+////					context.fill();
+////					context.closePath();
+//                }
+//            });
+        </script>
+    </body>
+</html>

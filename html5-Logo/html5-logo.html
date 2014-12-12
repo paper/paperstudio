@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>html5 logo</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style>
+		#main{
+			width:960px;
+			margin:0 auto;
+		}
+		
+		#html5{}
+		#html5 h1{
+			font-family:"Arial Black";
+    		font-size: 90px;
+    		line-height: 1;
+    		text-indent: -6px;
+		}
+		#html5 .logo{}
+		#html5 .logo .bd{
+			position:relative;
+			width:276px;
+			height:346px;
+			background:#E34C26;
+		}
+		#html5 .logo .bd-left,
+		#html5 .logo .bd-right,
+		#html5 .logo .bd-bottom{
+			height:0;
+			width:0;
+			position:absolute;
+		}
+		#html5 .logo .bd-left{
+			top:0;
+			left:-30px;
+			border-left: 30px solid transparent;
+    		border-top: 346px solid #E34C26;
+			
+			_border-left: 30px solid tomato;
+			_filter:chroma(color=tomato);
+		}
+		#html5 .logo .bd-right{
+			right:-30px;
+			top:0;
+			border-right: 30px solid transparent;
+    		border-top: 346px solid #E34C26;
+			
+			_border-right: 30px solid tomato;
+			_filter:chroma(color=tomato);
+		}
+		#html5 .logo .bd-bottom{
+			border-left: 138px solid transparent;
+			border-right: 138px solid transparent;
+    		border-top: 40px solid #E34C26;
+			top:346px;
+			
+			_border-left: 138px solid tomato;
+			_border-right: 138px solid tomato;
+			_filter:chroma(color=tomato);
+		}
+		
+		#html5 .logo .bd-inner,
+		#html5 .logo .bd-inner-right,
+		#html5 .logo .bd-inner-bottom{
+			position:absolute;
+		}
+		#html5 .logo .bd-inner{
+			width:114px;
+			height:295px;
+			right:25px;
+			top:30px;
+			background-color:#F06529;
+		}
+		#html5 .logo .bd-inner-right{
+			right:0;
+			top:30px;
+			border-right: 25px solid transparent;
+    		border-top: 295px solid #F06529;
+			
+			_border-right: 25px solid tomato;
+			_filter:chroma(color=tomato);
+		}
+		#html5 .logo .bd-inner-bottom{
+			border-right: 114px solid transparent;
+    		border-top: 30px solid #F06529;
+			top:324px;
+			right:25px;
+			
+			_border-right: 114px solid tomato;
+			_filter:chroma(color=tomato);
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	<!--
+		http://www.w3.org/html/logo/
+		http://web.appstorm.net/
+		http://web.appstorm.net/roundups/web-development/25-super-web-based-html-css-tools/
+		http://css3maker.com/
+	-->
+	<div id="main">
+		<div id="html5">
+			<h1>HTML</h1>
+			
+			<div class="logo">
+				
+				<div class="bd">
+					<div class="bd-left"></div>
+					<div class="bd-right"></div>
+					<div class="bd-bottom"></div>
+					
+					<div class="bd-inner"></div>
+					<div class="bd-inner-right"></div>
+					<div class="bd-inner-bottom"></div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

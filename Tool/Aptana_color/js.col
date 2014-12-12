@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<colorizer xmlns="http://www.aptana.com/2007/colorizer/1.0" background="rgb(35,35,35)" caret-color="rgb(255,255,255)" folding-background="rgb(17,36,53)" folding-foreground="rgb(192,192,192)" language="text/javascript" line-highlight="rgb(39,58,75)" selection-background="rgb(12,44,126)" selection-foreground="rgb(255,255,255)">
+<category name="WHITESPACE" style="WHITESPACE"/>
+<style foreground="rgb(117,117,117)" id="WHITESPACE"/>
+<category name="LITERAL" style="LITERAL">
+<token style="LITERAL_STRING" type="STRING"/>
+<token style="LITERAL_NUMBER" type="NUMBER"/>
+</category>
+<style font-weight="bold" foreground="rgb(219,238,181)" id="LITERAL"/>
+<style foreground="rgb(106,255,106)" id="LITERAL_STRING"/>
+<style foreground="rgb(181,255,255)" id="LITERAL_NUMBER"/>
+<category name="KEYWORD" style="KEYWORD"/>
+<style font-weight="bold" foreground="rgb(111,167,208)" id="KEYWORD"/>
+<category name="ERROR" style="ERROR"/>
+<style foreground="rgb(255,0,0)" id="ERROR"/>
+<category name="PUNCTUATOR" style="PUNCTUATOR">
+<token style="PUNCTUATOR_COLON" type="COLON"/>
+<token style="PUNCTUATOR_DOT" type="DOT"/>
+<token style="PUNCTUATOR_LCURLY" type="LCURLY"/>
+<token style="PUNCTUATOR_SEMICOLON" type="SEMICOLON"/>
+<token style="PUNCTUATOR_RCURLY" type="RCURLY"/>
+</category>
+<style font-weight="bold" foreground="rgb(174,96,96)" id="PUNCTUATOR"/>
+<style foreground="rgb(128,128,255)" id="PUNCTUATOR_COLON"/>
+<style font-weight="bold" foreground="rgb(176,176,217)" id="PUNCTUATOR_DOT"/>
+<style foreground="rgb(156,205,205)" id="PUNCTUATOR_LCURLY"/>
+<style foreground="rgb(128,128,128)" id="PUNCTUATOR_SEMICOLON"/>
+<style foreground="rgb(126,190,190)" id="PUNCTUATOR_RCURLY"/>
+<category name="IDENTIFIER" style="IDENTIFIER"/>
+<style foreground="rgb(255,255,255)" id="IDENTIFIER"/>
+</colorizer>

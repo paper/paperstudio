@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>ex-gallery</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/ex-gallery.css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:20px auto;
+		}
+	</style>
+	
+	<script type="text/javascript" src="js/ex-gallery.js"></script>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+		
+		<!--注意这里的图片显示顺序是倒的，第一个现在的图片，放在最下面-->
+		<div class="ex-gallery" id="exGallery">
+			<ul>
+				<li>
+					<a href="#gallery4"><img src="images/gallery4.jpg" alt="gallery4" /></a>
+				</li>
+				<li>
+					<a href="#gallery3"><img src="images/gallery3.jpg" alt="gallery3" /></a>
+				</li>
+				<li>
+					<a href="#gallery2"><img src="images/gallery2.jpg" alt="gallery2" /></a>
+				</li>
+				<li>
+					<a href="#gallery1"><img src="images/gallery1.jpg" alt="gallery1" /></a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		
+		<div class="ex-gallery-nav" id="ex-gallery-nav">
+			<a href="#gallery1">1</a>
+			<a href="#gallery2">2</a>
+			<a href="#gallery3">3</a>
+			<a href="#gallery4">4</a>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var exGallery=new ExGallery({
+			wrapId:'exGallery',
+			navId:'ex-gallery-nav',
+			height:400,
+			width:600,
+			parts:10
+		});
+	</script>
+</body>
+</html>

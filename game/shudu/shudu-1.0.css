@@ -1,0 +1,129 @@
+@charset "utf-8";
+a{
+	color:#002299;
+}
+#shudu{
+	padding:20px;
+	float:left;
+}
+#shudu *{
+	cursor:pointer;
+}
+#shudu table.wrap{
+	border:3px solid #444;
+}
+#shudu table.wrap tr{}
+#shudu table.wrap tr.bottom{
+	border-bottom:3px solid #444;
+}
+#shudu table.wrap tr td{
+	width:40px;
+	height:40px;
+	border:1px solid #444;
+	text-align:center;
+	font-size:24px;
+}
+#shudu table.wrap tr td.right{
+	border-right-width:3px;
+}
+#shudu table.wrap tr td.bottom{
+	border-bottom-width:3px;
+}
+#shudu table.wrap tr td.sys{
+	background-color:#C8EFFC;
+}
+
+/*
+ * =content
+ */
+.content{
+	float:right;
+	width:500px;
+	margin-top:20px;
+}
+.content .msg{
+	position:relative;
+	z-index:1001;
+}
+.content .msg #msg_state{
+	background-color:#fff;
+}
+.content .msg .loading{
+	padding:20px 0 20px 40px;
+	background:url(loading.gif) no-repeat left center;
+}
+.content .msg .ok{
+	padding:20px 0 20px 30px;
+	background:url(ok.gif) no-repeat left center;
+}
+
+.content .msg .error{
+	padding:20px 0 20px 20px;
+	background:url(wrong.gif) no-repeat left center;
+}
+.content .msg .right{
+	padding:20px 0 20px 20px;
+	font-weight:bolder;
+	background:url(right.gif) no-repeat left center;
+}
+
+#shudu_map a{
+	color:#999;
+}
+#shudu_map a:hover{
+	color:#808040;
+}
+#shudu_map a.cur{
+	color:#002299;
+}
+/*
+ * 弹出选择数字的层
+ */
+#shudu_alert_number{
+	position:absolute;
+	width:162px;
+	height:126px;
+	background:url(shudu_alertNumber.png) no-repeat;
+	z-index:99;
+}
+* html #shudu_alert_number{
+	background:url(shudu_alertNumber.gif) no-repeat;
+}
+#shudu_alert_number a.close{
+	position:absolute;
+	width:33px;
+	height:14px;
+	display:block;
+	right:7px;
+	top:14px;
+	background:url(spaces.gif) repeat;
+	overflow:hidden;
+	text-indent:-9999px;
+}
+#shudu_alert_number .num{
+	padding:25px 0 0 11px;
+} 
+#shudu_alert_number .num ul{
+	width:100px;
+}
+#shudu_alert_number .num ul li{
+	float:left;
+	display:inline;
+	margin:0 10px 10px 0;
+}
+#shudu_alert_number .num ul li a{
+	float:left;
+	text-align:center;
+	width:20px;
+	height:20px;
+	background-color:#fff;
+	border:1px solid #215F7D;
+	color:#000;
+	line-height:20px;
+}
+#shudu_alert_number .num ul li a:hover{
+	background-color:#1B85B6;
+	border:1px solid #14455D;
+	color:#fff;
+	text-decoration:none;
+}

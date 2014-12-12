@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+	<title>scroll-load</title>
+	<style type="text/css">
+		#main{
+			width:800px;
+			margin:0 auto;
+		}
+		#loading{
+			text-align:center;
+			font:28px Verdana;
+			padding:0 0 20px 0;
+		}
+		#msg{
+			position:fixed;
+			left:10px;
+			top:200px;
+		}
+		.block{
+			overflow:hidden;
+			margin-bottom:10px;
+			padding-bottom:10px;
+			border-bottom:1px dashed #ccc;
+		}
+		.block span{
+			float:left;
+			font-size:66px;
+			line-height:1;
+		}
+		.block p{
+			padding-left:40px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+	
+	<div id="msg">test</div>
+	<div id="main">
+	
+	</div><!--end main-->
+	
+	<div id="loading" style="display:none;">loading....</div>
+	
+	<script type="text/javascript" src="../../js/Fuee-1.0.js"></script>
+	<script type="text/javascript">
+		var sum=100,
+			step=20,
+			num=0,
+			
+			loading=document.getElementById('loading'),
+			main=document.getElementById('main'),
+			msg=document.getElementById('msg'),
+			maxh=0,
+			key=false,
+			once=true;
+		
+		function load(){
+			if(num>=sum)return;
+			
+			Fuee.ajax({
+				url: 'data.txt',
+				before: function(){
+					Fuee(loading).show();
+				},
+				success: function(m){
+					var h = '';
+					for (var i = num; i < num + step; i++) {
+						h += '<div class="block" rel='+i+'>' +
+						'<span>' +
+						i +
+						'</span>' +
+						m +
+						'</div>';
+					};
+					
+					num = i;
+					
+					Fuee.asynInnerHTML(h, function(f){
+						Fuee(main).append(f);
+					}, function(){
+						key=false;
+						
+						Fuee(loading).hide();
+						maxh=Fuee.getMax().height;
+						
+						if(once){
+							window.scroll(0,0);
+							once=false;
+						}
+						
+						window.onscroll=function(){
+							if(!key){
+								msg.innerHTML=Fuee.getScroll().top;
+								if(Fuee.getScroll().top>=maxh/2){
+									key=true;
+									load();
+								}
+							}
+						}
+					});
+				}
+			});
+		};
+		
+		window.onload=function(){
+			window.scroll(0,0);
+			load();
+		};
+	</script>
+</body>
+</html>

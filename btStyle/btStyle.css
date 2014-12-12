@@ -1,0 +1,12 @@
+@charset "utf-8";
+.btStyle,.btStyle span,btStyle1:hover,.btStyle1:hover span{	background:url(images/btStyle1.png) no-repeat;} 
+.btStyle{	color:#444;	font-size:12px;	display:inline-block;	height:28px;
+	line-height:28px;	padding-left:18px;	background-position:0 0;
+	cursor:pointer;}.btStyle span{
+	display:inline-block;
+	height:28px;
+	padding-right:18px;	background-position:right 0;}
+ .btStyle:hover{	text-decoration:none;	color:#000;	background-position:left -28px;}.btStyle:hover span{	background-position:right -28px;}
+.btStyle1:active{
+	background:url(images/btStyle1.png) no-repeat;	background-position:left -56px;}.btStyle1:active span{
+	background:url(images/btStyle1.png) no-repeat;	background-position:right -56px;} 

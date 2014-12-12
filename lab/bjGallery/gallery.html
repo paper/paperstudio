@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<style type="text/css">
+		html,body,div,ol,li,p,h1{
+			padding:0;
+			margin:0;
+			font-size:12px;
+			font-family:Arial, Helvetica, sans-serif;
+		}
+		a{
+			text-decoration:none;
+		}
+		a img{
+			border:0 none;
+		}
+		ol,li{
+			list-style:none;
+		}
+        #wrapper {
+            width: 800px;
+            margin: 10px auto;
+        }
+        
+        #gallery {
+            padding: 1px;
+            border: 1px solid #ccc;
+			width:512px;
+			height:384px;
+        }
+		.ft{
+			margin:10px 0;
+			color:#777;
+		}
+		.ft a{
+			color:#003399;
+		}
+		</style>
+		<title>gallery</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="hd">
+				<h1 style="font-size:12px;margin:10px 0;">图片走廊极度封装</h1>
+			</div>
+			
+			<!--到时候，这个gallery里面的html代码是自动生成的-->
+			<div id="gallery">
+				
+			</div><!--gallery-->
+			
+			<div class="ft">
+				<p>Made by Zhang Binjue <br />No Rights Reserved. my <a href="http://hi.baidu.com/paperstudio">space</a></p>
+			</div>
+		</div><!--end wrapper-->
+		
+		<script type="text/javascript" src="bj-1.2.9-mini.js"></script>
+		<script type="text/javascript" src="gallery.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			
+			bjGallery({
+				"wraper":"gallery",	//容器			必填
+				"images":[			//图片的内容		必填
+					{"src":"images/g1.jpg","alt":"图片1的说明","href":"#1"},
+					{"src":"images/g2.jpg","alt":"图片2的说明","info":"窗前明月光","href":"#2"},
+					{"src":"images/g3.jpg","alt":"图片3的说明","info":"Since 2007, Douglas Crockford has been developing (and delivering) a lecture series on the JavaScript programming language. ","href":"#3"},
+					{"src":"images/g4.jpg","alt":"图片4的说明","info":"不知不觉中，2009年到了尾声，VeryCD也陪伴着驴友们度过了第6个年头","href":"#4"}
+				],
+				
+				//说明可以自动切换，时间间隔为2000。不要的话，就不设置它
+				speed:2000,
+				
+				//切换时是否有动画。如果要，就设置animate为true就可以了。不要的话，就不设置它
+				animate:true
+			});
+			
+			//]]
+		</script>
+	</body>
+</html>

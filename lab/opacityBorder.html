@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>半透明边框</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      html{
+      	background:url(bg2.gif) repeat;
+      }
+      #showBox {
+          position: absolute;
+          z-index: 200;
+          overflow: hidden;
+          width: 770px;
+          left: 50%;
+          margin-left: -385px;
+          top: 12%;
+          color: #fff;
+          padding: 10px;
+      }
+      
+      #myAlpha {
+          position: absolute;
+          z-index: -1;
+          width: 1999px;
+          height: 1999px;
+		  filter:alpha(opacity=40);
+          opacity: 0.4;
+          left: 0;
+          top: 0;
+          background-color: #000;
+      }
+      
+     #container {
+     	padding:5px;
+        border: 2px solid #000;
+        background-color: #56718b;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+    <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+    <div id="main">
+      <div id="showBox">
+        
+        <div id="container">
+          <p>
+            很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊
+          </p>
+          <p>
+            很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊
+          </p>
+          <p>
+            很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊
+          </p>
+          <p>
+            很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊很多内容啊
+          </p>
+        </div>
+		<div id="myAlpha">
+        </div>
+      </div>
+    </div>
+    <!--end main-->
+	</div>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>chrome-nav</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <link href="css/reset.css" type="text/css" rel="stylesheet" />
+		<link href="css/chrome-nav.css" type="text/css" rel="stylesheet" />
+        <style type="text/css">
+            
+            #header {
+                height: 40px;
+                background-color: #444;
+                border-bottom: 2px solid #222;
+                margin-bottom: 20px;
+            }
+            #header .header-main{
+            	width: 980px;
+                margin: 0 auto;
+				line-height: 40px;
+            }
+            #header .nav {
+                float: left;
+                height: 40px;
+            }
+            
+            #header .nav ul {
+                float: left;
+            }
+            
+            #header .nav ul li {
+            }
+            
+            #header .nav ul li a {
+                color: #00ff00;
+            }
+            
+            #header .copyright {
+                float: right;
+				height: 40px;
+				color:#888;
+            }
+            
+            #footer {
+                width: 980px;
+                margin: 0 auto;
+            }
+            
+            #container {
+                min-height: 400px;
+				_height:400px;
+                width: 980px;
+                margin: 0 auto;
+                border: 1px solid #444;
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                -khtml-border-radius: 10px;
+            }
+			#container .hd{
+				padding:10px;
+				margin-bottom:40px;
+			}
+			#container .bd{
+				padding:10px;
+			}
+			
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="header-main">
+                    <div class="nav">
+                        <ul>
+                            <li>
+                                <a href="http://hi.baidu.com/paperstudio" target="_blank">HOME</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="copyright">
+                        copyright &copy; zhang binjue
+                    </div>
+                </div>
+            </div>
+            <div id="container">
+            	<div class="hd">
+            		<h1>Chrome nav</h1>
+					<span>可拖动版本 1.0</span><br />
+					<span id="dd"></span>
+            	</div>
+				
+				<div class="bd">
+					<div class="chrome-nav" id="chromeNav">
+						<ul class="clearfix">
+							<li rel="1"><span><b>nav1</b></span></li>
+							<li rel="2"><span><b>nav2</b></span></li>
+							<li rel="3" class="cur"><span><b>nav3</b></span></li>
+							<li rel="4"><span><b>nav4</b></span></li>
+						</ul>
+					</div>
+					
+					<div id="chromeMain">
+						<div class="b" style="display:none;">
+							<p>nav1里面的内容</p>
+							<p>今年过节不收礼啊，收礼只收人民币啊~~~</p>
+						</div>
+						<div class="b" style="display:none;">
+							<p>nav2里面的内容</p>
+							<p>一个娱乐电视节目中，主持人要一个嘉宾从三道门中选择一道。其中的一个后面放着一辆崭新的轿车，
+							如果猜对了就会赢取这辆车。无论嘉宾做出什么选择，主持人 总会打开另外一个门，当然门后什么也不会有。
+							然后主持人会问嘉宾，是否想改变选择。请问嘉宾应该怎么做才有较大的机会赢取轿车。</p>
+						</div>
+						<div class="b" style="display:block;">
+							<p>nav3里面的内容</p>
+							<p>假设你有两枚硬币，其中一枚两面都是国徽，另一枚是正常的。
+							某日，你随便拿了其中一枚到了办公室。你连续抛了三次硬币，结果三次都是国徽。请问再抛一次还是国徽的概率是多少？ </p>
+						</div>
+						<div class="b" style="display:none;">
+							<p>nav4里面的内容</p>
+							<p>假设鸡蛋壳的硬度是随机分布，从0到1。现在我们随便找两个鸡蛋对敲(PK),选其中没有被敲破的那个（A）和随便挑出来的另一个鸡蛋对敲，此鸡蛋（A）仍然不破的概率是多大？ </p>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+		<script type="text/javascript" src="js/bj-1.2.9.js"></script>
+		<script type="text/javascript" src="js/chrome-nav-1.0.js"></script>
+    </body>
+</html>

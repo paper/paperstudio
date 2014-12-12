@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<style type="text/css">
+			*{
+				padding:0;
+				margin:0;
+				font-size:12px;
+				line-height:1.5;
+			}
+			a{
+				color:#003399;
+			}
+			#wrapper{
+				width:800px;
+				padding:20px 0;
+				overflow:hidden;
+				margin:60px auto 0;
+			}
+			h2{
+				margin:20px 0;
+				padding:5px 0;
+				border:1px solid #528641;
+				background-color:#3fa156;
+				color:#fff;
+				padding-left:10px;
+				border-radius:4px;
+				-moz-border-radius:4px;
+				-webkit-border-radius:4px;
+				-khtml-border-radius:4px;
+			}
+			.support{
+				
+			}
+			.support span{
+				margin-right:20px;
+			}
+		</style>
+		<title>投票动态效果</title>
+</head>
+<body>
+	<div id="wrapper">
+		<h2>你是支持还是不支持呢？？</h2>
+		<div class="support">
+			<span>支持:<a href="#" onclick="supportAnimate(this,event,'love');return false;">1990</a></span>
+			<span>不支持:<a href="#" onclick="supportAnimate(this,event,'hate');return false;">2990</a></span>
+		</div>
+	</div><!--end wrapper-->
+	<script type="text/javascript">
+	//<![CDATA[
+		var supportAnimate=(function(){
+			var getMouse = function(e){
+				e = e || window.event;
+				if (e.pageX || e.pageY) {
+					return {
+						x: e.pageX,
+						y: e.pageY
+					};
+				}
+				var dd = document.documentElement;
+				return {
+					x: e.clientX + dd.scrollLeft - dd.clientLeft,
+					y: e.clientY + dd.scrollTop - dd.clientTop
+				};
+			},
+			
+			setOpacity=function(elem,level){
+                elem.style.filter = elem.filters ? 
+					elem.style.filter = 'alpha(opacity=' + level + ')' : 
+					elem.style.opacity = level / 100;
+       	 	},
+			
+			setStyle=function(elem,obj){
+				for(var i in obj){
+					elem.style[i]=obj[i];
+				}
+			},
+			
+			animate=function(me,e,s){
+				var w={
+						"love":"+1",
+						"hate":"-1"
+					}[s],
+					
+					m=getMouse(e),
+					
+					v=parseInt(me.innerHTML),
+					
+					spanNode=document.createElement("span"),
+					
+					time=null,
+					
+					size=12,
+					level=100,
+					x=m.x-5,
+					y=m.y-10;
+					
+				if(s=="love"){
+					me.innerHTML=v+1;
+				}else{
+					me.innerHTML=v-1;
+				}	
+				
+				spanNode.innerHTML=w;
+				
+				setStyle(spanNode,{
+					'position':'absolute',
+					'color':'red',
+					'fontSize':size+'px',
+					'fontWeight':'bold',
+					'z-index':9999
+				});
+
+				document.getElementsByTagName("body")[0].appendChild(spanNode);
+			
+				time=setInterval(function(){
+					var step=Math.ceil(level/10);
+					
+					size+=step*1.5;
+					level-=step;
+					x-=step*1.5/2;
+					y-=step;
+					
+					setStyle(spanNode,{
+						'fontSize':size+'px',
+						'left':x+"px",
+						'top':y+"px"
+					});
+					
+					setOpacity(spanNode,level);
+					
+					if(level<=0){
+						clearInterval(time);
+						spanNode.parentNode.removeChild(spanNode);
+					}
+				},10);
+			};
+			
+			return animate;
+		})();
+	//]]>	
+	</script>
+</body>
+</html>

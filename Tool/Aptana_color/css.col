@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<colorizer xmlns="http://www.aptana.com/2007/colorizer/1.0" background="rgb(16,34,48)" caret-color="rgb(255,255,255)" folding-background="rgb(17,36,53)" folding-foreground="rgb(128,128,128)" language="text/css" line-highlight="rgb(39,58,75)" selection-background="rgb(9,34,102)" selection-foreground="rgb(255,255,255)">
+<category name="WHITESPACE" style="WHITESPACE"/>
+<style foreground="rgb(123,123,123)" id="WHITESPACE"/>
+<category name="LITERAL" style="LITERAL">
+<token style="LITERAL_PERCENTAGE" type="PERCENTAGE"/>
+<token style="LITERAL_NUMBER" type="NUMBER"/>
+<token style="LITERAL_EMS" type="EMS"/>
+<token style="LITERAL_HASH" type="HASH">
+<region length="1" name="HASH region_start" offset="0" style="LITERAL_HASH_HASH region_start"/>
+</token>
+<token style="LITERAL_COLOR" type="COLOR"/>
+<token style="LITERAL_CLASS" type="CLASS">
+<region length="LENGTH-1" name="Class_class" offset="1" style="LITERAL_CLASS_Class_class"/>
+<region length="1" name="Class_dot" offset="0" style="LITERAL_CLASS_Class_dot"/>
+</token>
+<token style="LITERAL_LENGTH" type="LENGTH"/>
+</category>
+<style foreground="rgb(136,220,244)" id="LITERAL"/>
+<style foreground="rgb(251,222,168)" id="LITERAL_PERCENTAGE"/>
+<style foreground="rgb(250,219,163)" id="LITERAL_NUMBER"/>
+<style foreground="rgb(251,220,164)" id="LITERAL_EMS"/>
+<style font-weight="bold" foreground="rgb(200,249,108)" id="LITERAL_HASH_HASH region_start"/>
+<style foreground="rgb(210,250,152)" id="LITERAL_HASH"/>
+<style foreground="rgb(255,203,179)" id="LITERAL_COLOR"/>
+<style font-style="italic" foreground="rgb(255,196,255)" id="LITERAL_CLASS_Class_class"/>
+<style font-weight="bold" foreground="rgb(255,128,192)" id="LITERAL_CLASS_Class_dot"/>
+<style foreground="rgb(255,191,191)" id="LITERAL_CLASS"/>
+<style foreground="rgb(243,214,158)" id="LITERAL_LENGTH"/>
+<category name="KEYWORD" style="KEYWORD">
+<token style="KEYWORD_IMPORTANT" type="IMPORTANT"/>
+<token style="KEYWORD_URL" type="URL"/>
+</category>
+<style foreground="rgb(94,174,255)" id="KEYWORD"/>
+<style font-weight="bold" foreground="rgb(255,0,0)" id="KEYWORD_IMPORTANT"/>
+<style foreground="rgb(255,128,0)" id="KEYWORD_URL"/>
+<category name="ERROR" style="ERROR">
+<token style="ERROR_ERROR" type="ERROR"/>
+</category>
+<style foreground="rgb(128,128,128)" id="ERROR"/>
+<style foreground="rgb(255,0,0)" id="ERROR_ERROR"/>
+<category name="IDENTIFIER" style="IDENTIFIER">
+<token style="IDENTIFIER_IDENTIFIER" type="IDENTIFIER"/>
+<token style="IDENTIFIER_PROPERTY" type="PROPERTY"/>
+</category>
+<style foreground="rgb(180,214,239)" id="IDENTIFIER"/>
+<style foreground="rgb(228,168,86)" id="IDENTIFIER_IDENTIFIER"/>
+<style foreground="rgb(169,214,237)" id="IDENTIFIER_PROPERTY"/>
+<category name="PUNCTUATOR" style="PUNCTUATOR"/>
+<style font-weight="bold" foreground="rgb(176,153,17)" id="PUNCTUATOR"/>
+</colorizer>

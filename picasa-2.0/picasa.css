@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* html{	height:100%;	width:100%;	overflow:hidden;}  */
+#picasa-image-wrap{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	text-align:center;
+	z-index:9998;
+}
+#picasa-image-wrap img{
+	cursor:move;
+	z-index:9999;
+	box-shadow:0 0 30px #222;
+	-moz-box-shadow:0 0 30px #222;
+	-webkit-box-shadow:0 0 30px #222;
+	-khtml-box-shadow:0 0 30px #222;
+}
+#picasa-close{
+	position:absolute;
+	z-index:9999;
+	cursor:pointer;
+	right:0;
+	top:0;
+	width:70px;
+	height:64px;
+	background:url(images/picasa-close.png) no-repeat;
+	
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=noscale,src="images/picasa-close.png");
+	_background:none; 
+}
+#picasa-nav{
+	height:56px;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	background-color:#111;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+	z-index:99999;
+	overflow:hidden;
+}
+#picasa-nav-cover{
+	height:56px;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	z-index:9999999;
+	overflow:hidden;
+	background:url(about:blank);
+	display:none;
+}
+.picasa-nav-op{
+	text-align:center;
+}
+.picasa-nav-op{
+	color:#fff;
+	padding-top:35px;
+}
+.picasa-nav-op a{
+	position:relative;
+	z-index:999992;
+	color:#666;
+	margin:0 4px;
+	padding:1px 3px;
+	color:#fff;
+	background-color:#003399;
+	
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-khtml-border-radius:3px;
+}
+.picasa-nav-op a:hover{
+	text-decoration:none;
+	color:#00ff40;
+}
+
+#picasa-nav-images{
+	position:absolute;
+	z-index:999991;
+	top:1px;
+}
+#picasa-nav-images ul{
+	overflow:hidden;
+}
+#picasa-nav-images ul li{
+	float:left;
+}
+#picasa-nav-images ul li a{
+	outline:none;
+}
+#picasa-nav-images ul li a img{
+	padding:1px;
+	width:30px;
+	height:30px;
+	border:1px solid #161413;
+}
+#picasa-nav-images ul li a.on img{
+	border-color:#51ff7c;
+}
+
+#picasa-nav-msg{
+	width:100px;
+	position:absolute;
+	left:50%;
+	top:0;
+	margin-left:-50px;
+	z-index:19999;
+}
+#picasa-nav-msg .loading{
+	padding:2px 2px 2px 17px;
+	background:#fff url(images/loading.gif) left center no-repeat;
+	color:#333;
+	border-radius:3px;
+	-moz-border-radius:3px;
+}

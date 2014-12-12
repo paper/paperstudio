@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>文字垂直居中</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		body{
+			background-color:#777;
+		}
+		#main{
+			width:900px;
+			margin:0 auto;
+		}
+	
+		.box1,.box2{
+			width: 150px;
+    		height: 130px;
+    		background:#808040;
+    		color: #FFF;
+			border:1px solid #474723;
+			margin:0 20px 20px 0;
+		}
+		
+		.box1{
+			float:left;
+		}
+		.box2{
+			float:right;
+		}
+		.box1 p{
+			line-height:130px;
+		}
+		 .box2 p{			display:table-cell;			height:130px;			width:150px;			vertical-align:middle;		} 
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+	
+	<div id="main">
+		<h1>box1</h1>
+		<div class="box1">
+			<p>我是box1 里面的文字。</p>
+		</div>
+		
+		<div class="box1">
+			<p>我是box1 里面的文字，我怕谁! 我是box1 里面的文字，我怕谁!</p>
+		</div>
+		
+		<div style="clear:both;"></div>
+		<h1 style="float:right;">box2</h1>
+		<div style="clear:both;"></div>
+		<div class="box2">
+			<p>我是box2 里面的文字。</p>
+		</div>
+		<div class="box2">
+			<p>我是box2 里面的文字，我怕谁! 我是box2 里面的文字，我怕谁!</p>
+		</div>
+	</div>
+</body>
+</html>

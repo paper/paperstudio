@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>adsorb</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		html{
+			width:100%;
+			height:100%;
+			overflow:hidden;
+			position:relative;
+		}
+		body{
+			background-color:#fff;
+			width:100%;
+			height:100%;
+			overflow-y:auto;
+			overflow-x:hidden;
+		}
+		.adsorb{
+			position:absolute;
+			left:100px;
+			top:100px;
+			width:160px;
+			border:1px solid #0b3b8c;
+			background-color:#fff;
+			
+			border-radius:3px;
+			-moz-border-radius:3px;
+			-webkit-border-radius:3px;
+			-khtml-border-radius:3px;
+			
+			box-shadow:0 0 3px #000;
+			-moz-box-shadow:0 0 3px #000;
+			-webkit-box-shadow:0 0 3px #000;
+			-khtml-box-shadow:0 0 3px #000;
+		}
+		.adsorb .hd{
+			cursor:move;
+			height:24px;
+			background-color:#0b3b8c;
+			border-bottom:1px solid #0b3b8c;
+		}
+		.adsorb .hd h3{
+			padding-left:6px;
+			color:#fff;
+			float:left;
+			line-height:24px;
+		}
+		.adsorb .hd a{
+			float:right;
+			display:block;
+			color:#bbb;
+			border:1px solid #bbb;
+			height:10px;
+			width:10px;
+			line-height:8px;
+			text-align:center;
+			margin:7px 6px 0 0;
+			outline:none;
+		}
+		.adsorb .hd a:hover{
+			border-color:#fff;
+			color:#fff;
+		}
+		
+		.adsorb .bd{}
+		.adsorb .bd ul{
+			padding:5px;
+		}
+		.adsorb .bd ul li{
+			line-height:22px;
+		}
+		.adsorb .bd ul li:hover{
+			background-color:#eee;
+			padding-left:2px;
+		}
+		.adsorb .bd ul li a{
+			color:#0b3b8c;
+			display:block;
+			zoom:1;
+		}
+		.adsorb .bd ul li a:hover{
+			color:#004000;
+			text-decoration:none;
+		}
+	</style>
+</head>
+<body>
+<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+<div id="main">
+	<div id="msg"></div>
+	<h1>文章来自CSDN</h1>
+	<p style="text-align: center;"></p>
+<p style="text-align: center;">普林斯顿大学计算机系楼后面的墙砖拼成的"P=NP？"问题图案，用7位ASCII码表示，即：</p>
+<p style="text-align: center;"></p>
+
+<p>【Csdn 综合报道】（文/刘江）这几天惠普新闻不断。其实技术人员更应该关心的，不是那个CEO的绯闻女郎是否漂亮，CEO是否因公司政治蒙冤下台，而是另一件可能会名垂青史的大事：一位名为Vinay Deolalikar的70后印度籍惠普研究员8月6日在自己的网站发布了一篇名为“P is not equal to NP”的论文（<a target="_blank" href="http://www.hpl.hp.com/personal/Vinay_Deolalikar/Papers/pnp_updated.pdf">点击下载</a>），也就是说，他认为自己证明了P不等于NP！</p>
+<p>学过计算机科学理论的人都应该知道，计算机科学中有一个天字第一号问题一直没有解决，引得无数图灵奖得主和顶级计算机科学家竞折腰，这个圣杯就是P/NP问题。事实上，这个问题也位列Clay数学研究所重金征解的<a target="_blank" href="http://zh.wikipedia.org/zh-cn/千禧年大奖难题">七大数学难题</a>之首，与我们凡夫俗子也多少知道的黎曼假设和庞加莱猜想并列。解决其中任何一道难题，都可以得到100万美元奖金。其中，庞加莱猜想已被我们时代最伟大的Geek<a target="_blank" href="http://zh.wikipedia.org/zh-cn/格里戈里·佩雷尔曼">格里戈里·佩雷尔曼</a>于2002年解决。</p>
+<p>简单的说，P问题是指能找到迅速（准确地说是多项式时间内）解决算法的问题，P是Polynomial（多项式）时间的第一个字母。而NP问题，是指这个问题的解能够迅速（准确地说是在多项式的时间里）猜测并验证，但是很难找到，NP是Nondeterministic Polynomial （非确定多项式）的首字母缩写。所以，P=NP？问题实际上是要证明或者推翻，P问题和NP问题不等价。由于NPC（NP-Complete）问题的存在，学术界普遍认为P不等于NP，但始终无法给出令人满意的证明。</p>
+<p>现在，Vinay Deolalikar宣布自己摘取了这项桂冠。他已经将论文发给多位各个领域的顶尖专家进行同行评审。</p>
+<p>Deolalikar在信中写道：</p>
+<blockquote>亲爱的同行：</blockquote> <blockquote>我很高兴发布一个关于“P不等于NP”的证明，证明附后。</blockquote> <blockquote>这个证明用到了数学多个领域的原理，主要工作是发现了在不同领域之间一系列概念联系，并用统一的透镜观察。其次就是证明中每一步骤遇到的技术性困难了。</blockquote> <blockquote>这项工作建立在许多受人尊敬的研究者的基础性贡献之上。这篇论文中，我有意阐述了理解证明所需的全局性框架，并尽可能减少了技术性和计算性的细节。</blockquote> <blockquote>这项工作是在我担任惠普研究院研究员的业余时间独立完成的。在此之前的过去两年中，我已经试图使用其他的概念组合，进行了几次不成功的尝试。</blockquote> <blockquote>非常欢迎大家对论文进行评论，提出改进意见。</blockquote>
+<p>目前此事尚没有得到任何正式的确认。不过，这个问题的提出者、图灵奖得主<a target="_blank" href="http://zh.wikipedia.org/zh-cn/%E5%8F%B2%E6%8F%90%E8%8A%AC%C2%B7%E5%8F%A4%E5%85%8B">Stephen Cook</a>评论，（Deolalikar的）“<strong>声明看上去比较严肃”</strong>。</p>
+<p>MIT的助理教授Scott Aaronson（他曾经写过一篇文章《<a target="_blank" href="http://www.scottaaronson.com/blog/?p=304">所谓数学突破的十个错误标志</a>》）显然不太相信这个问题能比较容易地解决，他发表博客，表示如果Deolalikar被授予了100万Clay千禧大奖，他愿意个人掏腰包再奖20万美元。</p>
+<p>著名的计算理论博客、佐治亚理工学院计算机科学教授Dick Lipton也发表<a target="_blank" href="http://rjlipton.wordpress.com/2010/08/08/a-proof-that-p-is-not-equal-to-np/">文章</a>简单解释了论文的思路，认为这项工作是严肃的。Lipton在文中说，Deolalikar是通过有限模型理论搭桥，引出反证，用到了Moshe Vardi (1982) 和Neil Immerman (1986)的结论。</p>
+<p>8月9日，Lipton又综合已有的对论文的评论，发表了新的<a href="http://rjlipton.wordpress.com/2010/08/09/issues-in-the-proof-that-p%e2%89%a0np/" target="_blank">文章</a>，认为证明肯定存在错误，但他又表示，这是任何突破性研究都无法避免的。该证明的策略是否证明，存在的问题是否能够修正，仍然有待研究。</p>
+<p>此外，犹他大学计算机学院的助理教授Suresh Venkatasubramanian通过Google Docs（<a href="https://docs1.google.com/document/edit?id=1uOa3BE7oK8Q7iEuOZ1EfkS16lF_Um1VwyMgdzrjZuT0&amp;hl=en&amp;authkey=COS65rkE#，" target="_blank">链接</a>，可能无法访问）来讨论这一证明，充分利用集体智慧，你也可以加入！文档本身应该是LaTeX格式的。</p>
+<p>CSDN博客专家<a target="_blank" href="http://blog.csdn.net/g9yuayon">袁泳</a>在Twitter上分析了Deolalikar的思路，“是通过编码K-SAT构造某种有序结构。如果NP=P，那根据Vardi的定理，K-SAT能用FO(LFP)，也就是最小不动点的一阶逻辑表达，也就说存在某个多项式时间基于LFP的算法。但是该结论同K-SAT的某些统计性质矛盾。”但他也表示自己的知识不足以评价甚至看懂这篇论文。</p>
+<p>Vinay Deolalikar是否真的解决了计算机科学界目前的最大问题呢？让我们拭目以待。如果你看懂了这篇论文，请与我们联系。</p>
+<p>【CSDN小百科】</p>
+<p></p>
+<p>Vinay Deolalikar，1971年出生于印度新德里，1994年在孟买印度理工学院获得电机工程硕士学位，1999年在南加州大学获得电机工程和数学博士学位。他的研究兴趣是数论、代数几何及其在编码理论中的应用，机器学习与数据挖掘及其在信息管理中的应用，数理逻辑，随机过程，统计学，数字通信等。他在惠普研究院网站上的个人网页是：http://www.hpl.hp.com/personal/Vinay_Deolalikar/ 。</p>
+
+<p align="right" class="comet blueline">&nbsp;<font style="font-size: 12px; color: rgb(204, 0, 0);" class="cmtcount">65</font>条&nbsp;】</p>
+
+<p>未来，速度更快、效率更高的光纤将取代连接计算机各部件的金属电缆。光纤技术的发展有望引领计算领域的飞速变革。</p>
+<p>“长距离通信要靠激光器才能实现。但激光器过去一直无法整合到设备里。”位于加州圣塔克莱拉市的英特尔公司光子学技术实验室负责人马里奥•潘尼西亚（Mario Paniccia）表示，“我们新研发的集成光纤可以实现这一点。”</p>
+<p>潘尼西亚的研发团队对微型硅芯片做了优化，使其能够编码或解码通过光纤传输的激光信号。目前，当数据通过光纤连接到达一台计算机时，这些数据必须通过一个单独的光学元件转换到电子电路中。这种新技术可使此过程在硅芯片中完成，将大大提高数据传输效率。</p>
+<p style="text-align: center;"></p>
+<p style="text-align: center;">此电路板中心的芯片中有四个激光器，能够将电信号转化成光脉冲。在光纤中光脉冲会飞速传播。（来自英特尔）</p>
+<p>上周，研发人员展示了第一个完整的光子通信系统，该系统中的所有组件都完全整合在硅芯片中。电子数据进入芯片后会被转化为激光信号通过光纤传输到终端，在终端被再次转换成电子数据，这一过程仅持续不到1秒钟。此系统的传输速率为每秒50千兆，足以在1秒钟之内传输一部完整的高清电影。</p>
+<p>硅光子芯片可代替计算机主要部件如处理器和存储器之间的电子连接。铜缆传输数据的速度仅为每秒钟10千兆。这意味着，在一台服务器中，中央处理器和存储器这两种重要部件之间的距离不能过远。这一点限制了计算机的架构方式。</p>
+<p>英特尔研发出的这种发射器芯片集成了4个激光器，它们将数据转化成不同波长或“颜色”的光信号，在一条光纤中独立传输。若在芯片中集成更多的激光器，那么传输速度将可达到每秒1000千兆。</p>
+<p>“传输速度达每秒兆兆位、只有指甲盖大小的芯片会改变我们的设计理念。” 潘尼西亚说到。谷歌、微软和Facebook等网络巨头操控着规模庞大的数据中心，而小小的芯片则可能让这些数据中心改头换面。“现今的数据中心像是一摊堆在一起的铜&mdash;&mdash;限制着服务器各部件的架构方式。” 潘尼西亚说。</p>
+<p>“若能将存储器放在离处理器一英尺开外的位置，我就能为一个单独的中央处理器配置一个内存板，” 潘尼西亚说，其团队正在对服务器原型做实验，期望解决如何在服务器里搭建光纤通道。</p>
+<p>在一台服务器中，将存储器移至离中央处理器较远的距离也会使简化通风措施。运行一个数据中心，如Facebook社交网络服务或银行记录，大约一半的成本都花费在冷却系统上。因此，服务器内各部件之间的距离对成本方面影响巨大。</p>
+<p>光纤传输所消耗的能量比电缆低，这也可能降低数据中心的成本，哥伦比亚大学硅光子学研究组的负责人凯伦•伯格曼（Keren Bergman）表示。“电缆传输时，传输距离越远，能量消耗越大，且其消耗增长可能呈指数级。”她说。光纤传输信号需要的能量不高，
+却能传输得更快更远。伯格曼的研究组利用劳伦斯-伯克利国家实验室和麻省理工林肯实验室的计算机的运行数据，模拟了光纤连接的系统之间如何运行。“在能效方面，将有巨大收获。”最大的收获在于高带宽图像处理和视频流方面的应用程序上。</p>
+<p>未来，集成激光技术将扩展到其他领域。“我们在研发过程中也致力于降低此技术的成本，这样该技术才可能应用到所有领域，而不局限于高性能计算或数据中心。”潘尼西亚说。英特尔系统内各组件包括激光器的制造，与大批量生产计算机芯片的制造方法相同，使用了硅刻技术。“我们扩展了摩尔定律，将光与硅的低成本、高容量和延展性结合起来，获益良多。在笔记本方面，这一技术将引导工业设计方面的创新。我们能把存储器放到显示器里，这样一切都会随之改变。”</p>
+<p>利用这种技术，不打开设备也能为其添置新组件，且核心部件也可安装在设备外围。如，将备份存储器安装在笔记本或智能手机内，提高移动设备的计算能力。</p>
+<p>然而，若将光纤应用到计算机的各个领域，那么通过光纤连接在一起的各种部件也将面临改革。“淘汰电缆，全部换成光纤？可没那么简单。”伯格曼说。</p>
+<p>波士顿大学的副教授阿贾•伊乔希（Ajay Joshi）也在研究光纤做通道的高性能计算机的新架构方法。他说，“若我们加快逻辑（处理器）和内存之间的速度，我们将需要重新考虑存储器的设计方法。”</p>
+<p>处理器和光纤之间的速度差距较以往有所减小，但这种差距也可能会改变。“我们将会考虑让处理器的速度也达到光速。” 伊乔希说。（文/汤姆•西蒙尼）</p>
+<p>原文链接：http://www.mittrchinese.com/article.jsp?id=2006</p>
+
+<p align="right" class="comet blueline">【&nbsp;<font style="font-size: 12px; color: rgb(204, 0, 0);" class="cmtcount">5</font>条&nbsp;】</p>
+</div><!--end main-->
+
+	
+<div id="box" class="adsorb">
+	<div class='hd' id="box-hd">
+		<h3>我的工具栏</h3>
+		<a href="javascript:;" id="box-hd-op">-</a>
+	</div>
+	<div class="bd" id="box-bd">
+		<ul>			<li><a href="#1">退出</a></li>			<li><a href="#2">我的朋友</a></li>			<li><a href="#3">画画</a></li>			<li><a href="#4">游戏</a></li>			<li><a href="#5">搜索</a></li>		</ul>
+	</div>	
+</div><!--end adsorb-->
+
+<script type="text/javascript" src="../js/Fuee-1.0-min.js"></script>
+<script type="text/javascript">
+	var Adsorb=(function($){
+		var box=document.getElementById('box'),
+			box_hd=document.getElementById('box-hd'),
+			box_hd_op=document.getElementById('box-hd-op'),
+			box_bd=document.getElementById('box-bd'),
+			box_width=parseInt($(box).css('width')),
+			minPx=2,
+			box_bd_key=true,//展开
+			box_hd_op_key=true,
+			adsorbRange=20,
+			msg=document.getElementById('msg'),
+			adsorbRightKey=false;
+		
+		return function(){
+			window.onresize=function(){
+				var body_width=$.getBody().width,
+					real_width=body_width-box_width,
+					curLeft=parseInt($(box).css('left'));
+				
+				if(curLeft>real_width || adsorbRightKey){
+					box.style.left=real_width+'px';
+				}
+				
+				if(parseInt(box.style.left)<0){
+					box.style.left=minPx+'px';
+				}
+			};
+			
+			$(box_hd_op).bind({
+				'click':function(e){
+					if(!box_hd_op_key) return;
+					var that=this;
+					box_hd_op_key=false;
+					$.stopBubble(e);
+					
+					if(box_bd_key){
+						$(box_bd).sUp('fast',function(){
+							box_bd_key=false;
+							box_hd_op_key=true;
+							that.innerHTML='+';
+						});
+					}else{
+						$(box_bd).sDown('fast',function(){
+							box_bd_key=true;
+							box_hd_op_key=true;
+							that.innerHTML='-';
+						});
+					}
+				}
+			});
+			
+			$.drag({
+				opacity:80,
+				node:box,
+				hand:box_hd,
+				mousemove:function(){
+					var body_width=$.getBody().width,
+						real_width=body_width-box_width;
+					
+					if(parseInt(this.style.left)<adsorbRange){
+						this.style.left=minPx+'px';
+					}
+					
+					if(parseInt(this.style.top)<adsorbRange){
+						this.style.top=minPx+'px';
+					}
+					
+					if(parseInt(this.style.left)>real_width-adsorbRange){
+						this.style.left=real_width-minPx+'px';
+						adsorbRightKey=true;
+					}else{
+						adsorbRightKey=false;
+					}
+				},
+				mouseup:function(){
+//					var body_width=$.getBody().width,
+//						real_width=body_width-box_width;
+//					
+//					//msg.innerHTML=real_width;
+//					if(parseInt(this.style.top)<0){
+//						this.style.top=minPx+'px';
+//					}
+//					
+//					if(parseInt(this.style.left)<0){
+//						this.style.left=minPx+'px';
+//					}
+//					
+//					if(parseInt(this.style.left)>real_width){
+//						this.style.left=real_width-minPx+'px';
+//					}
+				}
+			})
+		};
+	})(Fuee);
+	
+	Adsorb();
+</script>
+</body>
+</html>

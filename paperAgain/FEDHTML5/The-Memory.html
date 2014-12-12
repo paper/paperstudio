@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8" />
+		<title>the memory</title>
+		<style type="text/css">
+			#canvas{
+				
+			}
+			body{
+				margin:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			canvas一点要设置成position:relative，这样firefox下面，layerX数值才会对
+		-->
+		<canvas id="canvas" width="600" height="400" style="position:relative;">
+			Your browser doesn't support the HTML5 element canvas.
+		</canvas>
+		<br /><br />
+		<div id="msg"></div>
+		
+		<script type="text/javascript">
+			var ctx=document.getElementById("canvas").getContext("2d");
+			
+			//记录每个box左上角的坐标x，y，宽度(w)，高度(h)
+			var boxes=[];
+			
+			function drawBox(canvas,x,y){
+				x=x || 0;
+				y=y || 0;
+				
+				canvas.fillStyle="#36006c";
+				canvas.fillRect(x,y,90,90);
+			};
+			
+			function drawBoxes(){
+				var dx=10; //间距
+				var w=90,h=90; //box 的宽度，高度
+				var len=5; //每行的个数
+				var row=3; //行数
+				var i,j;
+				
+				for(i=0;i<row;i++){
+					for(j=0;j<len;j++){
+						drawBox(ctx,j*(w+dx)+dx,i*(h+dx)+dx);
+						boxes.push([j*(w+dx)+dx,i*(h+dx)+dx,w,h]);
+					}
+				}
+			};
+			
+			drawBoxes();
+			
+			function getMouse(e){
+				if(e.offsetX || e.offsetX==0){
+					return {
+						x:e.offsetX,
+						y:e.offsetY
+					}
+				}else if(e.layerX || e.layerX==0){
+					return {
+						x:e.layerX,
+						y:e.layerY
+					}
+				}
+			};
+			
+			document.getElementById("canvas").addEventListener('click',function(e){
+				var msg=document.getElementById('msg');
+				
+				var mx=getMouse(e).x;
+				var my=getMouse(e).y;
+				
+				msg.innerHTML=mx+"&nbsp;"+my;
+	
+				//判断mx和my的值，知道是哪一个块被点击到
+				for(var i=0;i<boxes.length;i++){
+					var box=boxes[i];
+					
+					if(mx>box[0] && mx<(box[0]+box[2]) && my>box[1] && my<(box[1]+box[3])){
+						msg.innerHTML+="<br />"+i;
+						
+						return;
+					}
+				}
+				
+				
+			},false);
+			
+		</script>
+	</body>
+</html>

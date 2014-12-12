@@ -1,0 +1,64 @@
+@charset "utf-8";
+/*==================================================================
+	弹出层的公共样式
+==================================================================*/
+.popWindow-bg{}
+
+.popWindow-wrap{
+	position:absolute;
+	z-index:9999;
+	border-radius:5px;
+	border:4px solid #145b6f;
+	box-shadow:0 5px 20px #555555;
+}
+.popWindow-main{
+	background-color:#145b6f;
+	width:300px;
+}
+.popWindow-hd{
+	border-radius:3px 3px 0 0;
+	background-color:#ededf4;
+	height:34px;
+	width:100%;
+	overflow:hidden;
+}
+.popWindow-hd h2{
+	color:#333;
+	font-size:14px;
+	float:left;
+	line-height:34px;
+	display:inline;
+	margin-left:8px;
+}
+.popWindow-close{
+	overflow:hidden;
+	color:#fff;
+	background-color:#c8c8e0;
+	font-size:14px;
+	float:right;
+	line-height:34px;
+	display:inline;
+	margin:7px 7px 0 0;
+	text-decoration:none;
+	width:20px;
+	height:20px;
+	text-align:center;
+	line-height:20px;
+	border-radius:4px;
+}
+.popWindow-close:hover{
+	text-decoration:none;
+}
+.popWindow-bd{
+	background-color:#f8f8f8;
+	padding:10px;
+	border-radius:0 0 3px 3px;
+}
+.popWindow-loading{
+	overflow:hidden;
+	display: block;
+    height: 65px;
+    line-height: 96px;
+    text-align: center;
+	background:url(../images/popWindow/loading.gif) no-repeat top center;
+}

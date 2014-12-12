@@ -1,0 +1,62 @@
+@charset "utf-8";
+ a:focus{
+ 	outline:none;
+ }
+.chrome-nav{
+	position:relative;
+	z-index:10;
+}
+.chrome-nav ul{
+	height:24px;
+	position:relative;
+}
+.chrome-nav ul li{
+	float:left;
+	cursor:pointer;
+	margin-right:-20px;
+	position:relative;
+	z-index:1;
+	width:207px;
+	height:24px;
+}
+.chrome-nav ul li span{
+	display:block;
+	float:left;
+	width:207px;
+	height:24px;
+	background:url(../images/chromenav.png) no-repeat;
+	color:#404040;
+}
+
+* html .chrome-nav ul li span{
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale,src='images/chromenav.png'); 
+	background-image: none; 
+}
+.chrome-nav ul li span b{
+	float:left;
+	padding:5px 0 0 20px;
+}
+.chrome-nav ul li.cur{
+	z-index:2;
+}
+.chrome-nav ul li.cur span{
+	color:#000;
+	background:url(../images/chromenav_hover.png) no-repeat;
+	margin-bottom:-1px;
+	height:25px;
+}
+* html .chrome-nav ul li.cur span{
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale,src='images/chromenav_hover.png'); 
+	background-image: none; 
+}
+
+#chromeMain{
+	position:relative;
+	z-index:1;
+	border-top:1px solid #6A85A6;
+	padding:10px;
+}
+#chromeMain p{
+	color:#434343;
+	line-height:160%;
+}

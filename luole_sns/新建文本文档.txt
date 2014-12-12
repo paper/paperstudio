@@ -1,0 +1,243 @@
+
+					/*function bindReplyBtn(btn){
+						var name=$(btn).attr("data-peopleName");
+						var $ui_comment_reply_block=$('<li class="TJ-comment-list-item-reply ui-comment-block" />');
+						
+						var html_active='<div class="TJ-comment-list-item-reply-to-name">@'+name+'</div>'+
+										'<div class="TJ-comment-list-item">'+
+											'<div class="avatar"><img alt="'+g_name+'" src="'+g_face+'" /></div>'+
+											
+											'<div class="ui-comment-textarea-wrap">'+
+												'<textarea autocomplete="off" class="active"></textarea>'+
+												'<p class="words fr"><span>0</span>/140</p>'+
+												'<p><a href="javascript:;" class="ui-reply-btn">写上去</a><span class="ui-loading"></span></p>'+
+											'</div>'+
+										'</div>';
+						
+						$ui_comment_reply_block.append(html_active);
+						$ui_comment_block.after($ui_comment_reply_block);
+
+					};*/
+					
+					//绑定，点击回复，出现回复框
+					$reply_btn.bind("click",function(){
+						TJ.createReplyUI(fatherElem,this);
+					});
+
+
+
+
+<div class="TJ-block">
+				<div class="avatar">
+					<img src="images/face3.jpg" alt="luole" />
+				</div>
+				
+				<div class="TJ-block-content">
+					<h2 class="avatar-name">LuoLe</h2>
+					
+					<div class="TJ-resouce">
+						<div class="TJ-resouce-information">
+							<dl>
+								<dt><img src="images/dzd.jpg" alt="谍中谍4" /></dt>
+								<dd>
+									<p>《谍中谍4》</p>
+								</dd>
+								<dd><p><a href="#">http://www.google.com</a></p></dd>
+								<dd><p>这是来自BBS《谍中谍4》的720p种子，请大家抓紧时间下载！</p></dd>
+							</dl>
+							</li>
+						</div>
+						
+						<div class="TJ-resouce-op">
+							<a href="#">赞</a>
+							<span class="split">-</span>
+							<a href="#">回复</a>
+							<span class="split">-</span>
+							<span class="date">2月17日10:35</span>
+						</div>
+						
+					</div>
+					
+					<div class="TJ-comment">
+						<div class="TJ-comment-good ui-comment-block">
+							<span class="ui-arrow"></span>
+							<span class="ui-good-icon mr5"></span>
+							<span id="j-TJ-comment-good-people-1234567">53,671</span>个人 都觉得这挺赞的。
+						</div>
+						
+						<div class="TJ-comment-list">
+							<div class="TJ-comment-list-hd ui-comment-block">
+								<a href="javascript:;" class="new">12+</a>
+								<span class="ui-loading fr hidden"></span>
+								
+								<p class="fl vamiddle">
+									<span class="ui-comment-icon mr5"></span>
+									<a href="#">收起评论</a>
+								</p>
+							</div>
+							
+							<div class="TJ-comment-list-bd">
+								<ul id="ui-comment-block-wrap-5678">
+									<li class="ui-comment-block">
+										<div class="TJ-comment-list-item">
+											<div class="avatar"><img src="images/no-face.jpg" alt="" /></div>
+											<h3 class="name">Rafael Duran</h3>
+											<p>I love</p>
+											
+											<div class="time">
+												<span>约1小时前</span>
+												<a href="javascript:;" class="reply-btn">回复</a>
+											</div>
+										</div>
+									</li>
+									
+									<li class="TJ-comment-list-item-reply ui-comment-block">
+										<div class="TJ-comment-list-item">
+											<div class="avatar"><img src="images/f1.jpg" alt="" /></div>
+											<h3 class="name">Paper</h3>
+											<span class="to-name">@Rafael Duran</span>
+											<p>I love too..tootootootootootootootootootootootootootootootootootootootootootootootoo</p>
+											
+											<div class="time">
+												<span>约1小时前</span>
+												<a href="javascript:;" class="reply-btn">回复</a>
+											</div>
+										</div>
+									</li>
+									
+									<li class="ui-comment-block">
+										<div class="TJ-comment-list-item">
+											<div class="avatar"><img src="images/no-face.jpg" alt="" /></div>
+											<h3 class="name">Luole</h3>
+											<p>but u didn't win this game!</p>
+											
+											<div class="time">
+												<span>约30分钟前</span>
+												<a href="javascript:;" class="reply-btn">回复</a>
+											</div>
+										</div>
+									</li>
+									
+																		
+									<li class="TJ-comment-list-item-reply ui-comment-block">
+										<div class="TJ-comment-list-item-reply-to-name">@Luole</div>
+										
+										<div class="TJ-comment-list-item">
+											<div class="avatar"><img src="images/f1.jpg" alt="" /></div>
+											
+											<div class="ui-comment-textarea-wrap">
+												<textarea class="active"></textarea>
+												<p class="words fr"><span>0</span>/140</p>
+												<p><a href="javascript:;" class="ui-reply-btn">写上去</a></p>
+											</div>
+										</div>
+									</li>
+									
+									<li class="ui-comment-block">
+										<div class="TJ-comment-list-item">
+											<div class="avatar"><img src="images/no-face.jpg" alt="" /></div>
+											<h3 class="name">晴雨</h3>
+											<p>我 hate 说英文～</p>
+											
+											<div class="time">
+												<span>昨天</span>
+												<a href="javascript:;" class="reply-btn">回复</a>
+											</div>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+							
+							<div class="TJ-comment-list-ft ui-comment-block">
+								<div class="ui-comment-textarea-wrap">
+									<textarea placeholder="亲,说句话吧..."></textarea>
+								</div>
+							</div>
+							
+							<div class="TJ-comment-list-ft ui-comment-block">
+								<div class="ui-comment-textarea-wrap">
+									<div class="TJ-comment-list-item">
+										<div class="avatar"><img src="images/f1.jpg" alt="" /></div>
+										
+										<div class="ui-comment-textarea-wrap">
+											<textarea class="active"></textarea>
+											<p class="words fr"><span>0</span>/140</p>
+											<p>按（Alt+Enter）发表评论。</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/TJ-block-->
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/*$write.bind('click',function(){
+			if($.trim($textarea.val()) == '') return;
+			
+			var that=this;
+			
+			//免得重复提交
+			if(!write_key) return;
+			write_key=false;
+			
+			//这个ajax，请求成功后返回的data，1要包含时间，2是内容，3是用户名（这里假设用户名是唯一的）
+			$.ajax({
+				url:"./ajax.html?replyContent="+encodeURIComponent($.trim($textarea.val()))+"&id="+id,
+				beforeSend:function(){
+					$(that).addClass("ui-reply-btn-disabled");
+					$(that).next().show().css("display","inline-block");
+				},
+				success:function(data){
+					//清除回复框
+					fatherElem.innerHTML = html_before;
+					//重新綁定
+					TJ.createTextareaReplyUI($(fatherElem).find("textarea"));
+					
+					var $ui_comment_block=$('<li class="ui-comment-block" />');
+					var ui_comment_block_html='<div class="TJ-comment-list-item">'+
+												'<div class="avatar"><img alt="'+g_name+'" src="'+g_face+'" /></div>'+
+												'<h3 class="name">'+g_name+'</h3>'+
+												'<p>'+$.trim($textarea.val())+'</p>'+
+												
+												'<div class="time">'+
+													'<span>'+time+'</span>'+
+													'<a class="reply-btn" href="javascript:;" data-id="'+id+'" data-peopleName='+g_name+' >回复</a>'+
+												'</div>'+
+											'</div>';
+											
+					$ui_comment_block.append(ui_comment_block_html);
+					$ui_comment_block_wrap.append($ui_comment_block);
+					
+					//鼠标移上去就显示“回复”，移开就不显示。
+					var $reply_btn=$ui_comment_block.find(".reply-btn");
+					$ui_comment_block.mouseover(function(){
+						$reply_btn.show();
+					}).mouseout(function(){
+						$reply_btn.hide();
+					});
+				},
+				error:function(xhr){
+					alert("系统繁忙，请稍候再试"+xhr.status);
+					return;
+				}
+			})
+			
+		});*/

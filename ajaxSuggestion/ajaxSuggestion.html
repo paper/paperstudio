@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>ajaxSuggestion</title>
+        <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            
+            #main {
+                width: 900px;
+                margin: 0 auto;
+                padding: 50px 0 0 0;
+            }
+            #main h1{
+            	margin-bottom:20px;
+            }
+			
+            .ajax-form {
+                position: relative;
+				zoom:1;
+            }
+            
+            #kw{
+                font: 16px Tahoma;
+                padding: 3px 1px;
+                width: 391px;
+                vertical-align: middle;
+            }
+            .ajax_suggestion{
+                border: 1px solid #817F82;
+                left: 0;
+                position: absolute;
+            }
+			.ajax_suggestion table{
+				width:100%;
+			}
+			.ajax_suggestion table tr{}
+			.ajax_suggestion table td{
+				padding:2px;
+				font: 14px Tahoma;
+				cursor:default;
+			}
+			.ajax_suggestion table td.active,
+			.ajax_suggestion table td:hover{
+				color:#fff;
+				background:#3167CB;
+			}
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-main">
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright">made by zhang binjue</div>
+            </div>
+        </div>
+        <!--end header-->
+		
+		<div id="msg"></div>
+        <div id="main">
+        	<h1>ajax请求建议demo</h1>
+			
+            <div class="ajax-form">
+                <input type="text" maxlength="100" id="kw" name="wd" autocomplete="off" />
+                <div id="kw_ajax_suggestion" class="ajax_suggestion" style="display:none;"></div>
+            </div>
+        </div>
+        <!--end main-->
+        <script type="text/javascript" src="../js/bj-1.2.9-mini.js"></script>
+        <script type="text/javascript" src="ajaxSuggestion.js"></script>
+    </body>
+</html>

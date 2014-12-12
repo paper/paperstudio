@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<title>甜酱</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/TJ_common.css" />
+	<script type="text/javascript">
+		//初始加载的全局变量
+		
+		//当前用户头像的路径
+		//如果是游客，g_face="images/no-face.jpg"; g_name="匿名";
+		var g_face="images/f1.jpg";
+		var g_name="paper";
+	</script>
+	<script type="text/javascript" src="js/jquery.min.1.4.4.js"></script>
+	<script type="text/javascript" src="js/TJ.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//对于textarea，初始化，动态绑定相关的 创建回复UI
+			$("textarea[placeholder]").bind("focus",function(){
+				TJ.createReplyUIFromTextarea(this);
+			});
+			
+			$(".reply-btn").bind("click",function(){
+				TJ.createReplyUIFromReplayBtn(this);
+			});
+			
+			var showAllComments_key = true;
+			$("#j-showAll-comments-5678").bind("click",function(){
+	
+				var $this=$(this);
+				var $commentsWrap=$("#ui-comment-block-wrap-"+5678);
+				
+				
+				TJ.showAllComments(5678,{
+					beforeSend:function(){
+						showAllComments_key=false;
+						$this.html("正在加载...");
+					},
+					success:function(len){
+						$this.after('<span>一共'+len+'评论</span>');
+						$this.remove();
+					},
+					error:function(){
+						$this.html("展开评论");
+						showAllComments_key = true;
+					}
+				},showAllComments_key);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+           <h1>甜酱</h1>
+        </div><!--/header-->
+		
+		<div id="main">
+			<div class="TJ-block">
+				<div class="avatar">
+					<img src="images/face3.jpg" alt="luole" />
+				</div>
+				
+				<div class="TJ-block-content">
+					<h2 class="avatar-name">LuoLe</h2>
+					
+					<div class="TJ-resouce">
+						<div class="TJ-resouce-information">
+							<dl>
+								<dt><img src="images/dzd.jpg" alt="谍中谍4" /></dt>
+								<dd>
+									<p>《谍中谍4》</p>
+								</dd>
+								<dd><p><a href="#">http://www.google.com</a></p></dd>
+								<dd><p>这是来自BBS《谍中谍4》的720p种子，请大家抓紧时间下载！</p></dd>
+							</dl>
+							</li>
+						</div>
+						
+						<div class="TJ-resouce-op">
+							<a href="javascript:;" id="j-resouce-op-good-5678">赞</a>
+							<span class="split">-</span>
+							<a href="javascript:;" id="j-resouce-op-reply-5678">回复</a>
+							<span class="split">-</span>
+							<span class="date">2月17日10:35</span>
+						</div>
+						
+					</div>
+					
+					<div class="TJ-comment">
+						<div class="TJ-comment-good ui-comment-block">
+							<span class="ui-arrow"></span>
+							<span class="ui-good-icon mr5"></span>
+							<span id="j-TJ-comment-good-people-5678">53,671</span>个人 都觉得这挺赞的。
+						</div>
+						
+						<div class="TJ-comment-list">
+							<div class="TJ-comment-list-hd ui-comment-block">
+								<a href="javascript:;" class="new" style="display:none;">0</a>
+								<span class="ui-loading fr" id="j-ui-loading-5678" style="display:none;"></span>
+								
+								<p class="fl vamiddle">
+									<span class="ui-comment-icon mr5"></span>
+									<a href="javascript:;" id="j-showAll-comments-5678">展开全部评论</a>
+								</p>
+							</div>
+							
+							<div class="TJ-comment-list-bd">
+								<ul id="ui-comment-block-wrap-5678"></ul>
+							</div>
+							
+							<div class="TJ-comment-list-ft ui-comment-block">
+								<div class="ui-comment-textarea-wrap">
+									<textarea autocomplete="off" data-id="5678" placeholder="亲,说句话吧..."></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/TJ-block-->
+			<div class="TJ-block">
+				<div class="avatar">
+					<img src="images/face4.jpg" alt="覃宇" />
+				</div>
+				
+				<div class="TJ-block-content">
+					<h2 class="avatar-name">覃宇</h2>
+					
+					<div class="TJ-resouce">
+						<div class="TJ-resouce-information">
+							<dl>
+								<dt><img src="images/cxzdm.jpg" alt="穿鞋子的猫" /></dt>
+								<dd>
+									<p>《穿鞋子的猫》</p>
+								</dd>
+								<dd><p><a href="#">http://www.google.com</a></p></dd>
+								<dd><p>这是来自BBS《穿鞋子的猫》的720p种子，请大家抓紧时间下载！</p></dd>
+							</dl>
+							</li>
+						</div>
+						
+						<div class="TJ-resouce-op">
+							<a href="javascript:;" id="j-resouce-op-good-36754">赞</a>
+							<span class="split">-</span>
+							<a href="javascript:;" id="j-resouce-op-reply-36754">回复</a>
+							<span class="split">-</span>
+							<span class="date">2月17日10:35</span>
+						</div>
+						
+					</div>
+					
+					<div class="TJ-comment">
+						<div class="TJ-comment-good ui-comment-block">
+							<span class="ui-arrow"></span>
+							<span class="ui-good-icon mr5"></span>
+							<span id="j-TJ-comment-good-people-36754">0</span>个人 都觉得这挺赞的。
+						</div>
+						
+						<div class="TJ-comment-list">
+							<div class="TJ-comment-list-hd ui-comment-block">
+								<a href="javascript:;" class="new" style="display:none;"></a>
+								<span class="ui-loading fr" id="j-ui-loading-36754" style="display:none;"></span>
+								
+								<p class="fl vamiddle">
+									<span class="ui-comment-icon mr5"></span>
+									<span>还没有人评论哦</span>
+									<a href="#" style="display:none;" class="hide-replay">收起评论</a>
+								</p>
+							</div>
+							
+							<div class="TJ-comment-list-bd">
+								<!-- 36754 是这个电影在数据库的唯一id -->
+								<ul id="ui-comment-block-wrap-36754">
+									<!--<li class="ui-comment-block">
+										<div class="TJ-comment-list-item">
+											<div class="avatar"><img alt="" src="images/no-face.jpg"></div>
+											<h3 class="name">Rafael Duran</h3>
+											<p>I love</p>
+											
+											<div class="time">
+												<span>约1小时前</span>
+												<a class="reply-btn" href="javascript:;" data-id="36754" data-peopleName="Rafael Duran" style="display:inline-block;">回复</a>
+											</div>
+										</div>
+									</li>-->
+								</ul>
+							</div>
+							
+							<div class="TJ-comment-list-ft ui-comment-block">
+								<div class="ui-comment-textarea-wrap">
+									<textarea autocomplete="off" data-id="36754" placeholder="亲,说句话吧..."></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/TJ-block-->
+			
+		</div><!--/main-->
+	</div><!--/wrapper-->
+	
+	<div id="footer">
+	   <p>copyright &copy; 2012 </p>
+	   <p>paper & luoe</p>
+	</div><!--/footer-->
+
+</body>
+</html>

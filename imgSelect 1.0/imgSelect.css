@@ -1,0 +1,108 @@
+@charset "utf-8";
+#main{
+	width:960px;
+	margin:0 auto;
+}
+.area{
+	width:580px;
+	clear:both;
+	margin:0 auto;
+}
+.exp{
+	margin-bottom:20px;
+}
+.exp h1{
+	font-size:16px;
+}
+.exp ul{}
+.exp ul li{}
+.exp ul li span{
+	margin-right:10px;
+}
+.exp .op{
+	margin-top:5px;
+}
+.exp .op a{
+	margin:0 5px 0 0;
+	text-decoration:underline;
+	color:#002299;
+}
+#msg{
+	text-align:right;
+	font-weight:bolder;
+	color:#004000;
+	font-size:13px;
+}
+
+/*
+ * =box
+ */
+.box{
+	border:1px solid #ACC1DC;
+	padding:1px;
+	background-color:#fff;
+}
+.box .content{
+	background-color:#E1EBF8;
+	padding:5px;
+}
+.images-wrapper{
+	position:relative;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	overflow:hidden;
+	zoom:1;
+}
+.images-list{
+	background-color:#fff;
+	overflow:hidden;
+	padding-bottom:5px;
+}
+.images-list li{
+	float:left;
+	display:inline;
+	margin:5px 0 5px 5px;
+	padding:5px;
+	border:2px solid #fff;
+}
+
+.images-list li div{
+	background-color:#ddd;
+	padding:3px;
+}
+.images-list li div img{
+	width:88px;
+	height:66px;
+	display:block;
+}
+
+/*
+ * 进行处理的样式
+ */
+ .images-list li.over{
+	border:2px solid #e3e3e3;
+	background-color:#eee;
+}
+.images-list li.select{
+	border:2px solid #ff28F2;
+	background-color:#E1EAF7;
+}
+.images-list li.select div{
+	background:none;
+}
+
+/*
+ * 画的线
+ */
+#selectBox{
+	position:absolute;
+	/* left:20px;	top:20px; */
+	z-index:99;
+	/* sborder:1px dashed #eee; */
+	background-color:#002299;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	/* width:200px;	height:200px; */
+	overflow:hidden;
+}

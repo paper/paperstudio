@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>文字溢出</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:800px;
+			margin:0 auto;
+		}
+		li{
+			margin-bottom:5px;
+			font-size:12px;
+		}
+		.txtoverflow{
+			width:200px;
+			position:relative;
+			overflow:hidden;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+		}
+		.txtoverflow:after{
+			content:'...';
+			position:absolute;
+			right:0;
+			top:0;
+			background-color:#fff;
+			width:1.5em;
+		}
+	</style>
+</head>
+<body>
+	 <div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+		<ul>
+			<li class="txtoverflow" title="11好多好多文字好多好多文字好多好多文字">11好多好多文字好多好多文字好多好多文字</li>
+			<li class="txtoverflow" title="22好多好多文字好多好多文字好多好多文字">22好多好多文字好多好多文字好多好多文字</li>
+			<li class="txtoverflow" title="33好多好多文字好多好多文字好多好多文字">33好多好多文字好多好多文字好多好多文字</li>
+		</ul>
+	</div>
+</body>
+</html>

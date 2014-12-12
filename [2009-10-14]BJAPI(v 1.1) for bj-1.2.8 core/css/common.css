@@ -1,0 +1,243 @@
+@charset "utf-8"; 
+a{
+	outline:none
+}
+#page{
+	width:850px;
+	margin:0 auto;
+}
+input{
+	background-color:#005EAC;
+	border-color:#D8DFEA #0E1F5B #0E1F5B #D8DFEA;
+	border-style:solid;
+	border-width:1px;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-size:12px;
+	padding:2px 12px !important;
+	padding:4px 12px 2px 12px;	/*for ie6*/
+	text-align:center;
+	overflow:visible;
+}
+
+/* =header
+ * ===============================
+ */
+#header{
+	padding-top:20px;
+}
+#header .menu{
+	height:61px;
+	background:#797332 url(../images/menu_bg.gif) repeat-x;
+}
+#header .menu-left{
+	height:61px;
+	background:url(../images/menu_left.gif) no-repeat left center;
+}
+#header .menu ul.menu-right{
+	height:61px;
+	background:url(../images/menu_right.gif) no-repeat right center;
+	padding-left:20px;
+}
+#header .menu ul li{
+	float:left;
+}
+#header .menu ul li a{
+	float:left;
+	color:#fff;
+	padding:0 20px;
+	height:61px;
+}
+#header .menu ul li a span{
+	display:block;
+	padding-top:13px;
+}
+#header .menu ul li a:hover{
+	text-decoration:none;
+	color:#f9f19d;
+	background:url(../images/select.gif) no-repeat bottom center;
+}
+#header .menu ul li a.select{
+	text-decoration:none;
+	color:#f9f19d;
+	background:url(../images/select.gif) no-repeat bottom center;
+}
+
+/* =container
+ * ===============================
+ */
+#container{
+	padding-top:20px;
+}
+
+.layout-left{
+	float:left;
+	width:174px;
+}
+#main1 .slider,#main2 .slider,#main4 .slider,#main6 .slider{
+	position:fixed;
+}
+.slider{
+	background:url(../images/silder_bg.gif) repeat-y;
+	width:174px;
+}
+.slider .slider-top{
+	width:100%;
+	height:10px;
+	overflow:hidden;
+	background:url(../images/silder_top.gif) no-repeat;
+}
+.slider .slider-bottom{
+	width:100%;
+	height:10px;
+	overflow:hidden;
+	background:url(../images/silder_bottom.gif) no-repeat;
+}
+.slider .slider-main{
+	padding:10px 0 10px 20px;
+}
+.slider-block{
+	margin-bottom:10px;
+}
+.slider-block-title{
+	margin-bottom:5px;
+}
+.slider-block-title span{
+	color:#fff;
+	cursor:pointer;
+}
+.close{
+	padding:2px 0 2px 20px;
+	background:url(../images/close.gif) no-repeat left center;
+}
+.open{
+	padding:2px 0 2px 20px;
+	background:url(../images/open.gif) no-repeat left center;
+}
+.slider-block-main{
+	padding-left:20px;
+}
+.slider-block-main ul{}
+.slider-block-main ul li{
+	padding:5px 0;
+}
+.slider-block-main ul li a{
+	padding-left:15px;
+	color:#fff;
+}
+.slider-block-main ul li a:hover,.slider-block-main ul li a.select{
+	text-decoration:none;
+	color:#bdfea3;
+	background:url(../images/arrow.gif) no-repeat left center;
+	font-weight:bolder;
+}
+/* =layout-right
+ * ===============================
+ */
+.layout-right{
+	float:right;
+	width:640px;
+}
+.layout-right .title{
+	height:29px;
+	background:url(../images/title_bg.gif) repeat-x;
+	margin-bottom:20px;
+}
+.layout-right .title-left{
+	height:29px;
+	background:url(../images/title_left.gif) no-repeat left;
+}
+.layout-right .title-right{
+	height:29px;
+	background:url(../images/title_right.gif) no-repeat right;
+}
+.layout-right .title h1{
+	color:#fff;
+	padding:4px 0 0 10px;
+}
+
+.info-block-main{
+	color:#1c4b69;
+}
+.info-block-main .b{
+	margin-bottom:20px;
+	padding-bottom:20px;
+	border-bottom:1px solid #ccc;
+}
+.info-block-main .b span.mag-name{
+	display:block;
+	margin-top:3px;
+	font-weight:bolder;
+	padding-bottom:5px;
+}
+.info-block-main .b span.ext{
+	color:#8a8444;
+	padding:0 5px;
+}
+.info-block-main .b p{
+	line-height:150%;
+	margin-bottom:10px;
+}
+
+/*
+ * =footer
+ */
+#footer{
+	clear:both;
+	margin:20px 0;
+	text-align:center;
+	color:#777;
+	padding-top:10px;
+	border-top:1px solid #ccc;
+}
+#footer .ft{}
+#footer .ft p{
+	padding:4px 0;
+}
+#footer .ft p span{
+	padding:0 15px;
+}
+#footer .ft p span.c{
+	padding:0 2px;
+	font-weight:bolder;
+}
+#footer .ft p a{
+	color:#1C4B69;
+	padding:0 5px;
+}
+
+/*
+ * =基本动画的样式
+ */
+.animate-box,.box{
+	padding:10px;
+	width:90px;
+	height:90px;
+	border:2px solid #bbb;
+	background-color:#eee;
+	margin-bottom:20px;
+}
+.bbg{
+	background-color:#333;
+}
+input#trim{
+	text-align:left;
+}
+.test-each{
+	padding:2px;
+	border:1px solid #000;
+	background-color:#333;
+	color:#fff;
+}
+
+.bg1{
+	padding:2px;
+	border:1px solid #ccc;
+	background-color:#eee;
+}
+.bg2{
+	padding:2px;
+	border:1px solid #000;
+	background-color:#333;
+	color:#fff;
+}

@@ -1,0 +1,28 @@
+/*=========  main  ===========*/
+
+#bd .main .block{
+	margin-bottom:40px;
+	padding-bottom:40px;
+	border-bottom:1px dashed #e1e1e1;
+}
+#bd .main .block .block-title{}
+#bd .main .block .block-title h2{
+	font-size:14px;
+	color:#fff;
+	padding:5px 0 5px 10px;
+}
+#bd .main .block .block-more{}
+#bd .main .block .block-more a{
+	color:#fff;
+	font-size:10px;		/*chrome 不支持小于12px的字，杯具中...*/
+	font-weight:bolder;
+	padding:5px 8px;
+	float:left;
+	outline:none;
+}
+#bd .main .block .block-main{
+	margin:15px 0;
+}
+#bd .main .block .block-main p{
+	text-indent:2em;
+}

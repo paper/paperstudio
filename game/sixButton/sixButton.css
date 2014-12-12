@@ -1,0 +1,107 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+ul, li {
+    list-style: none;
+}
+
+img {
+    border: 0 none;
+}
+
+.clear {
+    clear: both;
+}
+
+body {
+    background-color: #252524;
+}
+
+#wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+#header{}
+#header h1{
+	color:#ccc;
+	font-size:18px;
+	padding:15px 0 15px 10px;
+	margin-bottom:20px;
+	border-bottom:1px solid #333;
+}
+#footer{
+	margin:20px 0;
+	padding:20px 0 0 0;
+	border-top:1px solid #333;
+}
+#footer p{
+	color:#333;
+}
+#footer p a{
+	margin:0 5px;
+	color:#666;
+}
+.main{
+	float:left;
+	width:200px;
+}
+.sixButton{
+	padding:0 0 0 50px;
+}
+.sixButton li{
+	margin-bottom:5px;
+}
+.sixButton li{
+	cursor:pointer;
+	outline:none;
+	display:block;
+	width:57px;
+	height:57px;
+	overflow:hidden;
+	background:url(images/button.gif) no-repeat;
+}
+.sixButton li.down{
+	background-position:0 0;
+}
+* html .sixButton li.down{
+	background-position:-60px 0;
+}
+.sixButton li.down:hover{
+	background-position:-60px 0;
+}
+.sixButton li.up{
+	background-position:0 -60px;
+}
+* html .sixButton li.up{
+	background-position:-60px -60px;
+}
+.sixButton li.up:hover{
+	background-position:-60px -60px;
+}
+.sixButton li.empty{
+	background-position:-120px -60px;
+}
+
+#re{
+	margin-left:55px;
+	padding:5px 10px;
+	overflow:visible;
+}
+
+
+.side{
+	float:right;
+	width:400px;
+	color:#aaa;
+}
+.side h2{
+	margin-bottom:10px;
+}
+.side p{
+	line-height:1.5;
+	margin-bottom:20px;
+}

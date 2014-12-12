@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>test</title>
+</head>
+<body>
+	<div id="msg" style="margin:200px;"></div>
+	<script type="text/javascript">
+		var s=';;for(var i=0;i<len;i++){;;};;';
+		
+		var div='<div><span>123</span></div>';
+		//ss=s.replace(/(?!for\((.)*?);(?!(.)*?\))&;(?!(\s)*\})/g,func
+//		var ss=s.replace(/(for\((.)*?);(?=(.)*?\))/g,function(w){
+//			return w='%';
+//		});
+		
+		var ss=s.match(/(?=for);(?=\))/g);
+		
+		alert(ss);
+		
+		//document.getElementById('msg').innerHTML=ss;
+		
+
+	</script>
+</body>
+</html>

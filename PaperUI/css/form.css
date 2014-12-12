@@ -1,0 +1,62 @@
+@charset "utf-8";
+/*==================================================================
+	表单的公共样式
+==================================================================*/
+.ui-form-wrap{}
+.ui-form{}
+.ui-form-item{
+	padding:3px;
+}
+.ui-label{
+	float:left;
+	display:inline;
+	width:80px;
+	padding-top:5px;
+}
+.ui-textarea,
+.ui-input-txt{
+	border:1px solid #9d9a9a;
+	padding:6px 4px;
+	padding:4px 4px 7px\9;
+	font-size:12px;
+	width:180px;
+	box-shadow:0 1px 2px #ccc inset;
+	background:url(../images/form/ui-input-txt-bg.gif) repeat-x top\9;
+}
+.ui-textarea{
+	width:250px;
+	height:80px;
+	resize: vertical;
+	overflow-y:auto;
+}
+.ui-textarea:focus,
+.ui-textarea-focus,
+.ui-input-txt:focus,
+.ui-input-txt-focus{
+	border-color:#8080AB;
+}
+.ui-select-wrap{
+	padding:4px 0;
+	display:inline-block;
+}
+.ui-select{
+	width:190px;
+}
+.ui-textarea{
+	
+}
+.ui-form-btn-wrap{
+	padding:10px 0 0 81px;
+}
+.ui-form-btn-wrap a{
+	margin-right:10px;
+}
+
+
+
+
+
+
+
+
+

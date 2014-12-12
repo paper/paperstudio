@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>getFactorial-array</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			padding:10px;
+		}
+		h1{
+			
+		}
+		.txt{
+			height:20px;
+		}
+		.bt{
+			height:28px;
+			width:40px;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+	
+	<div id="main">
+		<h1>大数阶乘</h1>
+		<p>请输入1~2000 之间的数，太大数需要花费更多的时间。 </p>
+		<input type="text" value="50" class="txt" id="number" />
+		<input type="button" value="ok" class="bt" onclick="gf();" />
+		
+		<div id="one"></div>
+		<div id="two"></div>
+		<div id="three"></div>
+	</div>
+<pre>
+//来自互联网
+1 function multiN(n){
+2    var r = [1];
+3    for(var i = 2; i <= n; i++){
+4        for(var j = 0, c = 0; j < r.length || c != 0; j++)
+5        {
+6            var v  = j < r.length ? r[j] * i + c : c;
+7			
+8            r[j] = v % 10000000000;
+9            c = (v - r[j]) / 10000000000;
+10        }
+11    }
+12   
+13    for(var i = 0; i < r.length - 1; i++){
+14        if(r[i] < 10)  {r[i] = '000000000' + r[i]; continue;}
+15        if(r[i] < 100)  {r[i] = '00000000' + r[i]; continue;}
+16        if(r[i] < 1000)  {r[i] = '0000000' + r[i]; continue;}
+17        if(r[i] < 10000)  {r[i] = '000000' + r[i]; continue;}
+18        if(r[i] < 100000)  {r[i] = '00000' + r[i]; continue;}
+19        if(r[i] < 1000000)  {r[i] = '0000' + r[i]; continue;}
+20        if(r[i] < 10000000)  {r[i] = '000' + r[i]; continue;}
+21        if(r[i] < 100000000)  {r[i] = '00' + r[i]; continue;}
+22        if(r[i] < 1000000000)  {r[i] = '0' + r[i]; continue;}
+23    }
+24	
+25    return r.reverse().join("");
+26 };
+</pre>
+	
+	<script type="text/javascript">
+		function gf(){
+			var number=+document.getElementById('number').value;
+			
+			var d1=+new Date();
+			document.getElementById('two').innerHTML=getFactorial(number).join('');
+			var d2=+new Date();
+			
+			document.getElementById('three').innerHTML=number+'! time: '+(d2-d1)+'ms';
+		};
+		
+		//x,y的长度相同
+		function addd(x,y){
+			var rx=[],
+				ry=[],
+				x=x.join(''),
+				y=y.join(''),
+				n=10,
+				num=1000000000,
+				result=[],
+				temp,unit,carry=0;
+			
+			if(x.length<n){
+				return ((+x)+(+y)).toString().split('');
+			}
+			
+			//从前往后面，每10个数字，分一块
+			for(var i=0,len=x.length;i<len;i+=n){
+				if(i+n>len){
+					rx.push(x.slice(i,len));
+					ry.push(y.slice(i,len));
+				}else{
+					rx.push(x.slice(i,i+n));
+					ry.push(y.slice(i,i+n));
+				}
+			}
+			
+			//相加
+			for(var j=rx.length-1;j>=0;j--){
+				temp=(+rx[j])+(+ry[j])+carry;	//+min[j] 比 parseInt(min[j]) 快
+				unit=temp%num;
+				carry = ~~(temp/num);				//快
+				//carry = parseInt(temp/10,10);		//慢
+				
+				result.unshift(unit);
+				if(j==0 && carry!=0){
+					result.unshift(carry);
+				}
+			}
+			
+			return result.join('').split('');
+		};
+		
+		//一个数组和一个数字相乘，返回数组
+		//['1','2','3']*5=['6','1','5']
+		var getMultiply_mul=function(r,y){
+			var result=[],
+				carry=0,
+				i = r.length - 1, 
+				temp,
+				unit;
+				
+			//如果y是0，就不用算乘法了，直接全部0
+			if(+y==0){
+				for(var k=0;k<r.length;k++){
+					result.push(0);
+				}
+			}
+			//如果y是1，就不用算乘法了，直接全部r
+			else if(+y==1){
+				result=r;
+			}
+			else{
+				while(i>=0){
+					temp = (+r[i]) * (+y)+carry; 		//临时值
+					unit = temp%10; 					//得到的余数
+					carry = ~~(temp/10);				//快		进位
+					//carry = parseInt(temp/10,10);		//慢
+			
+					result.unshift(unit);
+					if (i==0 && carry != 0) {
+						result.unshift(carry);
+					}
+					
+					i--;
+				}	
+			}
+			
+			return result;
+		};
+
+		//一个数组和一个数组相加，返回数组
+		//['1','2','3']+['3','4','5','9']=['3','5','8','2']
+		var getMultiply_add=function(x,y){
+			var x_len=x.length,
+				y_len=y.length,
+				min=[],
+				max=[];
+
+			if(x_len<=y_len){
+				min=x;
+				max=y;
+			}else{
+				min=y;
+				max=x;
+			}
+
+			var c=max.length-min.length;
+			if(c!=0){
+				for(var i=0;i<c;i++){
+					min.unshift(0);
+				}
+			}
+			
+			//加法算法优化，不要1个1个加，进行仅为。要一段一段加并进行进位 10000000000
+			return addd(min,max);
+		};
+		
+		//模拟乘法
+		var getMultiply=function(x,y){
+			var x=typeof x=='object'? x : x.toString().split(''),
+				y=typeof y=='object'? y : y.toString().split(''),
+				min=[],max=[];
+			
+			if(x.length<=y.length){
+				min=x;
+				max=y;
+			}else{
+				min=y;
+				max=x;
+			}
+			
+			var min_length=min.length,
+				r=getMultiply_mul(max,min[min_length-1]),
+				rx=[];
+		
+			if(min.length==1){
+				return getMultiply_mul(max,min[0]);
+			}else{
+				var q=['0'],
+					i=min_length-1;
+				while(i>=1){
+					rx=getMultiply_mul(max,min[i-1]);
+					rx=rx.concat(q);
+					q.push('0');
+					
+					r=getMultiply_add(r,rx);
+					i--;
+				}
+			}
+
+			return r;
+		};
+		
+		var getFactorial=function(num){
+			var sum=1;
+			for(var j=1;j<=num;j++){
+				sum=getMultiply(j,sum);
+			}
+			
+			return sum;
+			
+			//分割法
+			//每5个1等分
+//			if(num<5){
+//				var sum=1;
+//				for(var j=1;j<=num;j++){
+//					sum=getMultiply(j,sum);
+//				}
+//			}else{
+//				var n=Math.floor(num/5)*5,
+//					r=[],
+//					sum=[1];
+//	
+//				for(var p=1;p<=n-4;p+=5){
+//					r.push(p*(p+1)*(p+2)*(p+3)*(p+4));
+//				}
+//		
+//				if(num>n){
+//					for(var q=n+1;q<=num;q++){
+//						r.push(q);
+//					}
+//				}
+//			
+//				for(var j=0;j<=r.length-1;j++){
+//					//var sum_temp1=sum.concat();
+//					//var t1=+new Date();
+//					sum=getMultiply(r[j],sum);
+//					//var t2=+new Date();
+//					//var sum_temp2=sum.concat();
+//					//document.getElementById('one').innerHTML+='<br /><br />'+(t2-t1)+'ms<br />r['+j+']:'+r[j]+'<br />sum: '+sum_temp2.join('');
+//				}
+//			}
+//			return sum;
+		};
+		
+		
+		function multiN(n){
+		    var r = [1];
+		    for(var i = 2; i <= n; i++)
+		    {
+		        for(var j = 0, c = 0; j < r.length || c != 0; j++)
+		        {
+		            var v  = j < r.length ? r[j] * i + c : c;
+					
+		            r[j] = v % 10000000000;
+		            c = (v - r[j]) / 10000000000;
+					
+					document.getElementById('one').innerHTML+='i='+i+'  j='+j+'  c='+c+'  r['+j+']='+r[j]+'<br />';
+		        }
+		    }
+		   
+		    for(var i = 0; i < r.length - 1; i++)
+		    {
+		        if(r[i] < 10)  {r[i] = '000000000' + r[i]; continue;}
+		        if(r[i] < 100)  {r[i] = '00000000' + r[i]; continue;}
+		        if(r[i] < 1000)  {r[i] = '0000000' + r[i]; continue;}
+		        if(r[i] < 10000)  {r[i] = '000000' + r[i]; continue;}
+		        if(r[i] < 100000)  {r[i] = '00000' + r[i]; continue;}
+		        if(r[i] < 1000000)  {r[i] = '0000' + r[i]; continue;}
+		        if(r[i] < 10000000)  {r[i] = '000' + r[i]; continue;}
+		        if(r[i] < 100000000)  {r[i] = '00' + r[i]; continue;}
+		        if(r[i] < 1000000000)  {r[i] = '0' + r[i]; continue;}
+		    }
+			
+		    return r.reverse().join("");
+		};
+//		
+//		var tt1=+new Date();
+//		document.getElementById('two').innerHTML=multiN(50);
+//		var tt2=+new Date();
+		//document.getElementById('three').innerHTML=tt2-tt1;
+		
+		//document.getElementById('three').innerHTML=getMultiply('9999999999999999999999999999','99999999999999999').join('');
+	</script>
+</body>
+</html> 

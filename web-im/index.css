@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+#txt {
+    height: 200px;
+    width: 800px;
+    font-size: 12px;
+    padding: 2px;
+    border: 1px solid #000040;
+    display: none;
+}
+
+#content {
+    width: 800px;
+    height: 200px;
+	margin:0 auto;
+}
+
+#fBox {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#form iframe {
+    background: #f6f6f6 none repeat scroll 0 0;
+    border: 1px solid #CCCCCC;
+    font-family: arial;
+    height: 100%;
+    overflow-x: auto;
+    width: 100%;
+}

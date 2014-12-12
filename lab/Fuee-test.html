@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>Fuee-test</title>
+	<style type="text/css">
+		#wrapper{
+			background-color:#000;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+<form>
+	<div id="msg"></div>
+	<div id="msg2"></div>
+	<div id="wrapper">
+		<input type="checkbox" value="男" id="cb" />男
+		<br />
+		<input type="checkbox" value="女" id="nvnv" />女
+		<div id="header">
+			<h1>Hello</h1>
+		</div>
+		<div id="container">
+			<p>123</p>
+		</div>
+		<div id="footer">
+			<p>copyright<span id="2010-id">2010</span></p>
+			<p>paper<span>2012</span></p>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/Fuee-1.0.js"></script>
+	<script type="text/javascript">
+		//alert(document.getElementById('cb').value);
+		
+		//var wrap=document.getElementById('wrapper');
+		//var r=[];
+		var oo=Fuee('#wrapper').find('p span').get().text();
+		alert(oo);
+//		var time=setInterval(function(){
+//			document.getElementById('msg2').innerHTML=time;
+//			document.getElementById('msg').innerHTML+='1';
+//		},100);
+//		
+//		var time2=setTimeout(function(){
+//			clearInterval(time);
+//			document.getElementById('msg2').innerHTML=time;
+//		},2000);
+		
+		
+		//Fuee('#wrapper').fOut('normal',function(){
+		//	Fuee(this).fIn();
+		//});
+	</script>
+	
+</form>
+</body>
+</html>

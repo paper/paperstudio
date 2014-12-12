@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* html{	height:100%;	width:100%;	overflow:hidden;}  */
+#picasa-image-wrap{}
+#picasa-image-wrap img{
+	display:block;
+	position:absolute;
+	cursor:move;
+	z-index:9999;
+	box-shadow:0 0 30px #222;
+	-moz-box-shadow:0 0 30px #222;
+	-webkit-box-shadow:0 0 30px #222;
+	-khtml-box-shadow:0 0 30px #222;
+}
+#picasa-close{
+	position:absolute;
+	z-index:9999;
+	cursor:pointer;
+	right:0;
+	top:0;
+	width:70px;
+	height:64px;
+	background:url(images/picasa-close.png) no-repeat;
+	
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=noscale,src="images/picasa-close.png");
+	_background:none; 
+}
+#picasa-nav{
+	height:40px;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	background-color:#111;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+	z-index:99999;
+}
+.picasa-nav-op{
+	text-align:center;
+}
+.picasa-nav-op{
+	color:#666;
+	line-height:40px;
+}
+.picasa-nav-op a{
+	color:#666;
+	margin:0 2px;
+	padding:0 3px;
+}
+.picasa-nav-op a:hover{
+	color:#ccc;
+	text-decoration:underline;
+}
+
+#picasa-nav-msg{
+	margin-left:10px;
+}
+#picasa-nav-msg .loading{
+	padding:2px 2px 2px 17px;
+	background:#fff url(images/loading.gif) left center no-repeat;
+	color:#333;
+	border-radius:3px;
+	-moz-border-radius:3px;
+}

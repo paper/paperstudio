@@ -1,0 +1,9 @@
+{
+	"allComments":[
+		["paper","images/f1.jpg","啊范德萨发大水","2012-3-4 22:38"],
+		["paper","images/f1.jpg","dsfdsafdsfa","2012-3-5 22:38","paper2"],
+		["paper","images/f1.jpg","sdafq12321321","2012-3-5 22:38","paper2"],
+		["paper","images/f1.jpg","321321321321","2012-3-4 22:38"],
+		["luole","images/face3.jpg","321321321321","2012-3-5 22:38","paper"]
+	]
+}

@@ -1,0 +1,169 @@
+@charset "utf-8";
+#lightbox{
+	position:absolute;
+	z-index:9999;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+	opacity:0.9;
+}
+#lightbox-main{
+	padding:20px;
+}
+#vos{
+	width:500px;
+	margin:0 auto;
+	position:relative;
+}
+#mark{
+	position:absolute;
+	width:388px;
+	text-align:center;
+	font:bolder 12em "Times New Roman", Times, serif;
+	opacity:0.1;
+	left:0;
+	top:100px;
+}
+#msg{
+	position:absolute;
+	left:100px;
+	top:100px;
+	width:250px;
+	height:300px;
+	border:1px solid #ccc;
+	padding:2px;
+	overflow:scroll;
+	word-break:break-all;
+}
+#record,#play,#stop{
+	position:absolute;
+	left:-100px;
+}
+#record,#stop{
+	top:0;
+}
+#play{
+	top:50px;
+	padding:2px 10px;
+}
+#break{
+	position:absolute;
+	bottom:-50px;
+	left:-9999px;
+}
+#vos .break0{
+	left:-16px;
+}
+#vos .break1{
+	left:36px;
+}
+#vos .break2{
+	left:86px;
+}
+#vos .break3{
+	left:146px;
+}
+#vos .break4{
+	left:216px;
+}
+#vos .break5{
+	left:266px;
+}
+#vos .break6{
+	left:316px;
+}
+#vos ol,ul.info{
+	background-color:#fff;
+	-moz-box-shadow:0 0 5px #888;
+	float:left;
+	border-right:1px solid #999;
+	border-top:1px solid #999;
+	border-bottom:1px solid #999;
+}
+ul.info{
+	border:0 none;
+	margin:5px 0 0 0;
+}
+ul.info li{
+	float:left;
+	width:51px;
+	text-align:center;
+}
+ul.info li.space{
+	width:80px;
+}
+#vos ol li{
+	position:relative;
+	float:left;
+	width:50px;
+	border-left:1px solid #999;
+	height:500px;
+	overflow:hidden;
+}
+#vos ol li.li-space{
+	width:80px;
+}
+#vos ol li.c{
+	background:url(images/li_bg.png) repeat-x bottom center;
+}
+#vos ol li .check,#vos ol li span{
+	position:absolute;
+	width:48px;
+	height:15px;
+	left:1px;
+}
+#vos ol li.li-space .check,#vos ol li.li-space span{
+	width:78px;
+}
+#vos ol li .check{
+	bottom:1px;
+}
+#vos ol li .check span{
+	position:absolute;
+	left:-9999px;
+}
+#vos ol li span{
+	top:1px;
+	
+}
+#vos ol li .th0{
+	background-color:#0E1F27;
+}
+#vos ol li .th1{
+	background-color:#C33030;
+}
+#vos ol li .th2{
+	background-color:#75C330;
+}
+#vos ol li .th3{
+	background-color:#30B3C3;
+}
+#vos ol li .th4{
+	background-color:#75C330;
+}
+#vos ol li .th5{
+	background-color:#C33030;
+}
+#vos ol li .th6{
+	background-color:#0E1F27;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

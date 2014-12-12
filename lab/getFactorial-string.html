@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>getFactorial-string</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			padding:10px;
+		}
+		h1{
+			
+		}
+		.txt{
+			height:20px;
+			width:300px;
+		}
+		.bt{
+			height:28px;
+			width:40px;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+	
+	<div id="main">
+		<h1>大数阶乘</h1>
+		<p>请输入1~2000 之间的数，太大数需要花费更多的时间。 </p>
+		<input type="text" value="50" class="txt" id="number" />
+		<input type="button" value="ok" class="bt" onclick="gf();" />
+		
+		<div id="one"></div>
+		<div id="two"></div>
+		<div id="three"></div>
+	</div>
+	
+	<script type="text/javascript">
+		function gf(){
+			var number=+document.getElementById('number').value;
+			if(number>2000 || !/\d+/.test(number)){
+				alert('oops～～');
+				return;
+			}
+			var d1=+new Date();
+			document.getElementById('two').innerHTML='value='+getFactorial(number);
+			var d2=+new Date();
+			
+			document.getElementById('three').innerHTML=number+'! time: '+(d2-d1)+'ms';
+		};
+		
+		//一个数组和一个数组相加，返回数组
+		//'123'+'3459'='3582'
+		var getMultiply_add=function(x,y){
+			var x_len=x.length,
+				y_len=y.length,
+				min='',
+				max='';
+				
+			if(x_len<=y_len){
+				min=x;
+				max=y;
+			}else{
+				min=y;
+				max=x;
+			}
+			
+			var c=max.length-min.length;
+
+			if(c!=0){
+				for(var i=0;i<c;i++){
+					min='0'+min;
+				}
+			}
+
+			return addd(max,min);
+		};
+		
+		function addd(x,y){
+			var rx=[],
+				ry=[],
+				n=10,
+				num=10000000000,
+				result=[],
+				temp,unit,carry=0,
+				len=x.length;
+				
+			//document.getElementById('one').innerHTML+=x+'+'+y+'<br />';
+			if(+x==0){
+				return y;
+			}
+			if(+y==0){
+				return x;
+			}
+			
+			if(len<=n){
+				return ((+x)+(+y)).toString();
+			}
+			
+			//从后面往前面分组
+			for(var i=len;i>=0;i-=n){
+				rx.push(x.slice(i-n,i));
+				ry.push(y.slice(i-n,i));
+				
+				if(i-n-n<0){
+					rx.push(x.slice(0,i-n));
+					ry.push(y.slice(0,i-n));
+					break;
+				}
+			}
+			
+			//相加
+			for(var j=0,rx_len=rx.length;j<rx_len;j++){
+				temp=(+rx[j])+(+ry[j])+carry; //这里会出现00+00=0应该还是00
+				unit=(temp%num).toString();
+				
+				//给unit前面添加0
+				if (j != rx_len-1) {
+					var unit_length = unit.length;
+					if (unit_length < n) {
+						var zeros = '';
+						for (var k = 0; k < n - unit_length; k++) {
+							zeros += '0';
+						}
+						unit = zeros + unit;
+					}
+				}
+				carry = Math.floor(temp / num);
+				
+				result.unshift(unit);
+				if (j == rx_len-1 && carry != 0) {
+					result.unshift(carry);
+				}
+				
+				//document.getElementById('one').innerHTML+=rx+'+'+ry+'='+result+'<br /><br />';
+			}
+			
+			return result.join('');
+		};
+		//addd('2845499424768000','3556874280960000');
+		        
+		//一个数组和一个数字相乘，返回数组
+		//'123'*5='615'
+		var getMultiply_mul=function(r,y){
+			var result='',
+				carry=0;
+			
+			if(+y==0){
+				for(var k=0;k<r.length;k++){
+					result+='0';
+				}
+			}else{
+				for (var i = r.length - 1; i >= 0; i--) {
+					var temp = (+r.charAt(i)) * (+y) + carry, 	
+						unit = temp % 10, 					
+						carry = Math.floor(temp/10);
+	
+					result=unit.toString()+result;
+					
+					if (i==0 && carry != 0) {
+						result=carry.toString()+result;
+					}
+				}
+			}
+
+			return result;
+		};
+	
+		//模拟乘法
+		var getMultiply=function(x,y){
+			var x=typeof x=='string'? x : x.toString(),
+				y=typeof y=='string'? y : y.toString(),
+				min='',max='';
+			
+			if(x.length<=y.length){
+				min=x;
+				max=y;
+			}else{
+				min=y;
+				max=x;
+			}
+		
+			if(min.length==1){
+				r=getMultiply_mul(max,min.charAt(0));
+			}else{
+				var q='0',
+					r=getMultiply_mul(max,min.charAt(min.length-1)),
+					rxx='';
+					
+				for(var i=min.length-1;i>=1;i--){
+					rxx=getMultiply_mul(max,min.charAt(i-1));
+					rxx=rxx+q;
+					//document.getElementById('one').innerHTML+=r+'+<br />'+rxx+'<br />';
+					r=getMultiply_add(r,rxx);
+					//document.getElementById('one').innerHTML+=min+'!='+r+'<br /><br />';
+					
+					q=q+'0';
+				}
+			}
+
+			return r;
+		};
+		
+		var getFactorial=function(num){
+			//第一种最原始的。
+			var sum=1;
+			for(var j=1;j<=num;j++){
+				sum=getMultiply(j,sum);
+			}
+			
+			return sum;
+			
+			//分割法
+			//每5个1等分
+//			if(num<5){
+//				var sum=1;
+//				for(var j=1;j<=num;j++){
+//					sum=getMultiply(j,sum);
+//				}
+//			}else{
+//				var n=Math.floor(num/5)*5,
+//					r=[],
+//					sum=1;
+//	
+//				for(var p=1;p<=n-4;p+=5){
+//					r.push(p*(p+1)*(p+2)*(p+3)*(p+4));
+//				}
+//		
+//				if(num>n){
+//					for(var q=n+1;q<=num;q++){
+//						r.push(q);
+//					}
+//				}
+//			
+//				for(var j=0;j<=r.length-1;j++){
+//					document.getElementById('one').innerHTML+=r[j]+"<br />";
+//					sum=getMultiply(r[j],sum);
+//				}
+//			}
+//			return sum;
+		};
+		
+//		var d1=+new Date();
+//		document.getElementById('two').innerHTML=getFactorial(500);
+//		var d2=+new Date();
+//		document.getElementById('three').innerHTML='300! time: '+(d2-d1)+'ms';
+	
+	</script>
+</body>
+</html> 

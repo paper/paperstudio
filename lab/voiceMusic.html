@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>voiceMusic</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:0 auto;
+			padding-top:100px;
+		}
+		#vm{
+			width:500px;
+			margin:0 auto;
+		}
+		#vm .vm-gif{
+			float:left;
+			width:50px;
+			height:50px;
+			background:url(img/gnome-settings-sound.png) no-repeat left center;
+		}
+		#vm ul{
+			float:left;
+			height:50px;
+			position:relative;
+			margin:-10px 0 0 10px;
+			cursor:pointer;
+			width:300px;
+		}
+		#vm ul li{
+			width:7px;
+			display:block;
+			background-color:#004499;
+			cursor:pointer;
+			position:absolute;
+			bottom:0;
+		}
+		#vm ul li.g{
+			background-color:#ccc
+		}
+	</style>
+</head>
+<body>
+	 <div id="header">
+        <div class="header-main">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="copyright">
+                made by zhang binjue
+            </div>
+        </div>
+    </div><!--end header-->
+	
+	<div id="main">
+		<div id="vm" class="clearfix">
+			<span class="vm-gif"></span>
+			<ul id="vm_ul"></ul>
+		</div>
+		<object id="oBgSound" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" height="0" width="0">
+			<param name="AutoStart" value="-1" />
+			<param name="PlayCount" value="-1" />
+			<param name="Filename" value="sound/bleach-change.mid" />
+		</object>
+       
+		<input type=button onclick="closeBgSound()" value="停止" />
+		<input type=button onclick="openBgSound()" value="播放" />
+		
+	</div>
+	
+	<script type="text/javascript">
+		function closeBgSound(){
+			document.getElementById('oBgSound').stop();
+		};
+		
+		function openBgSound(){
+			document.getElementById('oBgSound').play();
+		};
+		
+		var animate = function(obj, t){
+			var elem = obj.elem, //元素
+				 begin = obj.begin, //起始位置
+				 end = obj.end, //结束位置
+				 doingCallback = obj.doingCallback, //调用的函数
+				 speed = obj.speed || 1, //时间频率
+				 endCallback = obj.endCallback,//动作结束后的回调函数
+				 initCallback = obj.initCallback;
+			
+			if (initCallback) 
+				initCallback.call(elem, t);
+			
+			t = setInterval(function(){
+				if (begin == end) {
+					clearInterval(t);
+					if (endCallback) 
+						endCallback.call(elem, begin);
+				}
+				
+				var step;
+				if (begin < end) {
+					step = Math.ceil((end - begin) / 10);
+					begin += step;
+				}
+				else {
+					step = Math.ceil((begin - end) / 10);
+					begin -= step;
+				}
+				
+				doingCallback.call(elem, begin, t);
+			}, speed);
+			
+			return t;
+		};
+		
+		var VM=(function(){
+			var $=function(id){
+				return document.getElementById(id);
+			},
+			
+			//开始与结束的高度
+			bh=20,
+			eh=35,
+			
+			vm=$('vm'),
+			
+			num=20,
+			
+			vmlis=[],
+			
+			createLi=function(num){
+				var num=num || 1,
+					fag=document.createDocumentFragment();
+			
+				for(var i=0;i<num;i++){
+					var oli=document.createElement('li');
+					
+					oli.style.left=i*9+'px';
+					oli.style.height=20+'px';
+					
+					vmlis.push(oli);
+					
+					fag.appendChild(oli);
+				}
+				
+				$('vm_ul').appendChild(fag);
+			},
+			
+			fn=function(){
+				createLi(num);
+
+				for(var i=0;i<num;i++){
+					(function(k){
+						//默认都是false
+						vmlis[k].out=true,
+						
+						vmlis[k].onmouseover=function(){
+							var that=this;
+							
+							vmlis[k].out=false,
+							
+							animate({
+								elem:that,
+								begin:parseInt(that.style.height),
+								end:eh,
+								doingCallback:function(h,t){
+									if(that.out){
+										clearInterval(t);
+									}
+									
+									this.style.height=h+'px';
+								}
+							},vmlis[k].time);
+						};
+						
+						vmlis[k].onmouseout=function(){
+							var that=this;
+							
+							vmlis[k].out=true,
+	
+							animate({
+								elem:that,
+								begin:parseInt(that.style.height),
+								end:bh,
+								doingCallback:function(h,t){
+									if(!that.out){
+										clearInterval(t)
+									}
+									
+									this.style.height=h+'px';
+								}
+							},vmlis[k].time);
+						};
+						
+						vmlis[k].onclick=function(){
+							for(var j=0;j<num;j++){
+								vmlis[j].className='';
+							}
+							
+							for(var j=k+1;j<num;j++){
+								vmlis[j].className='g';
+							}
+						};
+					})(i);
+				}
+			};//fn
+			
+			return fn;
+		})();
+		
+		VM();
+	</script>
+</body>
+</html>

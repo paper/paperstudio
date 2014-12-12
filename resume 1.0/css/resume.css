@@ -1,0 +1,55 @@
+/*=========  main  ===========*/
+#bd dl.resume{
+	margin-bottom:20px;
+	padding-bottom:10px;
+	border-bottom:1px dashed #bbb;
+}
+#bd dl.resume dt{
+	padding:2px 0;
+	margin:0 0 5px 0;
+	font-size:14px;
+}
+#bd dl.resume dt strong{}
+#bd dl.resume dd{
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	
+	color:#333;
+	background-color:#efefef;
+	padding:5px;
+	margin:0 0 10px 10px;
+	border-left:3px solid #5972A8;
+}
+#bd dl.resume dd table{}
+#bd dl.resume dd table tr{}
+#bd dl.resume dd table td{
+	padding:6px 5px;
+}
+#bd dl.resume dd table td.w60{
+	color:#003399;
+	width:60px;
+}
+#bd dl.resume dd table td.w100{
+	color:#003399;
+	width:100px;
+}
+#bd dl.resume dd table td.w200{
+	width:200px;
+}
+#bd dl.resume dd table td.w400{
+	width:400px;
+}
+
+#bd dl.resume dd h3{
+	font-weight:bolder;
+	padding:5px;
+}
+#bd dl.resume dd p,#bd dl.resume dd ul li{
+	padding:5px;
+	color:#333;
+}
+#bd dl.resume dd p span,#bd dl.resume dd ul li span{
+	margin-right:20px;
+}

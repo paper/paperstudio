@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>mignonEgg</title>
+        <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            #main {
+                width: 900px;
+                margin: 0 auto;
+            }
+			strong{
+				margin:0 5px;
+			}
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-main">
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    made by zhang binjue
+                </div>
+            </div>
+        </div>
+        <!--end header-->
+        <div id="main">
+            <p>招式就是<strong>上下左右</strong>连着按！试一试吧~~~</p>
+        </div>
+        <script type="text/javascript">
+            var mignonEgg = '', way = {
+                left: 37,
+                up: 38,
+                right: 39,
+                down: 40
+            }, combo = (way.up + "," + way.down + "," + way.left + "," + way.right + ",").toString();
+            
+            function openMignonEgg(e){
+                e = e || window.event;
+                mignonEgg += e.keyCode + ",";
+                if (mignonEgg.indexOf(combo) > -1) {
+                    alert("八神大招 -- 禁千二百十一式！");
+                    mignonEgg = "";
+                }
+            };
+            document.onkeydown = openMignonEgg;
+        </script>
+    </body>
+</html>

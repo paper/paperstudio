@@ -1,0 +1,94 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>ooxx-ie8-test</title>
+	</head>
+    <body>
+    	<style type="text/css">
+    		*{
+    			margin:0;
+				padding:0;
+				font-family:Verdana;
+    		}
+			.clear{
+				clear:both;
+				height:20px;
+			}
+			.wrap{
+				width:400px;
+				margin:20px auto;
+			}
+			p{
+				font-size:12px;
+				line-height:140%;
+			}
+    		.i1{
+    			float:left;
+				background-color:yellow;
+				max-width:60px;
+    		}
+    		.i1 img{
+				max-width:50px;
+    		}
+			
+			.i2{
+    			float:left;
+				background:yellow;
+				max-width:50px;
+    		}
+    		.i2 img{
+				max-width:50px;
+    		}
+			
+			.i3{
+    			float:left;
+				background:yellow;
+				max-width:50px;
+    		}
+    		.i3 img{
+				max-width:50px;
+    		}
+    	</style>
+		<div class="wrap">
+			<h2>1</h2>
+			<div class="i1">
+				<img src="me100.jpg" />
+			</div>
+			<p>环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字</p>
+			
+	        <div class="clear"></div>
+			
+			<h2>2</h2>
+			<div class="i2">
+				<img src="me100.jpg" />
+			</div>
+			<p>环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字</p>
+		
+			<div class="clear"></div>
+			
+			<h2>3</h2>
+			<div class="i3">
+				<img src="me30.jpg" />
+			</div>
+			<p>环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字环绕的文字的文字</p>
+			
+			<div class="clear"></div>
+			
+			<p>
+				<strong>说明下：</strong><br />
+				第1种情况就是您说的bug。<br /><br />
+				第2,3种就是我回复里面没有出现问题的方法。只要设置img的max-width和它父亲的div的max-width一样(假设为ox)，
+				不管图片的width是比ox大，还是比ox小，都可以满足条件，友好的显示。
+				<br /><br />
+				您设置img的max-width:50px;div的max-width:60px;这样做的目的是什么呢？？<br />
+				我看过你文章里面的需求：“要实现如图的效果,图片宽度最大100px,小于100就自适应。右边文字围绕左边的图。”
+				本来设置img的max-width:100px;就可以的。但是IE8出现了bug，宽度没有跟随img的宽度变化而变化，取的还是
+				图片的原始大小。<br />
+				现在有个解决方案就是：div的max-width:100px;可以搞定，那您为什么一定要把100设置为110px或者120px呢？?何必一直纠结于这个bug。
+				<br /><br />
+				如果有什么冒犯的，或者我不明白的地方，还希望大湿您指正晚辈。
+			</p>
+		</div>
+    </body>
+</html>

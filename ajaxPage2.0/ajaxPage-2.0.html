@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>ajaxPage 2.0</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:0 auto;
+		}
+		.page{
+			float:left;
+			overflow:hidden;
+		}
+		.page span,.page em,.page a{
+			padding:2px 5px;
+			font-size:14px;
+		}
+		.page span{}
+		.page a{
+			color:#003399;
+		}
+		.page a:hover{
+			background-color:#003399;
+			color:#fff;
+			text-decoration:none;
+			
+			border-radius:3px;
+			-moz-border-radius:3px;
+			-webkit-border-radius:3px;
+			-khtml-border-radius:3px;
+		}
+		
+		 .con{			padding:10px;			margin-bottom:10px;			border-bottom:1px dashed #aaa;			height:40px;			clear:both;			overflow:hidden;		}		.con div{			font-weight:bolder;			font-size:24px;			float:left;		}		.con p{			padding-left:20px;		} 
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+	
+	<div id="main">
+		<div class="con" id="con">
+			<div>1</div>
+			<p>这里是内容这里是内容</p>
+		</div>
+		<input type="hidden" value="20" id="pageMax" />
+		<div class="page" id="page">
+			<!--<span>上一页</span><em>1</em><a href="javascript:;">2</a><a href="javascript:;">3</a><a href="javascript:;">4</a><a href="javascript:;">5</a><span>...</span><a href="javascript:;">20</a><a href="javascript:;">下一页</a>-->
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/Fuee-1.0-min.js"></script>
+	<script type="text/javascript" src="page-2.0.js"></script>
+	<script type="text/javascript">
+		var max=+document.getElementById('pageMax').value;
+		
+		AjaxPage({
+			pageId:'page',
+			curNum:1,
+			maxNum:max,
+			url:'yhasp.asp'
+		},function(){
+			bindPageLink('page',max);
+		});
+		
+		function stopDefault(e){
+			if (e && e.preventDefault) {
+				e.preventDefault();
+			} else {
+				window.event.returnValue = false;
+			}
+			return false;
+		};
+		
+		var bindPageLink=function(pageId,max){
+			var page=document.getElementById(pageId),
+				pageCur=+page.getElementsByTagName('em')[0].innerHTML,
+				pageLinks=page.getElementsByTagName('a');
+			
+			for(var i=0;i<pageLinks.length;i++){
+				(function(k){
+					var that=pageLinks[k],
+						c=that.innerHTML,
+						n;
+						
+					if(c=='下一页'){
+						n=pageCur+1;
+					}else if(c=='上一页'){
+						n=pageCur-1;
+					}else{
+						n=+c;
+					}
+					
+					Fuee(that).bind({
+						'click':function(e){
+							stopDefault(e);
+							
+							Fuee.ajax({
+								url:'t.json?id='+n,
+								before:function(){
+									document.getElementById('con').innerHTML='loading...';
+								},
+								success:function(msg){
+									var m=eval('('+msg+')').result;
+									
+									document.getElementById('con').innerHTML='<div>'+n+'</div>'+'<p>'+m+'</p>';
+								}
+							});
+							
+							AjaxPage({
+								pageId:pageId,
+								curNum:n,
+								maxNum:max,
+								url:'yhasp.asp'
+							},function(){
+								bindPageLink('page',max);
+							});
+						}
+					});
+				})(i);
+			}
+		};
+	</script>
+</body>
+</html>

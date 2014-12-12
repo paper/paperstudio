@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>====copy iphone-2.0=====</title>
+	<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="iphone-base.css" rel="stylesheet" type="text/css" />
+	<link href="iphone-2.0.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+            <div class="header-main">
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+				
+                <div class="copyright">
+                    made by zhang binjue
+                </div>
+            </div>
+        </div><!--end header-->
+		
+		<div id="main">
+			<div id="iphone">
+				<div id="iphoneHome" title="回到桌面"></div>
+				
+				<div id="iphoneWindow" class="iphoneBg2">
+					<div id="iphone3GLock" style="display:none;"></div>
+					<div id="iphone3G">
+						<span id="iphoneTime" class="tsdown">Loading...</span>
+					</div>
+					
+					<div id="iphoneTitleLock" style="display:none;">
+						<div id="iphoneTitleLockTime1" class="tsup">00:00</div>
+						<div id="iphoneTitleLockTime2" class="tsup">Loading...</div>
+					</div>
+					
+					<div id="iphoneTitle">		
+						<h1 class="tsup" id="iphoneTitleH1">Welcome</h1>
+						
+						<a href="javascript:;" id="iphoneTitleBack" style="visibility:hidden;">back</a>
+						<a href="javascript:;" id="iphoneTitleNext" style="visibility:hidden;">next</a>
+					</div>
+					
+					<div id="iphoneSlide" style="display:none;">
+						<div id="iphoneSlideBt">滑到右边解锁</div>
+					</div><!--end iphoneSlide-->
+					
+					<div id="iphoneMain" style="display:;">
+						<div class="pd10 clearfix" id="iphoneMainIn" style="margin-left:-310px;">
+							<div id="iphoneMainA" class="block">
+								<ul class="iphone-list">
+									<li class="one" rel='sign'>
+										<span class="icons icon1"></span><h3>Sign</h3>
+									</li>
+								</ul>
+								
+								<ul class="iphone-list">
+									<li rel='telephone_book'>
+										<span class="icons icon2"></span><h3>Telephone book</h3>
+									</li>
+									<li rel='clock'>
+										<span class="icons icon3"></span><h3>Clock</h3>
+									</li>
+								</ul>
+								
+								<ul class="iphone-list">
+									<li rel="voice">
+										<span class="icons icon4"></span><h3>Voice</h3>
+									</li>
+									<li rel="weather">
+										<span class="icons icon5"></span><h3>Weather</h3>
+									</li>
+									<li rel="images">
+										<span class="icons icon6"></span><h3>Images</h3>
+									</li>
+								</ul>
+							</div><!--end iphoneMainA-->
+							
+				              <div class="block" id="iphoneMain_images">
+				                <ul class="iphone-list iphone-list-noMiniArrow">
+				                  <li class="one">
+				                    <span class="icons icon6"></span>
+				                    <h3>Images</h3>
+				                    <div class="clearfix pdt10">
+				                      <h4 class="fb mt tsdown">默认图片</h4>
+				                      <div class="pd5">
+				                        <ul class="images-list">
+				                          <li rel="0">
+				                            <img title="iphonebg" alt="iphonebg" src="images/iphoneBg1.jpg" />
+				                          </li>
+				                          <li rel="1">
+				                            <img title="iphonebg" alt="iphonebg" src="images/iphoneBg2.jpg"/>
+				                          </li>
+				                          <li rel="2">
+				                            <img title="iphonebg" alt="iphonebg" src="images/iphoneBg3.jpg"/>
+				                          </li>
+										  <li class="clear"></li>
+				                          <li rel="3">
+				                            <img title="iphonebg" alt="iphonebg" src="images/iphoneBg4.jpg"/>
+				                          </li>
+				                          <li rel="4">
+				                            <img title="iphonebg" alt="iphonebg" src="images/iphoneBg5.jpg"/>
+				                          </li>
+				                        </ul>
+				                      </div>
+				                    </div>
+				                  </li>
+				                </ul>
+				              </div>
+	              		</div><!--end iphoneMainIn-->
+					</div><!--end iphoneMain-->
+					
+					<div id="iphoneAlertWindow" style="display:none;">
+						<div id="iphoneAlertWindowMain">
+							<!--<div class="pd10">Notification Box<br />Additional Alert Text</div>-->
+						</div>
+						<a href="javascript:;" id="iphoneAlertWindowCancel">cancel</a>
+						<a href="javascript:;" id="iphoneAlertWindowOk">ok</a>
+					</div><!--end iphoneAlertWindow-->
+					
+					<div id="iphoneLightbox" style="opacity:0.8"></div>
+					
+					<div id="iphoneImageShow" style="display: block;">
+						<div id="iphoneImageShowToLeft"></div>
+						<div id="iphoneImageShowToRight"></div>
+						<div id="iphoneImageShowClose"></div>
+						<!--<div id="iphoneImageShowLoading" class="loading-icon" style="display:none;opacity:0.4;"></div>-->
+						
+						<div id="iphoneImageShowImageWrap" rel="0">
+							<img title="iphonebg" alt="iphonebg" src="images/iphoneBg1.jpg" />
+						</div>
+						
+						<a id="iphoneImageShowSetBg" href="javascript:;">设它为桌面背景</a>
+					</div>
+				</div><!--end iphoneWindow-->
+			</div><!--end iphone-->
+		</div><!--end main-->
+	</div><!--end wrap-->
+	
+	<script type="text/javascript" src="../../js/bj-1.2.9.js"></script>
+	<script type="text/javascript" src="iphone-2.0.js"></script>
+
+	<script type="text/javascript" src="iphone-2.0-images.js"></script>
+	
+	<!--<script type="text/javascript" src="../../js/bj-1.2.9.js"></script>
+	<script type="text/javascript" src="iphone-2.0.js"></script>
+	<script type="text/javascript">
+		//localStorage.foo='bar';
+	</script>-->
+</body>
+</html>

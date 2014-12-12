@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>yhAlert 2.0</title>
+	<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:0 auto;
+		}
+		input{
+			padding:5px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+	文字<br />文字<br /><input type="button" value="ok1" onclick="ok1('ok1ok1ok1ok1ok1 2秒等待');" /><br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />
+	文字<br />文字<br />
+	文字<br />文字<br />文字<br /><input type="button" value="ok2" onclick="ok2('ok2ok2ok2ok2  2秒等待 2秒等待 2秒等待 2秒等待 2秒等待 2秒等待 2秒等待 2秒等待 2秒等待 2秒等待');" /><br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />
+	文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />
+	文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br />文字<br /><input type="button" value="ok3" onclick="ok3('ok3ok3ok3ok3ok3  1秒等待');" /><br />文字<br />文字<br />
+	</div>
+	<script type="text/javascript" src="yhAlert2.js"></script>
+	<script type="text/javascript">
+//		YHAlert({
+//				msg:'fdsafdsafas'
+//			});
+		
+		
+		function ok1(m){
+			YHAlert({
+				msg:m
+			});
+		};
+		
+		function ok2(m){
+			YHAlert({
+				msg:m,
+				way:'FTTL'
+			});
+		};
+		
+		function ok3(m){
+			YHAlert({
+				msg:m,
+				time:1000,
+				way:'FDTR'
+			});
+		};
+	</script>
+</body>
+</html>

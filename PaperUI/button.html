@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>button</title>
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	
+	<style type="text/css">
+		.wrapper{
+			width:960px;
+			margin:0 auto;
+			padding:50px 0;
+		}
+		h1{
+			border-bottom:1px solid #ccc;
+		}
+		h2{
+			font-size:12px;
+		}
+		
+		.personalTable{
+			width:650px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a href="http://paperagain.diandian.com" target="_blank">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div class="wrapper">
+	
+		<h1 class="mb20">按钮样式 1.0</h1>
+		被禁用的按钮：<a href="###" class="link-btn link-btn-disabled"><span>这个按钮被禁用了</span></a>
+		<br /><br />
+		
+		用于取消的按钮（如果要用14号字，在span里面加f14）：
+		<a href="###" class="link-btn link-btn-cancel"><span>取消</span></a>
+		<a href="###" class="link-btn link-btn-cancel"><span class="f14">取消</span></a>
+		<br /><br />
+		
+		用于点击按钮后，显示正在处理的按钮（和disabled一样就可以了）（如果要用14号字，在span里面加f14）：
+		<a href="###" class="link-btn link-btn-disabled"><span>正在处理</span></a>
+		<a href="###" class="link-btn link-btn-disabled"><span class="f14">正在处理</span></a>
+		<br /><br />
+		
+		非常普通 A标签 的按钮1（一般用于确认）：
+		<a href="javascript:;" class="link-btn link-btn-style1"><span>确定</span></a>
+		<a href="###" class="link-btn link-btn-style1"><span class="f14">确定</span></a>
+		<br /><br />
+		
+		非常普通 A标签 的按钮1（如果想改变大小，可以重新自定义）：
+		<style type="text/css">
+			.your-style-btn span{
+				padding:5px 25px;
+				font-size:14px;
+			}
+		</style>
+		<a href="###" class="link-btn link-btn-style1 your-style-btn"><span>确定</span></a>
+		<br /><br />
+		
+		非常普通 A标签 的按钮2 ：
+		<a href="###" class="link-btn link-btn-style2"><span>确定</span></a>
+		<a href="###" class="link-btn link-btn-style2"><span class="f14">确定</span></a>
+		<br /><br />
+		
+		非常普通 A标签 的按钮3 ：
+		<a href="###" class="link-btn link-btn-style3"><span>确定</span></a>
+		<a href="###" class="link-btn link-btn-style3"><span class="f14">确定</span></a>
+		<br /><br />
+		
+		submit 原生的disable ：
+		<input disabled type="submit" value="确定" />
+		<br /><br />
+		submit 和 button 的样式1（一定要套在span标签里面）：
+		<span class="btn-btn btn-btn-style1"><input type="submit" value="确定" /></span>
+		<span class="btn-btn btn-btn-style1"><button>确定</button></span>
+		<br /><br />
+		submit 和 button 的样式2（14号字）：
+		<span class="btn-btn btn-btn-style2"><input type="submit" value="确定" class="f14" /></span>
+		<span class="btn-btn btn-btn-style2"><button class="f14">确定</button></span>
+		<br /><br />
+		submit 和 button 的样式3：
+		<span class="btn-btn btn-btn-style3"><input type="submit" value="确定" /></span>
+		<span class="btn-btn btn-btn-style3"><button>确定</button></span>
+		
+	</div><!--/wrapper-->
+</body>
+</html>

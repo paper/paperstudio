@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Bouncing Ball</title>
+		<style type="text/css">
+			body{
+				font-size:12px;
+				
+			}
+			#canvas{
+				border:1px solid #ccc;
+			}
+			form{
+				width:330px;
+				margin:20px;
+				background-color:brown;
+				padding:20px;
+				color:#fff;
+				border-radius:2px;
+			}
+		</style>
+	</head>
+	<body onload="init();">
+		<canvas id="canvas" width="400" height="300">
+			Your browser doesn't support the HTML5 element canvas.
+		</canvas>
+		<br />
+
+		<script type="text/javascript">
+			var boxx=20, //box 的x坐标
+				boxy=30, //box 的y坐标
+				boxwidth=350, //box 的宽度
+				boxheight=250, //box 的高度 
+				ballrad=10, //球的半径
+				linewidth=4,
+				boxboundx=boxwidth+boxx-ballrad-linewidth, //右边界	注意外面方框线的宽度
+				boxboundy=boxheight+boxy-ballrad-linewidth,//下边界
+				inboxboundx=boxx+ballrad+linewidth, //左边界
+				inboxboundy=boxy+ballrad+linewidth, //上边界
+				
+				//球的x，y是指它的中心，不是左上角！
+				ballx=50, //初始化球的位置
+				bally=60, 
+				ctx, // canvas
+				ballvx=2, //水平偏移
+				ballvy=2; //垂直偏移 
+			
+			function init(){
+				ctx=document.getElementById('canvas').getContext('2d');
+				
+				ctx.lineWidth=linewidth; //外面方框线的宽度
+				ctx.strokeRect(boxx,boxy,boxwidth,boxheight);
+				
+				ctx.fillStyle="red"; //球的颜色
+				
+				moveball();
+			};
+			
+			function moveball(){
+				//首先清空画布
+				//ctx.clearRect(boxx+2,boxy+2,boxwidth-4,boxheight-4);
+				
+				//首先清空原来的球
+				ctx.clearRect(ballx-ballrad,bally-ballrad,ballrad*2,ballrad*2);
+				
+				
+				//判断球的碰撞，方向的变化
+				moveandcheck();
+				
+				ctx.beginPath();
+				ctx.arc(ballx,bally,ballrad,0,Math.PI*2,true);
+				ctx.fill();
+				
+				
+				setTimeout(function(){
+					moveball();
+				},10);
+			};
+			
+			function moveandcheck(){
+				var nballx=ballx+ballvx; //x + 偏移量x的值
+				var nbally=bally+ballvy;
+				
+				if(nballx>boxboundx || nballx<inboxboundx){
+					ballvx=-ballvx;
+				}
+				
+				
+				if(nbally>boxboundy || nbally<inboxboundy){	
+					ballvy=-ballvy;
+				}
+				
+				ballx=nballx;
+				bally=nbally;
+			};
+			
+			
+		</script>
+	</body>
+</html>

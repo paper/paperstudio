@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>snake</title>
+        <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            body {
+                background-color: #999999;
+            }
+            
+            #main {
+                width: 600px;
+                margin: 0 auto;
+            }
+            
+            #wrapper {
+                width: 500px;
+                height: 500px;
+                border: 2px solid #333333;
+                position: relative;
+                background-color: #FFFFFF;
+                float: left;
+                overflow: hidden;
+            }
+            
+            #wrapper div {
+            	overflow:hidden;
+                display: block;
+                padding: 0;
+                margin: 0;
+                width: 10px;
+                height: 10px;
+                background-color: #0033FF;
+                position: absolute;
+                top: 0;
+            }
+            
+            #wrapper #box1 {
+                background-color: #000055;
+            }
+            
+            #result {
+                float: right;
+                font-size: 50px;
+                color: #000000;
+                margin: 5px 15px 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-main">
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    made by zhang binjue
+                </div>
+            </div>
+        </div>
+        <!--end header-->
+        <div id="main">
+            <div id="wrapper">
+                <div id="box1" style="left:30px;top:0;"></div>
+                <div id="box2" style="left:10px;top:0;"></div>
+                <div id="box3" style="left:20px;top:0;"></div>
+                <div id="box4" style="left:0;top:0;"></div>
+            </div>
+            <div id="result">
+                0
+            </div>
+        </div>
+        <script type="text/javascript">
+            /*
+             * Made By Zhang Binjue
+             * 2008-10
+             * Welcome to my space: http://hi.baidu.com/paperstudio
+             * Email:jue_token@foxmail.com
+             */
+            function addLoadEvent(func){
+                var oldonload = window.onload;
+                if (typeof window.onload != 'function') {
+                    window.onload = func;
+                }
+                else {
+                    window.onload = function(){
+                        oldonload();
+                        func();
+                    }
+                }
+            }//addLoadEvent
+
+            //创建的新的div
+            var wrapper = document.getElementById('wrapper'),
+				x,
+				y,
+            	result = document.getElementById('result');
+				
+            function createBox(){
+                var n = document.createElement('div');
+				
+				x = parseInt(Math.random() * 49)*10;
+               	 y = parseInt(Math.random() * 49)*10;
+                n.style.backgroundColor = 'red';
+	
+                n.style.left = x+'px';
+                n.style.top = y+'px';
+                wrapper.appendChild(n);
+            }
+            
+            var xpos = 30, ypos = 0; //初始位置
+            var xpos2 = 20, ypos2 = 0;
+            var xpos3 = 10, ypos3 = 0;
+            var xpos4 = 0, ypos4 = 0;
+            var state; //监视最前面的一个方框的状态,防止左和右，前和后互相调换
+            var stateLeft = true, stateRight = true, stateUp = true, stateDown = true; //监视一个方向不能按键两次
+            
+            var box1 = document.getElementById('box1'), 
+				box2 = document.getElementById('box2'), 
+				box3 = document.getElementById('box3'), 
+				box4 = document.getElementById('box4');
+            
+            function moveJudge(){ //默认情况是它在左上角
+                //创建初始box
+                createBox();
+         
+                //上下左右的按键触发
+                document.onkeydown = function(e){
+                
+                    var event = e || window.event;
+                    
+                    if (state != 'down' && event.keyCode == 38) //up
+                    {
+                        state = 'up';
+                        if (ypos != 0 && stateUp) {
+                            moveBox(38);
+                            stateUp = false; //不能再按了
+                            //释放其他的为true
+                            stateLeft = true;
+                            stateRight = true;
+                            stateDown = true;
+                        }
+                    }//if
+					
+                    if (state != 'up' && event.keyCode == 40) //down
+                    {
+                        state = 'down';
+                        if (ypos != 490 && stateDown) {
+                            moveBox(40);
+                            stateDown = false;
+                            stateLeft = true;
+                            stateUp = true;
+                            stateRight = true;
+                        }
+                    }//if
+					
+                    if (state != 'right' && event.keyCode == 37) //left
+                    {
+                        state = 'left';
+                        if (xpos != 0 && stateLeft) {
+                            moveBox(37);
+                            stateLeft = false;
+                            stateRight = true;
+                            stateUp = true;
+                            stateDown = true;
+                        }
+                    }//if
+					
+                    if (state != 'left' && event.keyCode == 39) //right
+                    {
+                        state = 'right';
+                        if (xpos != 490 && stateRight) {
+                            moveBox(39);
+                            stateRight = false;
+                            stateLeft = true;
+                            stateUp = true;
+                            stateDown = true;
+                        }
+                    }//if
+                }//function
+            }
+            
+            var timeDown = null,
+            	timeRight = null,
+            	timeLeft = null,
+            	timeUp = null,
+            	number = 0, //你的成绩
+          	 	speed = 40; //游戏初始速度
+          	 	
+            function moveBox(keyCode){ //元素移动
+                //与目的元素发生了碰撞
+                if (xpos == x && ypos == y) {
+                   
+                   var ps_temp = wrapper.getElementsByTagName('div');
+					ps_temp[ps_temp.length - 1].style.backgroundColor = '#0033FF';
+ 
+                    result.innerHTML = ++number;
+                    createBox(); //碰到后，产生一个心得元素
+                    if (number % 5 == 0) {
+                        speed -= 5;
+                        
+                        if (speed == 0) 
+                            speed = 5;
+                    }//if
+                }//if
+				
+                var ps = wrapper.getElementsByTagName('div');
+                //边缘碰撞退出
+                if (xpos > 490 || xpos < 0 || ypos > 490 || ypos < 0) {
+                    alert('LOSE , F5 again');
+                    clearTimeout(timeDown);
+                    clearTimeout(timeRight);
+                    clearTimeout(timeLeft);
+                    clearTimeout(timeUp);
+                    //document.close();
+                    return false;
+                }//if
+                //自身碰撞退出
+                for (var k = 1; k < ps.length - 2; k++) {
+                    if (xpos == parseInt(ps[k].style.left) && ypos == parseInt(ps[k].style.top)) {
+                        alert('YOU LOSE , F5 again');
+                        clearTimeout(timeDown);
+                        clearTimeout(timeRight);
+                        clearTimeout(timeLeft);
+                        clearTimeout(timeUp);
+                        return false;
+                    }//if
+                }//for
+				
+                //尾随元素的走向
+                for (var j = ps.length - 1; j > 1; j--) {
+                    ps[j - 1].style.left = ps[j - 2].style.left;
+                    ps[j - 1].style.top = ps[j - 2].style.top;
+                }//for
+                
+                if (keyCode == 39) { //right
+                    clearTimeout(timeDown);
+                    clearTimeout(timeUp);
+                    clearTimeout(timeLeft);
+             
+                    xpos += 10;
+                    box1.style.left = xpos+'px';
+                    
+                    timeRight = setTimeout(function(){
+						moveBox(keyCode);
+					},speed);
+                }//if
+                
+                if (keyCode == 40) { //down
+                    clearTimeout(timeRight);
+                    clearTimeout(timeLeft);
+                    clearTimeout(timeUp);
+                    
+                    ypos += 10;
+                    box1.style.top = ypos+'px';
+                    
+                    timeDown = setTimeout(function(){
+						moveBox(keyCode);
+					},speed);
+                }//if
+               
+                if (keyCode == 38) { //up
+                    clearTimeout(timeRight);
+                    clearTimeout(timeLeft);
+                    clearTimeout(timeDown);
+                    
+                    ypos -= 10;
+                    box1.style.top = ypos+'px';
+                    
+                    timeUp = setTimeout(function(){
+						moveBox(keyCode);
+					},speed);
+                }//if
+               
+                if (keyCode == 37) { //left
+                    clearTimeout(timeRight);
+                    clearTimeout(timeDown);
+                    clearTimeout(timeUp);
+                    
+                    xpos -= 10;
+                    box1.style.left = xpos+'px';
+                    
+                    timeLeft = setTimeout(function(){
+						moveBox(keyCode);
+					},speed);
+                }//if
+            }//moveBox
+            //addLoadEvent
+            addLoadEvent(moveJudge);
+        </script>
+    </body>
+</html>

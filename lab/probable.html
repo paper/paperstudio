@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				font:12px/1.5 "Lucida Console";
+			}
+			body{
+				background-color:#000;
+				color:#fff;
+			}
+			#wrapper{
+				width:800px;
+				margin:20px auto;
+			}
+			#footer{
+				margin:10px 0;
+				padding:10px 0;
+				color:#333;
+			}
+			#w{
+				width:780px;
+				height:400px;
+				border:1px solid #555;
+				padding:10px;
+				position:relative;
+				margin-bottom:20px;
+			}
+			#w span{
+				display:block;
+				position:absolute;
+				overflow:hidden;
+				width:5px;
+				height:5px;
+				background-color:#fff;
+			}
+		</style>
+		<title>概率事件触发</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="w">
+				<div id="w1"></div>
+				<div id="w2"></div>
+				<div id="w3"></div>
+			</div>
+		<input type="button" onclick="location.reload();" value="再试一试" />
+		
+		<div id="footer">
+			<p>made by paper</p>
+			<p>welcome to my <a target="_blank" href="http://hi.baidu.com/paperstudio">space</a></p>
+		</div>
+		</div>
+ 		<script type="text/javascript">
+		//<![CDATA[
+			/*
+			 * 思路是，把一段长度均分，然后随即生成一个数字，判断数字在哪个长度段里面就可以了。
+			 * probable({
+					"0.2":function(){
+						//do...
+					},
+					"0.4-a":function(){
+						//do...
+					},
+					"0.4-b":function(){
+						//do...
+					}
+				});
+				
+				或者
+				
+				probable({
+					"0.1":function(){
+						//do...
+					},
+					"0.3":function(){
+						//do...
+					},
+					"0.6":function(){
+						//do...
+					}
+				});
+			 */
+				
+			var probable = function(obj){
+				var r = [], rr = [], sum = 0,obj_i=[];
+				
+				for (var i in obj) {
+					obj_i.push(i);
+					r.push(parseFloat(i));
+				}
+				
+				for (var j = 0; j < r.length; j++) {
+					sum += r[j];
+				}
+				
+				if (sum != 1) {
+					//alert("整体的概率必须为1");
+					return false;
+				}
+				
+				//首先是要给概率排序
+				//从小到大
+				r.sort();
+				obj_i.sort();
+				
+				//传入一个下标，求包括下标在内的和小于该下标的值的和
+				var sumr = function(r, i){
+					var m = 0;
+					for (var k = 0; k <= i; k++) {
+						m += r[k];
+					}
+					return m;
+				};
+
+				rr[0] = [0, r[0]];
+				for (var i = 1; i < r.length; i++) {
+					rr.push([rr[i - 1][1], sumr(r, i)]);
+				}
+				
+				//randomNumber的范围是(0,1)
+				var randomNumber = Math.random();
+				
+				for (var i = 0; i < rr.length; i++) {
+					if (randomNumber > rr[i][0] && randomNumber < rr[i][1]) {
+						obj[obj_i[i]]();
+						break;
+					}
+				}
+			};//end probable
+			
+			
+			var times=100,
+				time=setInterval(function(){
+					probable({
+						"0.2":function(){
+							document.getElementById("w1").innerHTML+="2";
+						},
+						"0.4-a":function(){
+							document.getElementById("w2").innerHTML+="a";
+						},
+						"0.4-b":function(){
+							document.getElementById("w3").innerHTML+="b";
+						}
+					});
+					
+					times--;
+					if(times<=0){
+						clearInterval(time);
+					}
+				},10);
+		//]]>
+		</script>
+	</body>
+</html>

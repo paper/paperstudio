@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>hit</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:0 auto;
+			position:relative;
+		}
+		#box{
+			width:600px;
+			height:600px;
+			border:2px solid #004000;
+			margin:0 auto;
+			position:relative;
+			background:url(img/box_bg.png) repeat;
+		}
+		#you{
+			height:10px;
+			width:10px;
+			background-color:#333;
+			position:absolute;
+			overflow:hidden;
+			box-shadow:1px 1px 0 #666;
+			-moz-box-shadow:0 0 3px #666;
+			-webkit-box-shadow:0 0 3px #666;
+			-khtml-box-shadow:0 0 3px #666;
+		}
+		#info{
+			position:absolute;
+			left:-40px;
+			top:0;
+			width:110px;
+		}
+		#msg{
+			padding:10px 0;
+			font-size:14px;
+		}
+		.hit{
+			background-color:#9c93f2;
+			position:absolute;
+			display:block;
+			opacity:0.5;
+			filter:alpha(opacity=50);
+			text-align:center;
+			vertical-align:middle;
+			font-size:20px;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+<div id="main">
+	<div id="info">
+		<h1>碰撞分析</h1>
+		<p><strong>方向键移动。</strong></p>
+		<p id="msg"></p>
+	</div>
+	
+	<div id="box">
+		<span class="hit" id="f0" style="left:120px;top:156px;width:105px;height:206px;">f0</span>
+		<span class="hit" id="f1" style="left:329px;top:323px;width:234px;height:186px;">f1</span>
+		<span class="hit" id="f2" style="left:345px;top:55px;width:134px;height:86px;">f2</span>
+		<span class="hit" id="f3" style="left:44px;top:432px;width:218px;height:43px;">f3</span>
+		<span class="hit" id="f4" style="left:233px;top:536px;width:50px;height:50px;">f4</span>
+		<span class="hit" id="f5" style="left:462px;top:246px;width:82px;height:118px;">f5</span>
+		
+		<div id="you" style="left:5px;top:5px;"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var Hit=(function(){
+		var Data = {
+			'way': {
+				'left': 37,
+				'top': 38,
+				'right': 39,
+				'down': 40
+			},
+			
+			'box': {
+				'width': 600,
+				'height': 600
+			},
+			
+			'you': {
+				'width': 10,
+				'height': 10
+			},
+			
+			'step':2
+		},
+		
+		boxRange={
+			'height':Data.box.height-Data.you.height,
+			'width':Data.box.width-Data.you.width
+		},
+		
+		box=document.getElementById('box'),
+		you=document.getElementById('you'),
+		
+		//调试用的
+		msg=document.getElementById('msg'),
+		//用来存储块对应哪些障碍物DOM
+		/*
+		 * {
+		 * 	'1':[dom1,dom2],
+		 *  '2':[dom1]
+		 * }
+		 */
+		blockToFraise={},
+			
+		//初始化
+		init=function(){			
+			//先写直接画上去的障碍物，后面动态生成障碍物
+			//根据生成的障碍物，来判断，每个障碍物在覆盖哪些块
+			var fraise=box.getElementsByTagName('span');
+
+			for(var i=0,len=fraise.length;i<len;i++){
+				blockToFraise=objectMerge(blockToFraise,getFraiseToBlock(fraise[i]));
+			}
+			
+//			for(var i in blockToFraise){
+//				if(blockToFraise[i][1]){
+//					msg.innerHTML+=i+':'+blockToFraise[i][1].id+'<br />';
+//				}
+//			}
+			
+			//return blockToFraise;
+			
+			
+		},
+		
+		//通过一个障碍物，返回一个object的对应关系，就是哪些区域对应这个障碍物
+		getFraiseToBlock=function(fraise){
+			//这样我们可以通过障碍物的4个角，来判断，它的4个角的是在哪
+			var fX=parseInt(fraise.style.left),
+				fY=parseInt(fraise.style.top),
+				fW=parseInt(fraise.style.width),
+				fH=parseInt(fraise.style.height),
+				//左右左右方向
+				fArray=[
+					[fX,fY],[fX+fW,fY],
+					[fX,fY+fH],[fX+fW,fY+fH]
+				],
+				//存储4个角分别在哪个区域
+				r=[],
+				//真正的区域
+				cR=[],
+				//返回对于的数据的对象
+				o={};
+			
+			for(var i=0;i<fArray.length;i++){
+				var x=~~(fArray[i][0]/100),
+					y=~~(fArray[i][1]/100);
+				
+				r.push(y*6+x);
+			};
+			
+			//得到了4个角的覆盖区域，再找下全部覆盖区域
+			var j=r[0],jd=r[1];
+			while(j<=r[2]){
+				for(k=j;k<=jd;k++){
+					cR.push(k);
+				}
+				j+=6;
+				jd+=6;
+			}
+			
+			for(var m=0;m<cR.length;m++){
+				o[cR[m]]=[fraise];
+			}
+			
+			return o;
+		},
+		
+		//两个对象的合并
+		/*
+		 * {
+		 *  1:[f1],
+		 *  2:[f2]
+		 * }
+		 * 
+		 * {
+		 *  1:[f3],
+		 *  3:[f4]
+		 * }
+		 * 
+		 * ==>
+		 * 
+		 * {
+		 *  1:[f1,f3],
+		 *  2:[f2],
+		 *  3:[f4]
+		 * }
+		 */
+		objectMerge=function(o1,o2){
+			//o2合并到o1里面
+			for(var i in o2){
+				if(o1[i]==undefined){
+					o1[i]=o2[i];
+				}else{
+					o1[i]=o1[i].concat(o2[i]);
+				}
+			}
+			
+			return o1;
+		},
+		
+		//判断一个元素，它是不是在一个范围内。	(本质上就碰撞函数)
+		//@ elemx1,elemy1,elemx2,elemy2   	(elem的左上位置和右下坐标)
+		//@ x1,y1,x2,y2  是区域的范围			(左上位置和右下坐标)
+		//返回的是boolean 不在里面false，在里面 true
+		cover=function(elemx1,elemy1,elemx2,elemy2,x1,y1,x2,y2){		
+			return x1>elemx2 || x2<elemx1 || y1>elemy2 || y2<elemy1 ? false : true;
+		},
+		
+		//you每次移动的位置
+		moveStep=function(w,s){
+			return setInterval(function(){
+				you.style[w]=parseInt(you.style[w])+s+'px';
+				if(w=='left'){
+					if(parseInt(you.style[w])<0){
+						you.style[w]=0;
+					}else if(parseInt(you.style[w])>boxRange.width){
+						you.style[w]=boxRange.width+'px';
+					}
+				}else if(w=='top'){
+					if(parseInt(you.style[w])<0){
+						you.style[w]=0;
+					}else if(parseInt(you.style[w])>boxRange.height){
+						you.style[w]=boxRange.height+'px';
+					}
+				}
+				
+				//判断你在哪个区域
+				whereAreYou();
+			},1);
+		},
+		
+		//去除数组重复的数字
+		//[1,2,3,2]=>[1,2,3]
+		//[5,5,6,6]=>[5,6]
+		getDifNumber=function(r){
+			var o={},
+				result=[];
+			
+			for(var i=0,len=r.length;i<len;i++){
+				o[r[i]]=r[i];
+			}
+			
+			for(var j in o){
+				result.push(j);
+			}
+			
+			return result;
+		},
+		
+		//判断you在哪个方块里面
+		//方块从左上的0到右下的35，从左到右
+		whereAreYou=function(){
+			//这样我们可以通过you的4个角，来判断，它到底在哪
+			var yourX=parseInt(you.style.left),
+				yourY=parseInt(you.style.top),
+				yourXW=yourX+Data.you.width,
+				yourYH=yourY+Data.you.height;
+				//顺时针方向
+				yourArray=[
+					[yourX,yourY],
+					[yourXW,yourY],
+					[yourXW,yourYH],
+					[yourX,yourYH]
+				],
+				//存储4个角分别在哪个区域
+				r=[],
+				//区域	去除相同的数字
+				R=[];
+			
+			for(var i=0;i<yourArray.length;i++){
+				var x=~~(yourArray[i][0]/100),
+					y=~~(yourArray[i][1]/100);
+				
+				r.push(y*6+x);
+			};
+			
+			//去除相同的数字
+			R=getDifNumber(r);
+			
+			//判断周围有没有需要核对的障碍物
+			for(var j=0;j<R.length;j++){
+				if(blockToFraise[R[j]]!=undefined){					
+					for (var q = 0; q < blockToFraise[R[j]].length; q++) {
+						var fra=blockToFraise[R[j]][q],
+							x1=parseInt(fra.style.left),
+							y1=parseInt(fra.style.top),
+							x2=x1+parseInt(fra.style.width),
+							y2=y1+parseInt(fra.style.height);
+						
+						if (cover(yourX,yourY,yourXW,yourYH,x1,y1,x2,y2)) {
+							msg.innerHTML = '啊～～！！你进去了！';
+							you.style.backgroundColor="#51ff51";
+							break;
+						}else {
+							msg.innerHTML = '危险，这个块里面有障碍物！！！';
+							you.style.backgroundColor="#333333";
+						}
+					}
+				}else{
+					msg.innerHTML='放心，这个块里面没有障碍物';
+					you.style.backgroundColor="#333333";
+				}
+			}
+			
+			//msg.innerHTML='you所在的区域:'+R;	
+		},
+		
+		moveYou=function(){
+			init();
+			
+			var leftKey=topKey=rightKey=downKey=false,
+				leftTime,topTime,rightTime,downTime;
+			
+			document.onkeydown=function(e){
+				var e=e || window.event,
+					code=e.keyCode;
+
+				if(code==Data.way.left && !leftKey){
+					leftKey=true;
+					leftTime=moveStep('left',-Data.step);	
+				}
+				
+				if(code==Data.way.top && !topKey){
+					topKey=true;
+					topTime=moveStep('top',-Data.step);
+				}
+				
+				if(code==Data.way.right && !rightKey){
+					rightKey=true;
+					rightTime=moveStep('left',Data.step);
+				}
+				
+				if(code==Data.way.down && !downKey){
+					downKey=true;
+					downTime=moveStep('top',Data.step);
+				}
+			};
+			
+			document.onkeyup=function(e){
+				var e=e || window.event,
+					code=e.keyCode;
+
+				if(code==Data.way.left){
+					leftKey=false;
+					clearInterval(leftTime);
+				}
+				
+				if(code==Data.way.top){
+					topKey=false;
+					clearInterval(topTime);
+				}
+				
+				if(code==Data.way.right){
+					rightKey=false;
+					clearInterval(rightTime);
+				}
+				
+				if(code==Data.way.down){
+					downKey=false;
+					clearInterval(downTime);
+				}
+			};
+		};
+		
+		return moveYou;
+	})();
+	
+	Hit();
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xml:lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>loadScriptEx</title>
+		<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			#main{
+				width:800px;
+				margin:0 auto;
+			}
+		</style>
+		<script type="text/javascript" src="loadScriptEx.js"></script>
+	</head>
+	<body>
+		 <div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://paperagain.wordpress.com">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+		<div id="main">
+			<div id="loading1"></div>
+			<div id="loading2"></div>
+			<div id="msg1"></div>
+			<div id="msg2"></div>
+		</div>
+
+		<script type="text/javascript">
+			loadScriptEx(['http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js',
+			'1231232123.js'],function(){
+				document.getElementById('loading1').innerHTML='正在初始化...';
+			},function(){
+				document.getElementById('loading1').innerHTML='完成';
+				$('#msg1').html('balabala');
+			});
+			
+			loadScriptEx(['http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js',
+			'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js'],function(){
+				document.getElementById('loading2').innerHTML='正在初始化...';
+			},function(){
+				document.getElementById('loading2').innerHTML='完成';
+				
+				$('#msg2').html('balabala22222222');
+			});
+		</script>
+	</body>
+</html>

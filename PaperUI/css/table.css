@@ -1,0 +1,64 @@
+@charset "utf-8";
+/*==================================================================
+	表格的公共样式
+==================================================================*/
+.ptable{}
+.ptable table{
+	width:100%;
+	font-size:12px;
+	border-collapse:collapse;
+	color:#434343;
+}
+.ptable table caption{
+	font-weight:bold;
+	padding:7px 5px;
+	font-size:12px;
+	background-color:#253650;
+	color:#fff;
+	text-align:left;
+}
+.ptable table th,.ptable table td{
+	text-align:left;
+	border-bottom:1px solid #E9EAE5;
+}
+.ptable table th{
+	border-bottom:1px solid #778fb3;
+	background-color:#97ACCB;
+}
+.ptable table td{
+	background-color:#FAFAFA;
+}
+.ptable table tr:nth-child(2n+1) td{
+	background-color:#f4f4f4;
+}
+.ptable table tr:hover td,.ptable table tr.hover td{
+	background-color:#fff;
+}
+
+.ptable table th span,.ptable table td span{
+	display:block;
+	padding:5px 8px;
+}
+.ptable table th span{
+	color:#fff;
+	text-shadow:0 -1px 0 #7989A0;
+	padding:8px 6px;
+	padding:8px 6px 6px\9;
+}
+.ptable table td span{
+	border-top:1px solid #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

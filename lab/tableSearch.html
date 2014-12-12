@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>for qinyu</title>
+        <style type="text/css">
+            table.zbj {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+            
+            table.zbj tr:hover td {
+                background-color: #e1e1e1;
+                color: #000;
+            }
+            
+            table.zbj th, table.zbj td {
+                text-align: center;
+                border: 1px solid #003399;
+                padding: 4px 6px;
+            }
+            
+            table.zbj th {
+                background-color: #cecece;
+            }
+            
+            table.zbj .highlight {
+                background-color: #000;
+                color: #fff;
+            }
+        </style>
+        <script type="text/javascript">
+            var qy_table_search = (function(){
+            	var source;
+				
+				//深层数组复杂，解决数组里面有复杂对象的复制
+				 Object.prototype.clone=function(){
+				 	var objClone;
+				 	if (this.constructor == Object) objClone = new this.constructor();
+				 	else objClone = new this.constructor(this.valueOf());
+				 	for (var key in this) {
+				 		if (objClone[key] != this[key]) {
+				 			if (typeof(this[key]) == 'object') {
+				 				objClone[key] = this[key].clone();
+				 			} else {
+				 				objClone[key] = this[key];
+				 			}
+				 		}
+				 	}
+				 	objClone.toString = this.toString;
+				 	objClone.valueOf = this.valueOf;
+				 	return objClone;
+				 };  
+				                   
+				function trim(s){
+					return s.replace(/^(\s)+|(\s)+$/,'');
+				};
+				
+				//首先获取所有的数据源
+                function getAllData(trs){
+                    var allData = [];
+                    
+                    for (var i = 0, len = trs.length; i < len; i++) {
+                        var temp = [], j, l;
+                        if (i == 0) {
+                            var th = trs[i].getElementsByTagName('th');
+                            for (j = 0, l = th.length; j < l; j++) {
+                                temp.push(th[j].innerHTML);
+                            }
+                        } else {
+                            var tds = trs[i].getElementsByTagName('td');
+                            for (j = 0, l = tds.length; j < l; j++) {
+                                temp.push(tds[j].innerHTML);
+                            }
+                        }
+                        
+                        allData.push(temp);
+                    }
+                    
+                    return allData;
+                };
+				
+				//根据给的数据数组r，画出新的table，填充在wrap_id里面
+                function drawTable(r,table_wrap){
+                    if (r.length == 0) return;
+                    var html = [], i, len;
+                    
+                    for (i = 0, len = r.length; i < len; i++) {
+                        html[i] = i == 0 ? '<tr><th>' + r[i].join('</th><th>') + '</th></tr>' : '<tr><td>' + r[i].join('</td><td>') + '</td></tr>';
+                    }
+                    table_wrap.innerHTML = '<table class="zbj">' + html.join('') + '</table>';
+                }; 
+				   
+                return function(table_wrap_id, input_text_id, msg_id){
+                    var table_wrap = document.getElementById(table_wrap_id), 
+						table = table_wrap.getElementsByTagName('table')[0], 
+						trs = table.getElementsByTagName('tr'),        
+						//key的输入框
+                    	input_text = document.getElementById(input_text_id), 
+						key = input_text.value,        
+						//一些提示信息
+                    	msg = document.getElementById(msg_id), isNull = /^( )*$/;        
+						
+                    source=source?source:getAllData(trs);
+					
+					function showMsg(s){
+                    	if (!msg) return;
+	                    
+	                    msg.innerHTML = s;
+                	};
+				
+					//对数据开始便利数据，并进行关键字高亮
+	                function makeHighLight(r, key){
+	                    if (r.length == 0) return;
+	                    var r_copy =r.clone();
+						
+	                    var tempArray = [r_copy[0]];
+	                    
+	                    var regexS = "(" + trim(key) + ")";
+				
+	                    var regex = new RegExp(regexS,"gi");
+	
+	                    var i,i2,j, len, l, t;
+	                    for (i = 1, len = r_copy.length; i < len; i++) {
+							i2=i;
+                        	for (j = 0, l = r_copy[i].length; j < l; j++) {
+                            	t = r_copy[i][j];
+                           		r_copy[i][j] = t.replace(regex, "<span class=\"highlight\">$1</span>");
+								
+								if(r_copy[i][j]!=t && i2!='copyied'){
+									i2='copyied';
+									tempArray.push(r_copy[i]);
+								}
+                            }
+                        }
+						
+						if(tempArray.length!=0){
+							showMsg('帮你找到了'+(tempArray.length-1)+'条。:)');
+						}
+						
+	                    return tempArray;
+	                };
+
+                    //当key为空时，表示还原所有的数据
+                    //并显示信息
+                    if (isNull.test(key)) {
+                        drawTable(source,table_wrap);
+                        showMsg('输入为空，所以显示所有数据。');
+                        return;
+                    } else {
+                        //开始便利数据，并进行关键字高亮
+                        var kk = makeHighLight(source, key);
+                        drawTable(kk,table_wrap);
+                    }
+                };
+            })();
+        </script>
+    </head>
+    <body>
+        <input type="text" id="qy_search_key" autocomplete="off" />
+		<input type="button" value="search" onclick="qy_table_search('qy_wrap_table','qy_search_key','msg');"/>
+		<span id="msg"></span>
+        <br/>
+        <br/>
+        <!--
+        说明，table上面添加一个div，设置个id。这是个必须的钩子!!
+        -->
+        <div id="qy_wrap_table">
+            <table class="zbj">
+                <tr height="19" style="height:14.25pt">
+                    <th>香港車牌</th>
+                    <th>大陸車牌</th>
+                    <th>噸位</th>
+                    <th>司機姓名</th>
+                    <th>香港電話</th>
+                    <th>大陸電話</th>
+                    <th>公司名稱</th>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">AZ6001</td>
+                    <td>粵ZCR64港</td>
+                    <td>40G</td>
+                    <td>冼永康</td>
+                    <td align="right" x:num="">90438738</td>
+                    <td align="right" x:num="13602509841">13602509841</td>
+                    <td>西江和興</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">aM9818</td>
+                    <td>粵ZFC19港</td>
+                    <td>40G</td>
+                    <td>鄭安群</td>
+                    <td>NULL</td>
+                    <td align="right" x:num="13823693252">13823693252</td>
+                    <td>廣東龍騰運輸有限公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">CN6838</td>
+                    <td>粵ZHD68港</td>
+                    <td>10T</td>
+                    <td>吳昭賢</td>
+                    <td align="right" x:num="">93861600</td>
+                    <td align="right" x:num="13501568400">13501568400</td>
+                    <td>廣東江躍運輸有限公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DF1768</td>
+                    <td>粵ZFS07港</td>
+                    <td>40G</td>
+                    <td>何培基</td>
+                    <td align="right" x:num="">51382559</td>
+                    <td align="right" x:num="15012524170">15012524170</td>
+                    <td>新龍貨運公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DG3334</td>
+                    <td>粵ZFF94港</td>
+                    <td>40G</td>
+                    <td>林炳輝</td>
+                    <td align="right" x:num="">67502975</td>
+                    <td align="right" x:num="13430994222">13430994222</td>
+                    <td>清新縣大康運輸有限公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DK1008</td>
+                    <td>粵ZCH79港</td>
+                    <td>10T</td>
+                    <td>曾廣嘉</td>
+                    <td align="right" x:num="">60553536</td>
+                    <td align="right" x:num="13691951594">13691951594</td>
+                    <td>榕城(榮光)運輸有限公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DR1028</td>
+                    <td>粵ZBS51港</td>
+                    <td>3T</td>
+                    <td>伍文生</td>
+                    <td align="right" x:num="">93638647</td>
+                    <td align="right" x:num="13138885113">13138885113</td>
+                    <td>NULL</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DT236</td>
+                    <td>粵ZCH90港</td>
+                    <td>12T</td>
+                    <td>黃俊傑</td>
+                    <td align="right" x:num="">60506977</td>
+                    <td align="right" x:num="13538228560">13538228560</td>
+                    <td>榕城(榮光)運輸有限公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DT712</td>
+                    <td>粵ZBL25港</td>
+                    <td>3T</td>
+                    <td>謝智文</td>
+                    <td align="right" x:num="">63366854</td>
+                    <td align="right" x:num="13424228420">13424228420</td>
+                    <td>嘉里陸運有限公司</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DU2886</td>
+                    <td>粵ZDH21港</td>
+                    <td>10T</td>
+                    <td>鐘顯華</td>
+                    <td align="right" x:num="">91313859</td>
+                    <td align="right" x:num="13590134218">13590134218</td>
+                    <td>NULL</td>
+                </tr>
+                <tr height="19" style="height:14.25pt">
+                    <td height="19" style="height:14.25pt">DV2287</td>
+                    <td>粵ZHR59港</td>
+                    <td>10T</td>
+                    <td>李俊賢</td>
+                    <td align="right" x:num="">64106673</td>
+                    <td align="right" x:num="13537544304">13537544304</td>
+                    <td>NULL</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

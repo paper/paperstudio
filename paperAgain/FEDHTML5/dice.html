@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>dice</title>
+		<style type="text/css">
+			body{
+				font-size:12px;
+				
+			}
+			#canvas{
+				border:1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="300" height="200">
+			Your browser doesn't support the HTML5 element canvas.
+		</canvas>
+		<br />
+		<input type="button" value="show dice" onclick="showdice();" />
+		<br /><br />
+		<div>
+			Stage: <input type="text" autocomplete="off" id="stage" readonly="readonly" /><br /><br />
+			Point: <input type="text" autocomplete="off" id="point" readonly="readonly" /><br /><br />
+			Outcome: <input type="text" autocomplete="off" id="outcome" readonly="readonly"  />
+		</div>
+		
+		<script type="text/javascript">
+			function showdice(){
+				
+				function drawDice(x,y,dice){
+					var ch=1+Math.floor(Math.random()*6);
+					switch(ch){
+						case 1:dice.dice1(x,y);break;
+						case 2:dice.dice2(x,y);break;
+						case 3:dice.dice3(x,y);break;
+						case 4:dice.dice4(x,y);break;
+						case 5:dice.dice5(x,y);break;
+						case 6:dice.dice6(x,y);break;
+					}
+					
+					return ch;
+				};
+				
+				var dice=new Dice('canvas'),
+					dot1,dot2,
+					stage=document.getElementById('stage'),
+					point=document.getElementById('point'),
+					outcome=document.getElementById('outcome');
+					
+				dice.clearCanvas();
+				
+				dot1=drawDice(10,10,dice);
+				dot2=drawDice(80,10,dice);
+				
+				point.value=dot1+dot2;
+			};
+			
+			function Dice(canvasId){
+				this.canvas=document.getElementById(canvasId);
+				this.ctx=this.canvas.getContext("2d");
+				this.ctx_width=+this.canvas.width;
+				this.ctx_height=+this.canvas.height;
+			};
+			
+			Dice.prototype.clearCanvas=function(){
+				this.ctx.clearRect(0,0,this.ctx_width,this.ctx_height);
+			};
+			
+			Dice.prototype.drawRedCircle=function(x,y,r){
+				var r=r || 5,
+					x=x || r,
+					y=y || r,
+					ctx=this.ctx;
+				ctx.beginPath();
+				ctx.arc(x,y,r,0,2*Math.PI,true);
+				ctx.fillStyle="red";
+				ctx.closePath();
+				ctx.fill();
+			};
+			
+			Dice.prototype.drawBox=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0,
+					ctx=this.ctx;
+				
+				ctx.beginPath();
+				ctx.lineWidth=4;
+				ctx.strokeStyle="#000";
+				ctx.closePath();
+				ctx.strokeRect(x,y,w,w);
+			};
+			
+			Dice.prototype.dice1=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0;
+			
+				this.drawBox(x,y,w);
+				//中间
+				this.drawRedCircle(w*0.5+x,w*0.5+y);
+			};
+			
+			Dice.prototype.dice2=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0;
+			
+				this.drawBox(x,y,w);
+				//左上
+				this.drawRedCircle(5*2+x,5*2+y);
+				//右下
+				this.drawRedCircle(x+w-5*2,y+w-5*2);
+			};
+			
+			Dice.prototype.dice3=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0;
+			
+				this.drawBox(x,y,w);
+				//左上
+				this.drawRedCircle(5*2+x,5*2+y);
+				//右下
+				this.drawRedCircle(x+w-5*2,y+w-5*2);
+				//中间
+				this.drawRedCircle(w*0.5+x,w*0.5+y);
+			};
+			
+			Dice.prototype.dice4=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0;
+			
+				this.drawBox(x,y,w);
+				//左上
+				this.drawRedCircle(5*2+x,5*2+y);
+				//右下
+				this.drawRedCircle(x+w-5*2,y+w-5*2);
+				
+				//右上
+				this.drawRedCircle(x+w-5*2,5*2+y);
+				//左下
+				this.drawRedCircle(5*2+x,y+w-5*2);
+			};
+			
+			Dice.prototype.dice5=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0;
+			
+				this.drawBox(x,y,w);
+				//左上
+				this.drawRedCircle(5*2+x,5*2+y);
+				//右下
+				this.drawRedCircle(x+w-5*2,y+w-5*2);
+				
+				//右上
+				this.drawRedCircle(x+w-5*2,5*2+y);
+				//左下
+				this.drawRedCircle(5*2+x,y+w-5*2);
+				
+				//中间
+				this.drawRedCircle(w*0.5+x,w*0.5+y);
+			};
+			
+			Dice.prototype.dice6=function(x,y,w){
+				var w=w || 50,
+					x=x || 0,
+					y=y || 0;
+			
+				this.drawBox(x,y,w);
+				//左上
+				this.drawRedCircle(5*2+x,5*2+y);
+				//右下
+				this.drawRedCircle(x+w-5*2,y+w-5*2);
+				
+				//右上
+				this.drawRedCircle(x+w-5*2,5*2+y);
+				//左下
+				this.drawRedCircle(5*2+x,y+w-5*2);
+				
+				//右中
+				this.drawRedCircle(x+w-5*2,w*0.5+y);
+				//左中
+				this.drawRedCircle(5*2+x,w*0.5+y);
+			};
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>changeBgColor2</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:0 auto;
+		}
+		
+		#box{
+			background-color:#fff;
+			
+			width:900px;
+			height:300px;
+		}
+		#box .b{
+			float:left;
+			display:inline;
+			width:10px;
+			height:300px;
+		}
+	</style>
+</head>
+<body>
+	 <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+	
+	<div id="main">
+		<div id="box">
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/bj-1.2.9-supermini.js"></script>
+	<script type="text/javascript">
+		BJ.drag({
+			node:'box'
+		});
+		
+		var l=900,
+			w=10,
+			s=l/w,
+			f=document.createDocumentFragment();
+		for(var i=0;i<s;i++){
+			var odiv=document.createElement('div');
+				odiv.className='b';
+			f.appendChild(odiv);
+		}
+		document.getElementById('box').appendChild(f);
+		
+		setTimeout(function(){
+			var r=g=b=0,
+				keyr=keyg=keyb=true,
+			
+			cr = function(){
+				if (keyr && r < 255) {
+					r++;
+					return;
+				}
+				else {
+					keyr = false;
+					cg();
+				}
+				
+				if (!keyr && r > 0) {
+					r--;
+					return;
+				}
+				else {
+					keyr = true;
+					cg();
+				}
+			},
+			
+			cg=function(){
+				if (keyg && g < 255) {
+					g++;return;
+				}
+				else {
+					keyg = false;
+					cb();
+				}
+				
+				if (!keyg && g > 0) {
+					g--;return;
+				}
+				else {
+					keyg = true;
+					cb();
+				}
+			},
+			
+			cb=function(){
+				if (keyb && b < 255) {
+					b++;return;
+				}
+				else {
+					keyb = false;
+				}
+				
+				if (!keyb && b > 0) {
+					b--;return;
+				}
+				else {
+					keyb = true;
+				}
+			},
+			
+			getRGB=function(){
+				cr();
+				//alert('rgb('+r+','+g+','+b+')');
+				return 'rgb('+r+','+g+','+b+')';
+			},
+			
+			boxs=BJ('box').children().getElem(),
+			max=boxs.length,
+			begin=getRGB(),
+
+			c=function(i,begin){
+				if(i==max) i=0;
+					end=getRGB();
+				
+				BJ(boxs[i]).changeColor({
+					from: begin,
+					to: end,
+					speed: 2,
+					end: function(){
+						c(++i,end);
+					}
+				});
+			};
+		
+			c(0);
+		},500);
+		
+	</script>
+</body>
+</html>

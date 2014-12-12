@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head></head>
+<body>
+
+<audio src="sound/lock.ogg" id="a" loop="loop">Your browser does not support the audio element.</audio>
+<div id="msg"></div>
+
+	<script>
+		function p(id){
+			var pid=document.getElementById(id);
+			//pid.currentTime = 0;
+			//alert(pid.progress())
+			pid.play();
+		};
+		
+		p('a');
+		
+		setTimeout(function(){
+			p('a');
+		},3000);
+		
+	</script>
+
+</body>
+</html>
+

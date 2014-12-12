@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>progressBar</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		body{
+			background-color:#e1e1e1;
+		}
+		#main{
+			width:800px;
+			margin:200px auto 0;
+		}
+		#progressBar{
+			width:500px;
+			height:20px;
+			border:1px solid #000;
+			text-align:center;
+			font-size:12px;
+			line-height:20px;
+			margin:0 auto;
+			font-weight:bolder;
+			padding:1px;
+			border-radius:3px;
+			-moz-border-radius:3px;
+			-webkit-border-radius:3px;
+			-khtml-border-radius:3px;
+			background-color:#fff;
+		}
+		#progressBar .progressBar-in{
+			position:relative;
+			zoom:1;
+		}
+		#progressBar .t,#progressBar .b,#progressBar .t span{
+			display:block;
+			position:absolute;
+			width:100%;
+			height:20px;
+			top:0;
+			left:0;
+		}
+		#progressBar .b{
+			background-color:#fff;
+		}
+		#progressBar .t{
+			background-color:#444;
+			color:#fff;
+			overflow:hidden;
+			border-radius:2px;
+			-moz-border-radius:2px;
+			-webkit-border-radius:2px;
+			-khtml-border-radius:2px;
+		}
+		#progressBar .t span{
+			width:500px;
+		}
+	</style>
+</head>
+<body>
+	 <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+	
+	<div id="main">
+		<div id="msg"></div>
+		<div id="progressBar">
+			<div class="progressBar-in">
+				<div class="b"><span id="progressBar_b">据我所知当前进度是0%</span></div>
+				<div class="t" id="progressBar_t" style="width:0;"><span id="progressBar_tm">据我所知当前进度是0%</span></div>
+			</div>
+		</div><!--end progressBar-->
+	</div>
+
+	<script type="text/javascript">
+		var progressBar=(function(){
+			var $=function(id){
+					return document.getElementById(id);
+				},
+				w=500,//progress的宽度
+				step=w/100,//进度条的刻度
+				p=0,//进度
+				percent=0,//百分比
+				s='',
+			
+				fn=function(callback){
+					var progressBar_b=$('progressBar_b'),
+						progressBar_t=$('progressBar_t'),
+						progressBar_tm=$('progressBar_tm'),
+						
+						time=setInterval(function(){
+							p+=step;
+							percent++;
+							if(p>=w){
+								p=w;
+								percent=100;
+			
+								stop();
+							}
+							
+							s='据我所知当前进度是'+percent+'%';
+							progressBar_b.innerHTML=progressBar_tm.innerHTML=s;
+							progressBar_t.style.width=p+'px';
+							
+							if(callback && percent==100)callback();
+						},100),
+						
+						stop=function(){
+							clearInterval(time);
+						};
+				};
+			
+			return fn;
+		})();
+		
+		progressBar(function(){
+			document.getElementById('progressBar_tm').innerHTML=document.getElementById('progressBar_b').innerHTML='加载完毕!';
+		});
+	</script>
+</body>
+</html>

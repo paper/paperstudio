@@ -1,0 +1,116 @@
+{
+	'iphone':{
+		'sign':{
+			'contentLength':1,
+			'className':'iphone-list iphone-list-noMiniArrow',
+			'exp':[
+					['服务商','中国廉通'],['信号','一般了~~'],
+					['到期时间','2012-12-25'],['余额','5毛'],
+					['投诉电话','120']
+				]
+		},
+		
+		'clock':{
+			'contentLength':1,
+			'className':'iphone-list iphone-list-noMiniArrow',
+			'exp':[
+					['现在时间','@getTime@']
+				],
+			'js':'iphone-1.0-getTime.js'
+		},
+		
+		'weather':{
+			'contentLength':1,
+			'className':'iphone-list iphone-list-noMiniArrow',
+			'exp':[
+					['今天','阴 (10℃~20℃)'],['明天','晴 (20℃~30℃)'],
+					['后天','阴晴 (10℃~30℃)'],['大后天','晴阴 (30℃~10℃)'],
+					['大大后天','这个有点难']
+				]
+		},
+				
+		'voice':{
+			'html':'<div id="iphoneMain_voice" class="block">'+
+								'<ul class="iphone-list iphone-list-noMiniArrow">'+
+									'<li class="one">'+
+										'<span class="icons icon4"></span><h3>Voice</h3>'+
+										'<div class="clearfix pdt10">'+
+											'<h4 class="fb mt tsdown">调节音量'+
+												'<span id="voiceChangeState"></span>'+
+											'</h4>'+
+											'<div class="pd5 tsdown2 fb" id="voiceChangeNumber">0</div>'+
+											'<div id="voiceChange">'+
+												'<div id="voiceChangeLine"></div>'+
+												'<div id="voiceChangeLineHover" style="width:10px;"></div>'+
+												'<div id="voiceChangeBt" style="left:0px;"></div>'+
+											'</div>'+
+										'</div>'+
+									'</li>'+
+								'</ul>'+
+							'</div>',
+			'js':'iphone-1.0-voice.js'
+		},
+		
+		'images':{
+			'html':'<div id="iphoneMain_images" class="block">'+
+								'<ul class="iphone-list iphone-list-noMiniArrow">'+
+									'<li class="one">'+
+										'<span class="icons icon6"></span><h3>Images</h3>'+
+										'<div class="clearfix pdt10">'+
+											'<h4 class="fb mt tsdown">默认图片</h4>'+
+											'<div class="pd5">'+
+												'<ul class="images-list">'+
+													'<li><img src="images/ldh.jpg" alt="刘德华" title="刘德华" /></li>'+
+													'<li><img src="images/lh.jpg" alt="王力宏" title="王力宏"/></li>'+
+													'<li><img src="images/lyf.jpg" alt="刘亦菲" title="刘亦菲"/></li>'+
+												'</ul>'+
+											'</div>'+
+											
+											'<h4 class="fb mt tsdown">游戏图片</h4>'+
+											'<div class="pd5">'+
+												'<ul class="images-list">'+
+													'<li><img src="images/lz.jpg" alt="NDS 龙珠" title="NDS 龙珠" /></li>'+
+												'</ul>'+
+											'</div>'+
+										'</div>'+
+									'</li>'+
+								'</ul>'+
+							'</div>',
+			'js':'iphone-1.0-images.js'
+		},
+		
+		'telephone_book':{
+			'html':'<div id="iphoneMain_telephone_book" class="block">'+
+								'<ul class="iphone-list iphone-list-noMiniArrow">'+
+									'<li class="one">'+
+										'<span class="icons icon2"></span><h3>Telephone book</h3>'+
+									'</li>'+
+								'</ul>'+
+								
+								'<ul class="iphone-list">'+
+									'<li class="telephone-list" rel="tele1">'+
+										'<img src="images/face/f1.png" class="face" />'+
+										'<h4 class="fb"><span class="name" id="tele1_name">Paper</span><br /><span class="number" id="tele1_number">15002344531</span></h4>'+
+									'</li>'+
+									'<li class="telephone-list" rel="tele2">'+
+										'<img src="images/face/f2.jpg" class="face" />'+
+										'<h4 class="fb"><span class="name" id="tele2_name">Binjue</span><br /><span class="number" id="tele2_number">13002064578</span></h4>'+
+									'</li>'+
+									'<li class="telephone-list" rel="tele3">'+
+										'<img src="images/face/f3.bmp" class="face" />'+
+										'<h4 class="fb"><span class="name" id="tele3_name">Jian</span><br /><span class="number" id="tele3_number">13004567890</span></h4>'+
+									'</li>'+
+									'<li class="telephone-list" rel="tele4">'+
+										'<img src="images/face/f4.bmp" class="face" />'+
+										'<h4 class="fb"><span class="name" id="tele4_name">Live</span><br /><span class="number" id="tele4_number">12001234543</span></h4>'+
+									'</li>'+
+									'<li class="telephone-list" rel="tele5">'+
+										'<img src="images/face/f5.gif" class="face" />'+
+										'<h4 class="fb"><span class="name" id="tele5_name">Lili</span><br /><span class="number" id="tele5_number">12001113334</span></h4>'+
+									'</li>'+
+								'</ul>'+
+							'</div>',
+			'js':'iphone-1.0-telephone_book.js'
+		}
+	}
+}

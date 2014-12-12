@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		.box{
+			border:2px solid #002299;
+			width:300px;
+			height:100px;
+			padding:10px;
+		}
+	</style>
+	<title>页面滚动</title>
+</head>
+<body>
+	 <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+	
+	<div style="padding:10px;">
+		<h1>页面滚动</h1>
+		<h4>按钮在最下面</h4>
+		<br /><br /><br />
+		<div id="box1" class="box">box1</div>
+		<br /><br /><br /><br /><br /><br /><br />
+		<div id="box4" class="box" style="position:relative;">box4
+			<div id="box2" class="box">box2</div>
+		</div>
+		<br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<div id="box3" class="box">box3</div>
+		<br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<a href="#box1" onclick="getScroll('box1');">回到box1</a>
+		<a href="#box2" onclick="getScroll('box2');">回到box2</a>
+		<a href="#box3" onclick="getScroll('box3');">回到box3</a>
+		<a href="#box4" onclick="getScroll('box4');">回到box4</a>
+		<a href="javascript:;" onclick="getScroll(150);">回到scrollY=150</a>
+		<br />
+	</div>
+	<script type="text/javascript">
+	//<![CDATA[
+		var getScroll = (function(){
+		    //获取对象相对于版面的计算顶端位置 
+		    //这里我们要考虑到它的父亲元素，所以要把自己以及它的全部父亲的offsetTop都叠加起来
+		    var get_offset_top = function(elem){
+		        var r = [],
+					sum=0,
+					i=0;
+					
+		        r.push(elem.offsetTop);
+		        
+		        while (elem.offsetParent && elem.offsetParent.nodeType == 1 && elem.offsetParent.nodeName.toLowerCase !== "body") {
+		            elem = elem.offsetParent;
+		            r.push(elem.offsetTop);
+		        }
+		
+		        for (; i < r.length; i++) {
+		            sum += r[i];
+		        }
+		        
+		        return sum;
+		    };
+		    
+		    //运动函数
+		    var animate = (function(){
+		        var f = function(obj){
+		            var elem = obj.elem, //元素
+		            //obj.begin,			//起始位置
+		            //obj.end,				//结束位置
+		            callback = obj.callback, //调用的函数
+		 			timeStep = obj.step || 10, //时间间隔
+					time = obj.time; //与外界联系的setTimeout的时间参数
+		            if (obj.begin == obj.end) {
+		                clearTimeout(time);
+		                return;
+		            }
+		            else {
+		                time = setTimeout(function(){
+		                    var step;
+		                    
+		                    if (obj.begin < obj.end) {
+		                        step = Math.ceil((obj.end - obj.begin) / 10);
+		                        obj.begin += step;
+		                    }
+		                    
+		                    if (obj.begin > obj.end) {
+		                        step = Math.ceil((obj.begin - obj.end) / 10);
+		                        obj.begin -= step;
+		                    }
+		                    
+		                    callback.call(elem, obj.begin);
+		                    
+		                    f(obj);
+		                }, timeStep);
+		            }
+		        };
+		        
+		        return f;
+		    })();
+		    
+		    var gs = function(p){
+		        //当前页面滚动跳的位置
+		        //两种写法针对不同的DOCTYPE
+		        var scroll_top = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+		        
+		        //p 是id name
+		        if (typeof p === "string") {
+		            var elem = document.getElementById(p), 
+						elem_offset_top = get_offset_top(elem);
+		            
+		            animate({
+		                elem: elem,
+		                begin: scroll_top,
+		                end: elem_offset_top,
+		                callback: function(t){
+		                    window.scroll(0, t);
+		                }
+		            });
+		        }
+		        else {
+		            //p 是 number
+		            
+		            animate({
+		                begin: scroll_top,
+		                end: p,
+		                callback: function(t){
+		                    window.scroll(0, t);
+		                }
+		            });
+		        }
+		    };
+			
+		    return gs;
+		})();
+	//]]
+	</script>
+</body>
+</html>

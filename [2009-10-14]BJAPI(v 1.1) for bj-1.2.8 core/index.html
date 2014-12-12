@@ -1,0 +1,1868 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<link href="css/g.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/common.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="js/bj-1.2.8.js"></script>
+		<script type="text/javascript" src="js/bj-animate.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<title>BJ API</title>
+	</head>
+	<body>
+		<div id="page">
+			<div id="header">
+				<div class="menu">
+					<div class="menu-left">
+						<ul class="clearfix menu-right" id="menu_ul">
+							<li><a href="javascript:;" onclick="show_menu('main1');" class="select"><span>API核心</span></a></li>
+							<li><a href="javascript:;" onclick="show_menu('main2');"><span>Ajax</span></a></li>
+							<li><a href="javascript:;" onclick="show_menu('main3');"><span>DOM操作</span></a></li>
+							<li><a href="javascript:;" onclick="show_menu('main4');"><span>动画效果</span></a></li>
+							<li><a href="javascript:;" onclick="show_menu('main5');"><span>基本函数</span></a></li>
+							<li><a href="javascript:;" onclick="show_menu('main6');"><span>其他</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div><!--end header-->
+			
+			<div id="container">
+				<!--main1 API核心-->
+				<div class="main clearfix" id="main1" style="display:block;">
+					<div class="layout-left">
+						<div class="slider">
+							<div class="slider-top"></div>
+							<div class="slider-main">
+								<div class="slider-block">
+									<div class="slider-block-title open">
+										<span onclick="open_and_close(this);">API核心</span>
+									</div>
+									<div class="slider-block-main">
+										<ul>
+											<li><a href="javascript:;" class="select" onclick="show_info_main('main1','BJ',this);">BJ</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main1','extent',this);">extent</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main1','each',this);">each</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+							</div>
+							<div class="slider-bottom"></div>
+						</div>
+					</div><!--end layoutLeft-->
+					
+					<div class="layout-right">
+						<div class="title">
+							<div class="title-left">
+								<div class="title-right">
+									<h1 id="main1-title">BJ</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div class="info" id="main1-info">				
+	
+							<div class="info-block-main" id="main1-BJ" style="display:block;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										这里API实现的功能都是基于BJ这个全局对象来运作的。<br /><br />
+										强烈推荐使用带有firebug的firefox来看这个API。<br /><span class="ext">(当然IE6.0+也可以，IE8没有测试。<br />
+										因为市场上还是要符合IE6(也就是说IE8的特性还是不能用)，所以一直用:<br />&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /&gt;使得IE8像IE7的方式浏览，<br />这样就可以少考虑一个浏览器了。)</span><br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										<span class="ext">//目前只是支持具备id名称的节点，并没有写XHTML内置标签筛选[比如：BJ("div");或者 BJ("div p");]。
+										<br />//因为那样会非常复杂，目前没有实现。</span><br />
+										BJ("idName");<br /><br />
+										
+										<span class="ext">//当然也支持直接传入的是DOM节点(一个或者数组)。</span><br />
+										BJ(node);<br /><br />
+										
+										<span class="ext">//如果第传入的是#加上idName,那么返回的仅仅是一个DOM节点了。</span><br />
+										BJ("#"+"idName");<br /><br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="BJ对象" onclick="alert(BJ('BJ_object_test'))" /><br /><br />
+									<input type="button" value="DOM节点" onclick="alert(BJ('#BJ_object_test'))" /><br /><br />
+										<div id="BJ_object_test"></div>
+									</p>
+									
+								</div>
+							</div><!--end ajax-->
+							
+							<div class="info-block-main" id="main1-extent" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										BJ的扩展函数<br />
+										会自动提示扩展的函数名是否已经存在。<br />
+										
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									BJ.extent(name, func, all);<br />
+										@name <span class="ext">//扩展的函数名</span><br />
+										@func <span class="ext">//扩展的函数主体</span><br />
+										@all <span class="ext">//如果没有定义，这表示扩展BJ全局函数，如果定义为true的话，则表示扩展BJ带节点的函数</span>
+									
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<pre>
+<span class="ext">//举个例子: BJ扩展的addClass函数</span>
+BJ.extend("addClass", function(c){
+    BJ(this.elem).each(function(){
+        var oldClass = this.className.toString().split(" ");
+        for (var i = 0; i < oldClass.length; i++) {
+            if (oldClass[i] == c) { //如果新加的class是以前有的，那么就不加上去了
+                return;
+            }
+        }
+        var newClass = oldClass == "" ? c : oldClass.join(" ") + " " + c;
+        this.className = newClass;
+    });
+	
+	return BJ(this.elem);
+});
+									</pre>
+								</div>
+							</div><!--end extent-->
+							
+							<div class="info-block-main" id="main1-each" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										BJ的核心函数<br />
+										仿照jquery-1.3.2版本的each函数改写。<br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+<pre>
+<span class="ext">//@para 可以是单个节点，也可以使节点数组，或者一般数组。
+@i i是数组para的下标
+function 里面的this表示para的每个元素
+</span>									
+BJ(para).each(function(i){
+	//this
+});
+</pre>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+<pre>
+var nodes=document.getElementById("idname").getElementsByTagName("p");
+BJ(nodes).each(function(i){
+	BJ(this).addClass('newClassName');
+});
+</pre>
+<br />
+<input type="button" value="给下面每个p加上新的样式" onclick="test_each()" />
+<br /><br />
+<div id="test_each_div">
+	<p>123456789</p>
+	<p>abdefgtyc</p>
+	<p>@__________@</p>
+</div>
+<script type="text/javascript">
+function test_each(){
+    var nodes = BJ("#test_each_div").getElementsByTagName("p");
+    
+    BJ(nodes).each(function(i){
+        BJ(this).addClass('test-each');
+    });
+}
+</script>
+								</div>
+							</div><!--end each-->
+							
+						</div>
+					</div><!--end layoutRight-->
+				</div><!--end main1-->
+				
+				<!--main2 ajax-->
+				<div class="main clearfix" id="main2" style="display:none;">
+					<div class="layout-left">
+						<div class="slider">
+							<div class="slider-top"></div>
+							<div class="slider-main">
+								<div class="slider-block">
+									<div class="slider-block-title open">
+										<span onclick="open_and_close(this);">Ajax</span>
+									</div>
+									<div class="slider-block-main">
+										<ul>
+											<li><a href="javascript:;" class="select" onclick="show_info_main('main2','ajax',this);">ajax</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main2','parseXML',this);">parseXML</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+							</div>
+							<div class="slider-bottom"></div>
+						</div>
+					</div><!--end layoutLeft-->
+					
+					<div class="layout-right">
+						<div class="title">
+							<div class="title-left">
+								<div class="title-right">
+									<h1 id="main2-title">ajax</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div class="info" id="main2-info">				
+	
+							<div class="info-block-main" id="main2-ajax" style="display:block;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										这个是ajax的封装，里面内置了常用的函数。使得ajax写起来更方便。<br /><br />	
+										url <span class="ext">(string 需要请求的地址)</span><br />
+										before<span class="ext">(function 还没有完成的状态所触发的函数)</span><br />
+										success<span class="ext">(function 完成后所触发的函数)</span><br />
+										error <span class="ext">(function 发生错误时触发的函数)</span><br />
+										checkStatus <span class="ext">(boolean 确认status是否为200)</span><br />
+										stop <span class="ext">(function 中断ajax请求的函数)</span><br />
+										time <span class="ext">(number 超时的时间)</span><br />
+										xml <span class="ext">(boolean 返回的是不是xml)</span><br />
+										type <span class="ext">(string 请求的类型)</span><br />
+										asyn <span class="ext">(boolean ajax是异步还是同步)</span><br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+<pre>
+BJ.ajax({
+	<span class="ext">//必须
+	//请求的地址，我这里只是放了个例子地址。</span>
+	url:"example.asp?id=3",
+	
+	<span class="ext">//非必须
+	//一般用在laoding，自己可以发挥想象。</span>
+	before:function(){
+	  BJ("msg").html("loading....");
+	},
+	
+	<span class="ext">//非必须
+	//如果加上了这句，就会判断status是否等于200，
+	//如果不等于，那么就是弹出error，不运行success，并且告诉你status code。
+	//如果status是等于200，那么就运行success。</span>
+	checkStatus:true,
+	
+	<span class="ext">//非必须
+	//默认是false</span>
+	xml:true,
+	
+	<span class="ext">//非必须
+	//默认是get</span>
+	type:"post",
+	
+	<span class="ext">//非必须
+	//默认是true(异步)</span>
+	asyn:false,
+	
+	<span class="ext">//必须
+	//msg 是通过url请求后传过来的数据，如果没有前面的xml参数的话，就是返回的是string。
+	//如果xml设置为true的话，那么返回的是xhr对象。</span>
+	success:function(msg){
+	  alert(msg);
+	},
+	
+	<span class="ext">//非必须
+	//修改stop调用所需要的时间，默认是10秒，这里把它修改为8秒。</span>
+	time:8000,
+	
+	<span class="ext">//非必须
+	//这个默认是10秒，也就是说10秒后，还没有完成(即readyState!=4)。</span>
+	stop:function(){
+	  alert("服务器超时，请稍后再试。");
+	},
+	
+	<span class="ext">//非必须
+	//如果出错了，success就不会运行。这个出错是没有xhr对象</span>
+	error:function(){
+	  alert("出错了~~~");
+	}
+});
+</pre>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="ajax读XML" onclick="BJ.ajax({url:'XML/book.xml',success:function(msg){alert(msg);}});" /></p>
+									
+								</div>
+							</div><!--end ajax-->
+							
+							<div class="info-block-main" id="main2-parseXML" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										ajax返回xml数据时，可以进行解析<br /><br />
+										
+										find <span class="ext">(寻找xml文件里面的节点，返回的是节点数组，支持层次结构)</span><br />
+										findValue <span class="ext">(返回xml节点里面的值，如果一个节点就返回一个值，如果很多节点，就返回值的数值)</span><br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ.parseXML(msg).find("book name");<br />
+										BJ.parseXML(msg).findValue("book name");
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="显示book下面的name的名字和me下面的名字" onclick="BJ.ajax({url:'XML/book.xml',xml:true,success:function(msg){alert(BJ.parseXML(msg).findValue('books book name'));alert(BJ.parseXML(msg).findValue('me name'));}});" /></p>
+								</div>
+							</div><!--end parseXML-->
+						</div>
+					</div><!--end layoutRight-->
+				</div><!--end main2-->
+				
+				
+				<!--main3 就是DOM操作的内容-->
+				<div class="main clearfix" id="main3" style="display:none;">
+					<div class="layout-left">
+						<div class="slider">
+							<div class="slider-top"></div>
+							<div class="slider-main">
+								<div class="slider-block">
+									<div class="slider-block-title open">
+										<span onclick="open_and_close(this);">基本DOM操作</span>
+									</div>
+									<div class="slider-block-main">
+										<ul>
+											<li><a href="javascript:;" class="select" onclick="show_info_main('main3','children',this);">children</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','prev',this);">prev</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','prevAll',this);">prevAll</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','next',this);">next</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','nextAll',this);">nextAll</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','siblings',this);">siblings</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','parent',this);">parent</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','first',this);">first</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','last',this);">last</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+								<div class="slider-block">
+									<div class="slider-block-title close">
+										<span onclick="open_and_close(this);">基本文档处理</span>
+									</div>
+									<div class="slider-block-main" style="display:none;">
+										<ul>
+											<li><a href="javascript:;" onclick="show_info_main('main3','append',this);">append</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','prepend',this);">prepend</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','after',this);">after</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','before',this);">before</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','html',this);">html</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','text',this);">text</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','empty',this);">empty</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main3','remove',this);">remove</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+							</div>
+							<div class="slider-bottom"></div>
+						</div>
+					</div><!--end layoutLeft-->
+					
+					<div class="layout-right">
+						<div class="title">
+							<div class="title-left">
+								<div class="title-right">
+									<h1 id="main3-title">children</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div class="info" id="main3-info">	
+							<!--基本DOM操作-->
+							<div class="info-block-main" id="main3-children" style="display:block;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点直接下面的孩子<span class="ext">(不包括孙子和typeType!=1的节点)</span>返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).children();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).children().get();<span class="ext">(返回DOM节点集合)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看孩子的个数" onclick="alert(BJ(this).parent().next().children().get().length+'个孩子');" /></p>
+									
+									<div>
+										<p>孩子1 <span>我不是它的孩子</span></p>
+										<p>孩子2 <span>我也不是它的孩子</span></p>
+									</div>
+									
+								</div>
+							</div><!--end children-->
+							
+							<div class="info-block-main" id="main3-prev" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点的上第num<span class="ext">(如果num没有定义，就默认它是1)</span>个节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).prev(num);<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).prev(num).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV2的上一个兄弟节点的内容" onclick="alert(BJ(this).parent().next(2).prev().html());" /></p>
+									
+									<div>
+										我就是DIV1节点，( ⊙o⊙ )哇~~~
+									</div>
+									<div>
+										我就是DIV2节点，(⊙o⊙)哦~~~~
+									</div>
+									<div>
+										我就是DIV3节点，( ⊙ o ⊙ )啊！
+									</div>
+								</div>
+							</div><!--end prev-->
+							
+							<div class="info-block-main" id="main3-prevAll" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点上面的所有兄弟节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).prevAll();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).prevAll().get();<span class="ext">(返回DOM节点数组)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV3的上所有兄弟节点的个数" onclick="alert(BJ(this).parent().next(3).prevAll().get().length);" /></p>
+									
+									<div>
+										我就是DIV1节点，( ⊙o⊙ )哇~~~
+									</div>
+									<div>
+										我就是DIV2节点，(⊙o⊙)哦~~~~
+									</div>
+									<div>
+										我就是DIV3节点，( ⊙ o ⊙ )啊！
+									</div>
+								</div>
+							</div><!--end prevAll-->
+							
+							<div class="info-block-main" id="main3-next" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点下面的第num<span class="ext">(如果num没有定义，就默认它是1)</span>个节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).next();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).next().get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV2的下一个兄弟节点的内容" onclick="alert(BJ(this).parent().next(2).next().html());" /></p>
+									
+									<div>
+										我就是DIV1节点，( ⊙o⊙ )哇~~~
+									</div>
+									<div>
+										我就是DIV2节点，(⊙o⊙)哦~~~~
+									</div>
+									<div>
+										我就是DIV3节点，( ⊙ o ⊙ )啊！
+									</div>
+								</div>
+							</div><!--end next-->
+							
+							<div class="info-block-main" id="main3-nextAll" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点下面的所有兄弟节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).nextAll();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).nextAll().get();<span class="ext">(返回DOM节点数组)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV1的下全部兄弟节点的个数" onclick="alert(BJ(this).parent().next().nextAll().get().length);" /></p>
+									
+									<div>
+										我就是DIV1节点，( ⊙o⊙ )哇~~~
+									</div>
+									<div>
+										我就是DIV2节点，(⊙o⊙)哦~~~~
+									</div>
+									<div>
+										我就是DIV3节点，( ⊙ o ⊙ )啊！
+									</div>
+								</div>
+							</div><!--end nextAll-->
+							
+							<div class="info-block-main" id="main3-siblings" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点所有兄弟节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).siblings();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).siblings().get();<span class="ext">(返回DOM节点数组)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV1的全部兄弟节点的个数" onclick="alert(BJ(this).parent().next().siblings().get().length);" /></p>
+									
+									<div>
+										我就是DIV1节点，( ⊙o⊙ )哇~~~
+									</div>
+									<div>
+										我就是DIV2节点，(⊙o⊙)哦~~~~
+									</div>
+									<div>
+										我就是DIV3节点，( ⊙ o ⊙ )啊！
+									</div>
+								</div>
+							</div><!--end siblings-->
+							
+							<div class="info-block-main" id="main3-parent" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点的第num<span class="ext">(如果num没有定义，就默认它是1)</span>个父亲节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).parent(num);<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).parent(num).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV1的第2个父亲节点的class的名字" onclick="alert(BJ(this).parent().next().parent(2).attr('class'));" /></p>
+									
+									<div>
+										我就是DIV1节点，( ⊙o⊙ )哇~~~
+									</div>
+									<div>
+										我就是DIV2节点，(⊙o⊙)哦~~~~
+									</div>
+									<div>
+										我就是DIV3节点，( ⊙ o ⊙ )啊！
+									</div>
+								</div>
+							</div><!--end parent-->
+							
+							<div class="info-block-main" id="main3-first" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点的第一个孩子节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).first();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).first().get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV的第1个孩子的内容" onclick="alert(BJ(this).parent().next().first().html());" /></p>
+									
+									<div>
+										<p>我就是DIV节点的第1个孩子，( ⊙o⊙ )哇~~~ <span>混饭吃的</span></p>
+										<span style="margin-right:15px;">我是DIV的第2个孩子</span>
+										<span style="margin-right:15px;">我是DIV的第3个孩子</span>
+										<span style="margin-right:15px;">我是DIV的第4个孩子</span>
+									</div>
+								</div>
+							</div><!--end first-->
+							
+							<div class="info-block-main" id="main3-last" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>查找的是该节点的最后一个孩子节点，返回的是BJ对象，如果没有则返回null。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).last();<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).last().get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="查看下面DIV的最后一个孩子的内容" onclick="alert(BJ(this).parent().next().last().html());" /></p>
+									
+									<div>
+										<p>我就是DIV节点的第1个孩子，( ⊙o⊙ )哇~~~ <span>混饭吃的</span></p>
+										<span style="margin-right:15px;">我是DIV的第2个孩子</span>
+										<span style="margin-right:15px;">我是DIV的第3个孩子</span>
+										<span style="margin-right:15px;">我是DIV的第4个孩子</span>
+									</div>
+								</div>
+							</div><!--end last-->
+							
+							
+							<!--基本文档处理-->
+							
+							<div class="info-block-main" id="main3-append" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>把content<span class="ext">(可以是节点，也可以是内容)</span>插入到节点内容的最后面<span class="ext">(内部插入)</span>，返回的是BJ对象。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).append(content);<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).append(content).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									
+									<p><input type="button" value="插入数据123到下面p节点里面的最后面" onclick="BJ(this).parent().next().append('123');" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我内容的最下面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									
+									<p><input type="button" value="插入节点span到下面p节点里面的最后面" onclick="main3_append(this);" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我内容的最下面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									<script type="text/javascript">
+										function main3_append(self){
+											var op=document.createElement("span");
+											op.appendChild(document.createTextNode("abcd"));
+											
+											BJ(self).parent().next().append(op);
+										};
+									</script>
+								</div>
+							</div><!--end append-->
+							
+							<div class="info-block-main" id="main3-prepend" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>把content<span class="ext">(可以是节点，也可以是内容)</span>插入到节点内容的最前面<span class="ext">(内部插入)</span>，返回的是BJ对象。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).prepend(content);<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).prepend(content).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									
+									<p><input type="button" value="插入数据123到下面p节点里面的最上面" onclick="BJ(this).parent().next().prepend('123');" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我内容的最上面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									
+									<p><input type="button" value="插入节点span到下面p节点里面的最上面" onclick="main3_prepend(this);" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我内容的最上面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									<script type="text/javascript">
+										function main3_prepend(self){
+											var op=document.createElement("span");
+											op.appendChild(document.createTextNode("abcd"));
+											
+											BJ(self).parent().next().prepend(op);
+										};
+									</script>
+								</div>
+							</div><!--end prepend-->
+							
+							<div class="info-block-main" id="main3-after" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>把content<span class="ext">(可以是节点，也可以是内容)</span>插入到节点的下面<span class="ext">(外部插入)</span>，返回的是BJ对象。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).after(content);<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).after(content).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									
+									<p><input type="button" value="插入数据123到下面的p节点的下面" onclick="BJ(this).parent().next().after('123');" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我的下面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									
+									<p><input type="button" value="插入节点p到下面的p节点的下面" onclick="main3_after(this);" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我的下面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									<script type="text/javascript">
+										function main3_after(self){
+											var op=document.createElement("p");
+											op.appendChild(document.createTextNode("abcd"));
+											
+											BJ(self).parent().next().after(op);
+										};
+									</script>
+								</div>
+							</div><!--end after-->
+							
+							<div class="info-block-main" id="main3-before" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>把content<span class="ext">(可以是节点，也可以是内容)</span>插入到节点的上面<span class="ext">(外部插入)</span>，返回的是BJ对象。<br />如果需要返回DOM节点，可以使用get()。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).before(content);<span class="ext">(返回BJ对象)</span><br />BJ(”idName”).before(content).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									
+									<p><input type="button" value="插入数据123到下面的p节点的上面" onclick="BJ(this).parent().next().before('123');" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我的上面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									
+									<p><input type="button" value="插入节点p到下面的p节点的上面" onclick="main3_before(this);" /></p>
+									<p><span>A: 我就是这个节点，来啊，插到我的上面啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									<script type="text/javascript">
+										function main3_before(self){
+											var op=document.createElement("p");
+											op.appendChild(document.createTextNode("abcd"));
+											
+											BJ(self).parent().next().before(op);
+										};
+									</script>
+								</div>
+							</div><!--end before-->
+							
+							<div class="info-block-main" id="main3-html" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>(1) 如果content参数为空，则返回idName里面的HTML内容，和原来的innerHTML的用法一样，只是后面多了括号。
+										<br />
+										(2) 如果content参数不为空，则表示把content的内容替换掉原理的idName里面的内容，并返回BJ对象。</p>
+				
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).html();<span class="ext">(取idName内的HTML)</span><br />BJ(”idName”).html(content).get();<span class="ext">(返回DOM节点)</span></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="获取下面的p节点的HTML" onclick="alert(BJ(this).parent().next().html());" /></p>
+									<p><span>A: 我就是这个节点，来啊，获取我的HTML啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+									
+									<p><input type="button" value="改变下面的p节点的HTML" onclick="BJ(this).parent().next().html('你以为我不能改变你啊！！');" /></p>
+									<p><span>A: 我就是这个节点，来啊，改变我啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+								</div>
+							</div><!--end html-->
+							
+							<div class="info-block-main" id="main3-text" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>返回该节点下面的全部内容<span class="ext">(不包括标签，仅仅是文本内容.支持XML取值)</span><br />
+										否则返回null
+									</p>
+				
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).text();<br />
+										BJ(”idName”).text({getArray:true});	<span class="ext">//得到数组</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="获取下面的p节点的文本" onclick="alert(BJ(this).parent().next().text());" /></p>
+									<p><span>A: 我就是这个节点，来啊，获取我的文本啊！</span>
+									<br /><span>B: 不要吵，好不好？？</span></p>
+								</div>
+							</div><!--end text-->
+							
+							<div class="info-block-main" id="main3-empty" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>清空该节点里面所有东西，并返回该节点BJ对象</p>
+				
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).empty();<span class="ext">(返回BJ对象)</span>
+										<br />
+										BJ(”idName”).empty().get();<span class="ext">(返回DOM节点)</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="清空下面的p节点" onclick="BJ(this).parent().next().empty();" /></p>
+									<p>我就是这个节点，来啊，清空我啊！</p>
+								</div>
+							</div><!--end empty-->
+							
+							<div class="info-block-main" id="main3-remove" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>删除这个节点</p>
+				
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).remove();
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="删除下面的p节点" onclick="main3_remove(this);" /></p>
+									<p>我就是这个节点，来啊，删除我啊！</p>
+									<script type="text/javascript">
+										function main3_remove(self){
+											if(BJ(self).parent().next()){
+												BJ(self).parent().next().remove();
+											}
+										};
+									</script>
+								</div>
+							</div><!--end remove-->
+							
+						</div><!--end main3Info-->
+					</div><!--end layoutRight-->
+				</div><!--end main3-->
+				
+				<!--main4 动画效果-->
+				<div class="main clearfix" id="main4" style="display:none;">
+					<div class="layout-left">
+						<div class="slider">
+							<div class="slider-top"></div>
+							<div class="slider-main">
+								<div class="slider-block">
+									<div class="slider-block-title open">
+										<span onclick="open_and_close(this);">基本动画</span>
+									</div>
+									<div class="slider-block-main" style="display:block;">
+										<ul>
+											<li><a href="javascript:;" class="select"  onclick="show_info_main('main4','hide',this);">hide</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main4','show',this);">show</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main4','sDown',this);">sDown</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main4','sUp',this);">sUp</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main4','fOut',this);">fOut</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main4','fIn',this);">fIn</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+								<div class="slider-block">
+									<div class="slider-block-title close">
+										<span onclick="open_and_close(this);">扩展动画</span>
+									</div>
+									<div class="slider-block-main" style="display:none;">
+										<ul>
+											<li><a href="javascript:;" onclick="show_info_main('main4','animate_start',this);">animate_start</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+							</div>
+							<div class="slider-bottom"></div>
+						</div>
+					</div><!--end layoutLeft-->
+					
+					<div class="layout-right">
+						<div class="title">
+							<div class="title-left">
+								<div class="title-right">
+									<h1 id="main4-title">hide</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div class="info" id="main4-info">				
+							<!--基本动画-->
+							<div class="info-block-main" id="main4-hide" style="display:block;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>隐藏某个节点<span class="ext">(或者一些节点)</span>，如果节点本身就是隐藏的，就不运行。<br />
+									不带参数，就直接隐藏。带有参数<span class="ext">("slow","normal","fast")</span>就动画效果隐藏。
+									<br />返回BJ对象。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).hide();<span class="ext">(返回BJ对象)</span>
+									<br />
+									BJ(node).hide();<span class="ext">(nodes 是节点)</span>
+									<br />
+									BJ(nodes).hide();<span class="ext">(nodes 是节点的集合)</span>
+									<br />
+									BJ(”idName”).hide("slow");<span class="ext">(有动画效果)</span>
+									<br />
+									BJ(”idName”).hide("fast",function(self){alert("哈哈，被隐藏了.")});<span class="ext">(有动画效果,并有回调函数,self表示是当前的节点)</span>
+									<br /></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="隐藏div1(无动画效果)" onclick="BJ(this).parent().next().hide();" /></p>
+									
+									<div class="animate-box">我就是这个div1</div>
+									
+									<p><input type="button" value="隐藏div2(动画效果)" onclick="BJ(this).parent().next().hide('normal');" /></p>
+									
+									<div class="animate-box">我就是这个div2</div>
+									
+									<p><input type="button" value="隐藏div3(动画效果,并触发回调函数)" onclick="BJ(this).parent().next().hide('slow',function(self){alert('隐藏完毕后触发该函数.而且可以传入这个节点作为参数.'+self)});" /></p>
+									
+									<div class="animate-box">我就是这个div3</div>
+								</div>
+							</div><!--end hide-->
+							
+							<div class="info-block-main" id="main4-show" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>显示某个节点<span class="ext">(或者一些节点)</span>，如果节点本身就是显示的，就不运行。<br />
+									不带参数，就直接显示。带有参数<span class="ext">("slow","normal","fast")</span>就动画效果显示。
+									<br />返回BJ对象。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).show();<span class="ext">(返回BJ对象)</span>
+									<br />
+									BJ(node).show();<span class="ext">(node 是节点)</span>
+									<br />
+									BJ(nodes).show();<span class="ext">(nodes 是节点的集合)</span>
+									<br />
+									BJ(”idName”).show("slow");<span class="ext">(有动画效果)</span>
+									<br />
+									BJ(”idName”).show("fast",function(self){alert("哈哈，被显示了.")});<span class="ext">(有动画效果,并有回调函数,self表示是当前的节点)</span>
+									<br /></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="显示div1(无动画效果)" onclick="BJ(this).parent().next().show();" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div1</div>
+									
+									<p><input type="button" value="显示div2(动画效果)" onclick="BJ(this).parent().next().show('normal');" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div2</div>
+									
+									<p><input type="button" value="显示div3(动画效果,并触发回调函数)" onclick="BJ(this).parent().next().show('slow',function(self){alert('显示完毕后触发该函数.而且可以传入这个节点作为参数.'+self)});" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div3</div>
+								</div>
+							</div><!--end show-->
+							
+							<div class="info-block-main" id="main4-sDown" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>从上至下显示某个节点<span class="ext">(或者一些节点)</span>，如果节点本身就是显示的，就不运行。<br />
+									不带参数的话，默认的是normal。带有参数<span class="ext">("slow","normal","fast")</span>就动画效果显示。
+									<br />返回BJ对象。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).sDown();<span class="ext">(返回BJ对象)</span>
+									<br />
+									BJ(node).sDown();<span class="ext">(node 是节点)</span>
+									<br />
+									BJ(nodes).sDown();<span class="ext">(nodes 是节点的集合)</span>
+									<br />
+									BJ(”idName”).sDown("slow");<span class="ext">(有动画效果)</span>
+									<br />
+									BJ(”idName”).sDown("fast",function(self){alert("哈哈，被显示了.")});<span class="ext">(有动画效果,并有回调函数,self表示是当前的节点)</span>
+									<br /></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="显示div1" onclick="BJ(this).parent().next().sDown();" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div1</div>
+									
+									
+									<p><input type="button" value="显示div2(触发回调函数)" onclick="BJ(this).parent().next().sDown('slow',function(self){alert('显示完毕后触发该函数.而且可以传入这个节点作为参数.'+self)});" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div2</div>
+								</div>
+							</div><!--end sDown-->
+							
+							<div class="info-block-main" id="main4-sUp" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>从下至上隐藏某个节点<span class="ext">(或者一些节点)</span>，如果节点本身就是隐藏的，就不运行。<br />
+									不带参数的话，默认的是normal。带有参数<span class="ext">("slow","normal","fast")</span>就动画效果隐藏。
+									<br />返回BJ对象。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).sUp();<span class="ext">(返回BJ对象)</span>
+									<br />
+									BJ(node).sUp();<span class="ext">(node 是节点)</span>
+									<br />
+									BJ(nodes).sUp();<span class="ext">(nodes 是节点的集合)</span>
+									<br />
+									BJ(”idName”).sUp("slow");<span class="ext">(有动画效果)</span>
+									<br />
+									BJ(”idName”).sUp("fast",function(self){alert("哈哈，被隐藏了.")});<span class="ext">(有动画效果,并有回调函数,self表示是当前的节点)</span>
+									<br /></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="隐藏div1" onclick="BJ(this).parent().next().sUp();" /></p>
+									
+									<div class="animate-box">我就是这个div1</div>
+									
+									
+									<p><input type="button" value="隐藏div2(触发回调函数)" onclick="BJ(this).parent().next().sUp('slow',function(self){alert('隐藏完毕后触发该函数.而且可以传入这个节点作为参数.'+self)});" /></p>
+									
+									<div class="animate-box">我就是这个div2</div>
+								</div>
+							</div><!--end sUp-->
+							
+							<div class="info-block-main" id="main4-fOut" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>逐渐减少透明度，最后隐藏节点<span class="ext">(或者一些节点)</span>，如果节点本身就是隐藏的，就不运行。<br />
+									不带参数的话，默认的是normal。带有参数<span class="ext">("slow","normal","fast")</span>就动画效果隐藏。
+									<br />返回BJ对象。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).fOut();<span class="ext">(返回BJ对象)</span>
+									<br />
+									BJ(node).fOut();<span class="ext">(node 是节点)</span>
+									<br />
+									BJ(nodes).fOut();<span class="ext">(nodes 是节点的集合)</span>
+									<br />
+									BJ(”idName”).fOut("slow");<span class="ext">(有动画效果)</span>
+									<br />
+									BJ(”idName”).fOut("fast",function(self){alert("哈哈，被隐藏了.")});<span class="ext">(有动画效果,并有回调函数,self表示是当前的节点)</span>
+									<br /></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="隐藏div1" onclick="BJ(this).parent().next().fOut();" /></p>
+									
+									<div class="animate-box">我就是这个div1</div>
+
+									<p><input type="button" value="隐藏div2(触发回调函数)" onclick="BJ(this).parent().next().fOut('slow',function(self){alert('隐藏完毕后触发该函数.而且可以传入这个节点作为参数.'+self)});" /></p>
+									
+									<div class="animate-box">我就是这个div2</div>
+								</div>
+							</div><!--end fOut-->
+							
+							<div class="info-block-main" id="main4-fIn" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>逐渐增加透明度，最后显示节点<span class="ext">(或者一些节点)</span>，如果节点本身就是显示的，就不运行。<br />
+									不带参数的话，默认的是normal。带有参数<span class="ext">("slow","normal","fast")</span>就动画效果显示。
+									<br />返回BJ对象。</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ(”idName”).fIn();<span class="ext">(返回BJ对象)</span>
+									<br />
+									BJ(node).fIn();<span class="ext">(node 是节点)</span>
+									<br />
+									BJ(nodes).fIn();<span class="ext">(nodes 是节点的集合)</span>
+									<br />
+									BJ(”idName”).fIn("slow");<span class="ext">(有动画效果)</span>
+									<br />
+									BJ(”idName”).fIn("fast",function(self){alert("哈哈，被显示了.")});<span class="ext">(有动画效果,并有回调函数,self表示是当前的节点)</span>
+									<br /></p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="显示div1" onclick="BJ(this).parent().next().fIn();" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div1</div>
+
+									<p><input type="button" value="显示div2(触发回调函数)" onclick="BJ(this).parent().next().fIn('slow',function(self){alert('显示完毕后触发该函数.而且可以传入这个节点作为参数.'+self)});" /></p>
+									
+									<div class="animate-box" style="display:none;">我就是这个div2</div>
+								</div>
+							</div><!--end fIn-->
+							
+							<div class="info-block-main" id="main4-animate_start" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										扩展的动画函数<br />
+										animate_start(); <span class="ext">是动画的初始函数</span><br />
+										animate_stop(); <span class="ext">是动画的停止函数</span><br />
+										animate_continue(); <span class="ext">是动画的继续函数</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+<pre>
+BJ("idName").animate_start({
+<span class="ext">//默认是"position",position表示node是属于绝对定位。
+  margin是依靠变化margin来移动	(不是必须)</span>
+  type:"position"或者"margin",
+  
+<span class="ext">//从什么位置开始(必须)</span>
+  from:{left:100,top:100},
+ 
+<span class="ext">//到什么位置结束(必须)</span>
+  to:{left:700,top:100},
+
+<span class="ext">//默认是400，越小速度就越快(不是必须)</span>
+  speed:800,
+
+<span class="ext">//默认是"Cubic.easeOut",动画的类型，名字结合上面的Tween类(不是必须)</span>
+  animateType:"Cubic.easeOut",
+  
+<span class="ext">//动画结束的时候，调用回调函数(不是必须)</span>
+  callback:function(){//do someting....}
+});
+
+<span class="ext">//只有strat了，才能stop</span>
+BJ("idName").animate_stop(function(){//do someting....});
+
+<span class="ext">//只有stop了，才能continue</span>
+BJ("idName").animate_continue(function(){//do someting....});
+</pre>										
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<input type="button" value="开始" onclick="main4_start()" />
+									<input type="button" value="停止" onclick="main4_stop()" />
+									<input type="button" value="继续" onclick="main4_go()" /><br /><br />
+									
+									<div style="position:relative;height:120px;">
+										<div id="animate_box" class="box bg2" style="position:absolute;"></div>
+									</div>
+									<script type="text/javascript">
+										function main4_start(){
+											BJ("animate_box").animate_start({
+												from:{left:0,top:0},		
+												to:{left:520,top:0},			
+												speed:200,
+												animateType:"Quart.easeOut"					
+											});
+										};
+										function main4_stop(){
+											BJ("animate_box").animate_stop();	
+										};
+										function main4_go(){
+											BJ("animate_box").animate_continue();	
+										};
+									</script>
+								</div>
+							</div><!--end animate_start-->
+							
+						</div>
+					</div><!--end layoutRight-->
+				</div><!--end main4-->
+				
+				<!--main5 other-->
+				<div class="main clearfix" id="main5" style="display:none;">
+					<div class="layout-left">
+						<div class="slider">
+							<div class="slider-top"></div>
+							<div class="slider-main">
+								<div class="slider-block">
+									<div class="slider-block-title open">
+										<span onclick="open_and_close(this);">样式操作</span>
+									</div>
+									<div class="slider-block-main">
+										<ul>
+											<li><a href="javascript:;" class="select"  onclick="show_info_main('main5','css',this);">css</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','addClass',this);">addClass</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','removeClass',this);">removeClass</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+								<div class="slider-block">
+									<div class="slider-block-title close">
+										<span onclick="open_and_close(this);">浏览器判断</span>
+									</div>
+									<div class="slider-block-main" style="display:none;">
+										<ul>
+											<li><a href="javascript:;" onclick="show_info_main('main5','isIE',this);">isIE</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','isOpera',this);">isOpera</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','isFirefox',this);">isFirefox</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+								<div class="slider-block">
+									<div class="slider-block-title close">
+										<span onclick="open_and_close(this);">获取页面的大小</span>
+									</div>
+									<div class="slider-block-main" style="display:none;">
+										<ul>
+											<li><a href="javascript:;" onclick="show_info_main('main5','getBody',this);">getBody</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','getArea',this);">getArea</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','getScroll',this);">getScroll</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','getMax',this);">getMax</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+								<div class="slider-block">
+									<div class="slider-block-title close">
+										<span onclick="open_and_close(this);">cookie操作</span>
+									</div>
+									<div class="slider-block-main" style="display:none;">
+										<ul>
+											<li><a href="javascript:;" onclick="show_info_main('main5','setCookie',this);">setCookie</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','getCookie',this);">getCookie</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','delCookie',this);">delCookie</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+								
+								<div class="slider-block">
+									<div class="slider-block-title close">
+										<span onclick="open_and_close(this);">事件相关</span>
+									</div>
+									<div class="slider-block-main" style="display:none;">
+										<ul>
+											<li><a href="javascript:;" onclick="show_info_main('main5','stopBubble',this);">stopBubble</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main5','stopDefault',this);">stopDefault</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+							</div>
+							<div class="slider-bottom"></div>
+						</div>
+					</div><!--end layoutLeft-->
+					
+					<div class="layout-right">
+						<div class="title">
+							<div class="title-left">
+								<div class="title-right">
+									<h1 id="main5-title">css</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div class="info" id="main5-info">
+							<div class="info-block-main" id="main5-css" style="display:block;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										元素的样式操作。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ("idName").css('paddingLeft'); <span class="ext">//取这个元素的padding-left (请使用骆驼形式写法，没有的话返回null)</span><br />
+									BJ("idName").css({&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ext">//设置这个元素的样式 </span><br />
+										&nbsp;&nbsp;&nbsp;"marginLeft":"20px",	<span class="ext">//骆驼形式</span><br />
+         								&nbsp;&nbsp;&nbsp;"top":"20px"<br />
+									}); 
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="设置下面box的样式" onclick="BJ(this).parent().next().css({'marginLeft':'20px','marginTop':'20px'})" /></p>
+									<div class="box"></div>
+									
+									<p><input type="button" value="获取box的height样式" onclick="alert(BJ(this).parent().next().css('height'));" /></p>
+									<div class="box"></div>
+								</div>
+							</div><!--end css-->
+							
+							<div class="info-block-main" id="main5-addClass" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										给节点添加样式，而不覆盖它之前的样式。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ("idName").addClass('classname');
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="给下面的box添加改变底色的class" onclick="BJ(this).parent().next().addClass('bbg')" /></p>
+									<div class="box"></div>
+								</div>
+							</div><!--end addClass-->
+							
+							<div class="info-block-main" id="main5-removeClass" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										给节点删除样式。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ("idName").removeClass('classname');<span class="ext">(删除指定的样式，不影响其他的样式)</span><br />
+									BJ("idName").removeClass();<span class="ext">(删除该节点的所有样式)</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="把下面的box移除掉改变底色的class" onclick="BJ(this).parent().next().removeClass('bbg')" /></p>
+									<div class="box bbg"></div>
+								</div>
+							</div><!--end removeClass-->
+							
+							<div class="info-block-main" id="main5-isIE" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										判断浏览器是不是IE，如果是则返回true，不是则返回false。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.isIE();
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="浏览器判断" onclick="if(BJ.isIE()){alert('是IE');}else{alert('不是IE');}" /></p>
+								</div>
+							</div><!--end isIE-->
+							
+							<div class="info-block-main" id="main5-isOpera" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										判断浏览器是不是Opera，如果是则返回true，不是则返回false。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.isOpera();
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="浏览器判断" onclick="if(BJ.isOpera()){alert('是Opera');}else{alert('不是Opera');}" /></p>
+								</div>
+							</div><!--end isOpera-->
+							
+							<div class="info-block-main" id="main5-isFirefox" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										判断浏览器是不是Firefox，如果是则返回true，不是则返回false。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.isFirefox();
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="浏览器判断" onclick="if(BJ.isFirefox()){alert('是Firefox');}else{alert('不是Firefox');}" /></p>
+								</div>
+							</div><!--end isFirefox-->
+							
+							<div class="info-block-main" id="main5-getBody" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										获取工作的区域。<br />
+										获取页面可见区域的宽度和高度<span class="ext">(即当前页面body整个高度与宽度)</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.getBody().width;<br />
+										BJ.getBody().height;
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="获取body的大小" onclick="alert('width:'+BJ.getBody().width+'    height:'+BJ.getBody().height);" /></p>
+								</div>
+							</div><!--end getBody-->
+							
+							<div class="info-block-main" id="main5-getArea" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										获取可见区域的宽度和高度。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.getArea().width;<br />
+										BJ.getArea().height;
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="获取可见区域的大小" onclick="alert('width:'+BJ.getArea().width+'    height:'+BJ.getArea().height);" /></p>
+								</div>
+							</div><!--end getArea-->
+							
+							<div class="info-block-main" id="main5-getScroll" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										获取网页被卷去的高度与宽度。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.getScroll().width;<br />
+										BJ.getScroll().height;
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="获取网页被卷去的高度与宽度" onclick="alert('top:'+BJ.getScroll().top+'    left:'+BJ.getScroll().left);" /></p>
+								</div>
+							</div><!--end getScroll-->
+							
+							<div class="info-block-main" id="main5-getMax" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										获取页面最大的宽度与高度<span class="ext">(整个页面)</span>。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.getMax().width;<br />
+										BJ.getMax().height;
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="获取页面最大的宽度与高度" onclick="alert('width:'+BJ.getMax().width+'    height:'+BJ.getMax().height);" /></p>
+								</div>
+							</div><!--end getMax-->
+							
+							<div class="info-block-main" id="main5-setCookie" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										写cookie。<br />
+										BJ.setCookie(name, value, days);<br />
+										@name <span class="ext">(写入cookie叫什么名字)</span><br />
+										@value <span class="ext">(名字对应的值是什么)</span><br />
+										@days <span class="ext">(cookie存多少天，默认是30天)</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.setCookie('paper', '彩票中了3.6亿！', 20);
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="设置cookie的内容" onclick="BJ.setCookie('paper','彩票中了3.6亿！', 20);" />
+									<br />可以结合getCookie,delCookie来看演示效果</p>	
+								</div>
+							</div><!--end setCookie-->
+							
+							<div class="info-block-main" id="main5-getCookie" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										读cookie。<br />
+										BJ.getCookie(name);<br />
+										@name <span class="ext">(cookie叫什么名字)</span><br /><br />
+										如果没有那个名字的cookie，则返回null。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.getCookie('paper');
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="读出cookie的内容" onclick="alert(BJ.getCookie('paper'));" />
+									<br />可以结合setCookie,delCookie来看演示效果
+									</p>
+								</div>
+							</div><!--end getCookie-->
+							
+							<div class="info-block-main" id="main5-delCookie" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										删除cookie。<br />
+										BJ.delCookie(name);<br />
+										@name <span class="ext">(cookie叫什么名字)</span><br /><br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.delCookie('paper');
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<p><input type="button" value="删除cookie的内容" onclick="BJ.delCookie('paper');" />
+									<br />可以结合setCookie,getCookie来看演示效果
+									</p>
+								</div>
+							</div><!--end delCookie-->
+							
+							<div class="info-block-main" id="main5-stopBubble" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										阻止事件冒泡<br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.stopBubble(event);
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									
+									<p>点击下面的 <strong>字</strong> 进行测试<span class="ext">没有阻止冒泡</span></p>
+									<div class="box" id="stop_box">
+										<div id="stop_box2">这是内容这是内容这是内容这是内容这是内容
+										这是内容这是内容这是内容这是内容这是内容
+										</div>
+									</div>
+									
+									<script type="text/javascript">
+										BJ("#stop_box").onclick=function(e){
+											alert("你点了框");
+										}
+										BJ("#stop_box2").onclick=function(e){
+											//BJ.stopBubble(e);		
+										}
+									</script>
+									
+									<p>点击下面的 <strong>字</strong> 进行测试<span class="ext">阻止冒泡</span></p>
+									<div class="box" id="stop_box3">
+										<div id="stop_box4">这是内容这是内容这是内容这是内容这是内容
+										这是内容这是内容这是内容这是内容这是内容
+										</div>
+									</div>
+									
+									<script type="text/javascript">
+										BJ("#stop_box3").onclick=function(e){
+											alert("你点了框");
+										}
+										BJ("#stop_box4").onclick=function(e){
+											BJ.stopBubble(e);		
+										}
+									</script>
+								</div>
+							</div><!--end stopBubble-->
+							
+							<div class="info-block-main" id="main5-stopDefault" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										阻止事件冒泡<br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>
+										BJ.stopDefault(event);
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									
+									<p>点击下面的 <strong>链接</strong> 进行测试<span class="ext">阻止默认的链接跳转</span></p>
+									<p><a href="http://www.google.com" id="go_to_google">Goolge</a></p>
+									<script type="text/javascript">
+										BJ("#go_to_google").onclick=function(e){
+											BJ.stopDefault(e);
+										}
+									</script>
+								</div>
+							</div><!--end stopDefault-->
+							
+						</div><!--end main5Info-->
+					</div><!--end layoutRight-->
+				</div><!--end main5-->
+				
+				<!--main6 ajax-->
+				<div class="main clearfix" id="main6" style="display:none;">
+					<div class="layout-left">
+						<div class="slider">
+							<div class="slider-top"></div>
+							<div class="slider-main">									
+								<div class="slider-block">
+									<div class="slider-block-title open">
+										<span onclick="open_and_close(this);">其他</span>
+									</div>
+									<div class="slider-block-main">
+										<ul>
+											<li><a href="javascript:;" class="select" onclick="show_info_main('main6','drag',this);">drag</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main6','hold_on',this);">hold_on</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main6','setOpacity',this);">setOpacity</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main6','getMouse',this);">getMouse</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main6','trim',this);">trim</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main6','lightbox',this);">lightbox</a></li>
+											<li><a href="javascript:;" onclick="show_info_main('main6','attr',this);">attr</a></li>
+										</ul>
+									</div>
+								</div><!--end sliderBlock-->
+							</div>
+							<div class="slider-bottom"></div>
+						</div>
+					</div><!--end layoutLeft-->
+					
+					<div class="layout-right">
+						<div class="title">
+							<div class="title-left">
+								<div class="title-right">
+									<h1 id="main6-title">drag</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div class="info" id="main6-info">				
+	
+							<div class="info-block-main" id="main6-drag" style="display:block;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										拖拽函数。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									
+<pre>
+BJ.drag({
+  node:'idName' or node,     <span class="ext">//(必须)	拖动的是那个元素</span>
+  
+  hand:'idName' or node,     <span class="ext">//(非必须)	鼠标放在哪里拖动</span>
+  
+  onlyX,                     <span class="ext">//(非必须)	为true则只能x方向</span>
+  
+  onlyY,                     <span class="ext">//(非必须)	为true则只能y方向</span>
+  
+  opacity,                   <span class="ext">//(非必须)	取100内的值，这样移动的时候会变为透明</span>
+  
+  mouseup_callback(node),    <span class="ext">//(非必须)	鼠标释放后的回调函数</span>
+  
+  mousemove_callback(node),  <span class="ext">//(非必须)	鼠标移动时回调函数</span>
+  
+  mousedown_callback(node)   <span class="ext">//(非必须)	鼠标按下去时回调函数</span>
+});
+</pre>
+									
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<div id="drag_msg">这里会出现回调函数的现象</div>
+									<br />
+									<div style="position:relative;height:150px;">
+										<div class="box" id="drag_box" style="position:absolute;">带透明度50,只能X方向</div>
+									<script type="text/javascript">
+										BJ.drag({
+											node:'drag_box',
+											opacity:50,
+											onlyX:true
+										});
+									</script>
+									</div>
+									
+									<div style="position:relative;height:150px;">
+										<div class="box" id="drag_box2" style="position:absolute;"><span>鼠标放在文字上才能拖动，带鼠标释放的时候回调函数</span></div>
+									<script type="text/javascript">
+										BJ.drag({
+											node:'drag_box2',
+											hand:BJ("drag_box2").first().get(),
+											mouseup_callback:function(node){
+												BJ("drag_msg").html("up:"+node);
+											},
+											mousedown_callback:function(node){
+												BJ("drag_msg").html("down:"+node);
+											},
+											mousemove_callback:function(node){
+												BJ("drag_msg").html("move:"+node);
+											}
+										});
+									</script>
+									</div>
+								</div>
+							</div><!--end drag-->
+							
+							<div class="info-block-main" id="main6-hold_on" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										延时触发函数。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ("idName").hold_on(2000,function(){alert("鼠标放上去2秒才会触发这个函数!");});
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+								
+									<div class="box" id="hold_on_box"></div>
+									<script type="text/javascript">
+										BJ("hold_on_box").hold_on(2000,function(){
+											alert("鼠标放上去2秒才会触发这个函数!");
+										});
+									</script>
+								</div>
+							</div><!--end hold_on-->
+							
+							<div class="info-block-main" id="main6-setOpacity" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										设置一个节点的透明度。<br />
+										参数是 1-100 的范围的值。
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ("idName").setOpacity(30);
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<input type="button" onclick="BJ('opacity_box').setOpacity(50)" value="把下面的盒子的透明度变为50%" />
+									<br /><br /><br />
+									<div class="box" id="opacity_box"></div>
+								</div>
+							</div><!--end setOpacity-->
+							
+							<div class="info-block-main" id="main6-getMouse" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										获取鼠标在页面的上的坐标。<br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ.getMouse().x <span class="ext">(获取鼠标X的方向的值)</span><br />
+									BJ.getMouse().y <span class="ext">(获取鼠标y的方向的值)</span>
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<br />鼠标放在下面的盒子里移动，获取鼠标对于整个页面的位置<br /><br /><span class="ext" id="get_mouse"></span><br /><br />
+									<div class="box" id="getMouse_box" style="width:400px;height:200px;"></div>
+									<script type="text/javascript">
+										BJ("#getMouse_box").onmousemove=function(e){
+											BJ("get_mouse").html("X:"+BJ.getMouse(e).x+"   Y:"+BJ.getMouse(e).y);
+										};
+									</script>
+								</div>
+							</div><!--end getMouse-->
+							
+							<div class="info-block-main" id="main6-trim" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										清除string两边的空格。<br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<p>BJ.trim(string);
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<br />
+									<input type="button" onclick="BJ('#trim').value=BJ.trim(BJ('#trim').value);" value="把下面的字符串两边的空格去掉" /><br /><br />
+									<input type="text" id="trim" value="   1233456   " />			
+								</div>
+							</div><!--end trim-->
+							
+							<div class="info-block-main" id="main6-lightbox" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										动态生成像lightbox似的背景。<br /><br />
+										@opacity 透明度<span class="ext">(非必须 ，默认是40)</span><br />
+										@zindex 透明度<span class="ext">(非必须 ，默认是1000)</span><br />
+										@color 透明度<span class="ext">(非必须 ，默认是#000)</span><br />
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<pre>
+BJ.lightbox({
+  opacity:50,
+  zindex:500,
+  color:"#8000ff"
+});
+									</pre>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<br />
+									<input type="button" onclick="BJ.lightbox({opacity:50,zindex:500,color:'#222'});" value="生成一个在上面的背景" />
+									<br /><br />
+									<input type="button" onclick="BJ.removeLightbox();" value="移除这个层" style="position:relative;z-index:501;" />	
+								</div>
+							</div><!--end lightbox-->
+							
+							<div class="info-block-main" id="main6-attr" style="display:none;">
+								<div class="b">
+									<span class="mag-name">说明:</span>
+									<p>
+										节点属性值的有关操作。<br />
+										
+										 BJ('idName').attr(name, value);<br />
+										 @name <span class="ext">为属性的名字</span><br />
+										 @value <span class="ext">如果没有定义，则表示取name属性的值；如果定义了，则是为name属性只赋于value，并返回BJ对象</span><br />
+										 <br />
+										 如果错误则返回空字符串。
+										 
+									</p>
+								</div>
+								<div class="b">
+									<span class="mag-name">用法:</span>
+									<pre>
+BJ('idName').attr("alt");
+BJ('idName').attr("alt","logo");
+
+var ps=BJ("div").children();
+<span class="ext">//把div下面的p的class全部设置为love</span>
+BJ(ps).attr("class","love");
+<span class="ext">//把div下面的p的class相应的设置为"love","hate","like",一一对应。数量一定要满足数组的长度</span>
+BJ(ps).attr("class",["love","hate","like"]);    
+									</pre>
+								</div>
+								<div class="b">
+									<span class="mag-name">例如:</span>
+									<br />
+									<input type="button" onclick="alert(BJ(this).attr('type'))" value="弹出这个按钮的type类型" />
+									<br /><br />
+									<input type="button" onclick="BJ('test_attr_div').children().attr('class',['bg1','bg2']).attr('align',['left','right']);" value="把下面的p的样式分别分配样式" style="position:relative;z-index:501;" />	
+									<br /><br />
+									<div id="test_attr_div">
+										<p>1232132132132432143</p>
+										<p>asdfdsafdsafdsfadsa</p>
+									</div>
+									
+								</div>
+							</div><!--end attr-->
+							
+						</div><!--end main6Info-->
+					</div><!--end layoutRight-->
+				</div><!--end main6-->
+				
+			</div><!--end container-->
+			
+			<div id="footer">
+				<div class="ft">
+					<p><span>Version 1.2.8</span>Made By Zhang Binjue <a href="http://hi.baidu.com/paperstudio" target="_blank" title="welcome">My Blog</a></p>
+					<p>Copyright &copy; No Rights Reserved <span class="c">:)</span></p>
+				</div>
+			</div><!--end footer-->
+		</div>
+		<script type="text/javascript">
+			BJ.ieImage();
+		</script>
+	</body>
+</html>

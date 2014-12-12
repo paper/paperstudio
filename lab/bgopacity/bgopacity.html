@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>背景跟随主体半透明</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			background:url(bg.png) repeat;
+		}
+		#wrapper{
+			width:960px;
+			margin:10px auto;
+		}
+		.br5{
+			border-radius:5px;
+			-moz-border-radius:5px;
+			-khtml-border-radius:5px;
+			-webkit-border-radius:5px;
+		}
+		.box{
+			width:500px;
+			border:3px solid #000;
+			position:relative;
+			color:#fff;
+		}
+		.box-in{
+			padding:5px;
+		}
+		.box .bg{
+			zoom:1;
+			background-color:#000;
+			height:100%;
+			width:100%;
+			position:absolute;
+			z-index:-1;
+			left:0;
+			top:0;
+			opacity:0.4;
+			filter:alpha(opacity=40);
+			_height:expression(this.parentNode.scrollHeight +"px");
+		}
+		.box .hd{
+			border-bottom:3px solid #000;
+			padding:15px;
+		}
+		.box .hd h2{}
+		.box .bd{
+			padding:15px;
+		}
+		.box .bd p{
+			font-size:12px;
+			line-height:150%;
+		}
+	</style>
+</head>
+<body>
+	
+<div id="wrapper">
+	<div class="box br5">
+		<div class="box-in">
+		<div class="hd">
+			<h2>这就是标题</h2>
+		</div>
+		<div class="bd">
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+			<p>很多很多文字很多很多文字很多很多文字很多很多文字</p>
+		</div>
+		</div>
+		<div class="bg"></div>
+	</div>
+</div>
+</body>
+</html>

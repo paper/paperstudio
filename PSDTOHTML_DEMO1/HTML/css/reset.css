@@ -1,0 +1,29 @@
+@charset"utf-8";
+body,div,h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea,th, td,form{margin:0;padding:0;}
+body,button, input, select, textarea{font:12px/160% Tahoma,Arial,Helvetica,sans-serif;}
+h1{font-size:16px;}
+h2{font-size:14px;}
+h3{font-size:14px;}
+h4, h5, h6{font-size:100%;}
+address, cite, dfn, em, var{font-style:normal;}
+code, kbd, pre, samp, tt{font-family:"Consolas","Courier New", Courier, monospace;}
+small{font-size:12px;}
+em,strong{font-weight:bolder;}
+ul, ol{list-style:none outside none}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+abbr[title], acronym[title]{border-bottom:1px dotted;cursor:help;}
+legend{color:#000;}
+fieldset, img{border:none;}
+button, input, select, textarea{font-size:100%;}
+sup{vertical-align:top;}
+table{border-collapse:collapse;border-spacing:0;}
+.clear{clear:both;overflow:hidden;height:0;}
+.fl{float:left;}
+.fr{float:right;}
+.f11{font-size:11px;}
+html{overflow-y:scroll;}
+.clearfix:after{content:".";display:block;height:0;line-height:0;clear:both;visibility:hidden;}
+* html > body .clearfix{display:inline-block;width:100%;}
+* html .clearfix{height:1%;}
+* + html .clearfix{min-height:1%;}

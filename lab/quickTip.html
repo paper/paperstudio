@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>quickTip</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:700px;
+			margin:0 auto;
+		}
+		input{
+			float:right;
+			clear:right;
+			margin:10px 0 10px;
+		}
+		.t{
+			overflow:hidden;
+			width:520px;
+		}
+		.t li{
+			width:50px;
+			margin:1px;
+			padding:4px;
+			float:left;
+		}
+		.blank{
+			clear:both;
+			border-bottom:1px solid #ccc;
+			height:2px;
+			overflow:hidden;
+			margin:30px 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+		<h2>改进前</h2>
+		<input type="button" value="change1" onclick="test1('msg1');" />
+		<input type="button" value="change2" onclick="test1('msg2');" />
+		
+		<ul class="t">
+			<li>1234</li>
+			<li id="msg1">567</li>
+			<li>789</li>
+			<li>345</li>
+			<li>1234</li>
+			<li>567</li>
+			<li>789</li>
+			<li>345</li>
+			<li>1234</li>
+			<li id="msg2">345</li>
+			<li>1234</li>
+			<li>567</li>
+			<li>789</li>
+			<li>345</li>
+			<li>1234</li>
+			<li>567</li>
+			<li>789</li>
+			<li>345</li>
+		</ul>
+		
+		
+		<div class="blank"></div>
+		
+		<h2>改进后</h2>
+		<input type="button" value="change1" onclick="test2('msg3');" />
+		<input type="button" value="change2" onclick="test2('msg4');" />
+		
+		<ul class="t">
+			<li>1234</li>
+			<li id="msg3">567</li>
+			<li>789</li>
+			<li>345</li>
+			<li>1234</li>
+			<li>567</li>
+			<li>789</li>
+			<li>345</li>
+			<li>567</li>
+			<li id="msg4">789</li>
+			<li>345</li>
+			<li>1234</li>
+			<li>567</li>
+			<li>789</li>
+			<li>345</li>
+			<li>1234</li>
+			<li>567</li>
+			<li>789</li>
+			<li>345</li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript" src="../js/Fuee-1.3.js"></script>
+	<script type="text/javascript">
+		function quickTip(elem,para){
+			var elem=typeof elem=='string'?document.getElementById(elem):elem;
+			
+			Fuee(elem).changeColor({
+				from: '#fff',
+				to: '#d4ffa8',
+				speed: 'fast',
+				end: function(){
+					Fuee(elem).changeColor({
+						to: '#fff',
+						speed: 'fast'
+					});
+				}
+			});
+		};
+		
+		function test1(elem){
+			var elem=typeof elem=='string'?document.getElementById(elem):elem;
+			var temp=+elem.innerHTML;
+			
+			elem.innerHTML=++temp;
+		};
+		
+		function test2(elem){
+			var elem=typeof elem=='string'?document.getElementById(elem):elem;
+			var temp=+elem.innerHTML;
+			
+			elem.innerHTML=++temp;
+			quickTip(elem);
+		};
+	</script>
+</body>
+</html>

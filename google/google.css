@@ -1,0 +1,112 @@
+@charset"utf-8";
+body,div,h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea,th, td,form{margin:0;padding:0;}
+body,button, input, select, textarea{font:12px/1.5 Tahoma,"\5b8b\4f53",Arial,Helvetica,sans-serif;}
+h1{font-size:14px;}
+h2{font-size:12px;}
+h3{font-size:12px;font-weight:normal;}
+h4, h5, h6{font-size:100%;}
+address, cite, dfn, em, var{font-style:normal;}
+code, kbd, pre, samp, tt{font-family:"Consolas","Courier New", Courier, monospace;}
+small{font-size:12px;}
+em,strong{font-weight:bolder;}
+ul, ol{list-style:none outside none}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+abbr[title], acronym[title]{border-bottom:1px dotted;cursor:help;}
+legend{color:#000;}
+fieldset, img{border:none;}
+button, input, select, textarea{font-size:100%;}
+sup{vertical-align:top;}
+table{border-collapse:collapse;border-spacing:0;}
+.clear{clear:both;}
+html{overflow-y:scroll;}
+.clearfix:after{content:".";display:block;height:0;line-height:0;clear:both;visibility:hidden;}
+* html > body .clearfix{display:inline-block;width:100%;}
+* html .clearfix{height:1%;}
+* + html .clearfix{min-height:1%;}
+html{
+	height:100%;
+	width:100%;
+}
+#google_body{
+	height:100%;
+	width:100%;
+}
+.f{
+	padding:150px 0 0 0;
+}
+#logo{}
+.lst{
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	display:block;
+	
+	background:#FFFFFF;
+	border:1px solid #999;
+	color:#000000;
+	font:18px arial,sans-serif bold;
+	height:25px;
+	margin:0;
+	padding:5px 8px 2px 6px;
+	vertical-align:top;
+}
+.lst:hover,.lst:focus{
+	background-color:#e8ffe8;
+}
+.sblc a {
+    display: block;
+    margin:5px 0 0 13px;
+	color:#ccc;
+	height:1.2em;
+	-webkit-text-size-adjust:none;
+}
+
+.ds {
+    display: inline-block;
+    margin: 4px 0 4px 4px;
+	
+	box-shadow:0 0 5px #000;
+	-moz-box-shadow:0 0 5px #000;
+	-webkit-box-shadow:0 0 5px #000;
+}
+
+.lsb {
+    background: url("nav_logo14.png") repeat scroll center bottom transparent;
+    border: medium none;
+    color: #000000;
+    cursor: pointer;
+    font: 15px arial, sans-serif;
+    height: 30px;
+    margin: 0;
+    outline: 0 none;
+    vertical-align: top;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	padding:4px 10px;
+	overflow:visible;
+}
+.links{
+	text-align:center;
+	padding:50px 0 0 0;
+}
+.links a{
+	color:#000;
+	font-family:Tahoma;
+	font-weight:bolder;
+	font-size:14px;
+	margin:0 15px;
+	filter:alpha(opacity=20);
+	opacity:0.2;
+	text-shadow:0 0 10px #ccc;
+	zoom:1;
+	font-size:14px;
+}
+.links a:hover{
+	opacity:1;
+	filter:alpha(opacity=100);
+	text-decoration:none;
+}
+
+

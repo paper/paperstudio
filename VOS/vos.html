@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>vos-record</title>
+<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="vos.css" />
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+		<textarea id="msg"></textarea>
+		<div id="vos" class="clearfix">
+			<input type="button" id="play" autocomplete="off" value="Play" disabled="disabled" />
+			<input type="button" id="record" value="Record" />
+			<input type="button" id="stop" value="Stop" style="display:none;" />
+			
+			<ol id="vos_ol">
+				<li>
+					<div class="th0 check"></div>
+				</li>
+				<li>
+					<div class="th1 check"></div>
+				</li>
+				<li>
+					<div class="th2 check"></div>
+				</li>
+				<li class="li-space">	
+					<div class="th3 check"></div>
+				</li>
+				<li>
+					<div class="th4 check"></div>
+				</li>
+				<li>
+					<div class="th5 check"></div>
+				</li>
+				<li>
+					<div class="th6 check"></div>
+				</li>
+			</ol>
+			
+			<div class="voice">
+				<audio src="voice/oldBoy-min.ogg" loop='false' id="oldBoy" />
+			</div>
+		</div><!--end vos-->
+	</div>
+	<script type="text/javascript" src="../js/Fuee-1.3.js"></script>
+	<script type="text/javascript" src="vos.js"></script>
+	<script type="text/javascript">
+		document.getElementById('play').onclick=VOS.vos_play;
+		document.getElementById('record').onclick=VOS.vos_record;
+		document.getElementById('stop').onclick=VOS.vos_stop;
+	</script>
+</body>
+</html>

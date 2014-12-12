@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>studyCssPlay</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      body {
+          font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          line-height: 1.6;
+      }
+      
+      body, div, p, ul, li {
+          padding: 0;
+          margin: 0;
+      }
+      
+      #wrapper {
+          margin: 50px auto;
+          width: 960px;
+          text-align: center;
+      }
+      
+      .circle {
+          text-align: left;
+          width: 300px;
+          height: 300px;
+          margin: 0 auto;
+          position: relative;
+          background-color: #444;
+          zoom: 1;
+      }
+      
+      .lt b, .lb b, .rt b, .rb b {
+          color: #444;
+          font-family: arial;
+          font-size: 100px;
+          font-weight: normal;
+          line-height: 40px;
+          position: absolute;
+      }
+      
+      .lt {
+          left: 0;
+          top: 0;
+      }
+      
+      .lb {
+          left: 0;
+          bottom: 0;
+      }
+      
+      .rt {
+          right: 0;
+          top: 0;
+      }
+      
+      .rb {
+          right: 0;
+          bottom: 0;
+      }
+      
+      .lt, .lb, .rt, .rb {
+          position: absolute;
+          height: 10px;
+          width: 10px;
+          overflow: hidden;
+          background-color: #fff;
+          font-style: normal;
+          color: #ccc;
+          z-index: 1;
+      }
+      
+      .lt b {
+          left: -6px;
+          top: -7px;
+      }
+      
+      .lb b {
+          left: -6px;
+          top: -20px;
+      }
+      
+      .rt b {
+          right: -6px;
+          top: -7px;
+      }
+      
+      .rb b {
+          right: -6px;
+          top: -20px;
+      }
+      
+      .circle .main {
+          color: #fff;
+          padding: 10px;
+          position: relative;
+          z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+    <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+    <div id="main">
+      <div class="circle">
+        <span class="lt"><b>•</b></span>
+        <span class="lb"><b>•</b></span>
+        <span class="rt"><b>•</b></span>
+        <span class="rb"><b>•</b></span>
+        <div class="main">
+          <p>
+            这个圆角还真这个圆角还真是棒这个圆角还真是棒是棒
+            <br/>
+            这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒
+            <br/>
+            这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒
+            <br/>
+            这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒这个圆角还真是棒
+          </p>
+        </div>
+      </div>
+      <!--end circle-->
+    </div>
+    <!--end main-->
+  </body>
+</html>

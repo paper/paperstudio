@@ -1,0 +1,65 @@
+@charset "utf-8";
+/*==================================================================
+	树状菜单的公共样式
+==================================================================*/
+.ptree{}
+.ptree ul{}
+.ptree li{
+	padding:2px 0;
+}
+.ptree a{
+	font-size:12px;
+	text-decoration:none;
+	color:#003399;
+}
+.ptree a:hover{
+	text-decoration:underline;
+}
+
+
+.ptree-root{}
+.ptree-branch-main{
+	overflow:hidden;
+	zoom:1;
+	padding:3px 0 3px 10px;
+	margin:2px 0 0 7px;
+	border-left:1px solid #ccc;
+}
+
+.ptree-branch-root{
+	line-height:14px;
+}
+.ptree-branch-root a{font-weight:bold;}
+.ptree-branch-root a:hover{text-decoration:none;}
+
+.ptree-branch-add,
+.ptree-branch-minus{
+	cursor:pointer;
+	display:inline-block;
+	background:#fff url(../images/tree/tree-branch.gif) no-repeat;
+	width:16px;
+	height:14px;
+	margin-right:3px;
+	margin-bottom:-3px;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+}
+.ptree-branch-add{
+	background-position:0 0;
+}
+.ptree-branch-minus{
+	background-position:0 -15px;
+}
+.ptree-branch-link{
+	border-bottom: 1px solid #ccc;
+	width:23px;
+    height: 1px;
+    margin: 0 6px 3px -10px;
+	margin: 0 6px 5px -10px\9;
+    overflow: hidden;
+	display:inline-block;
+}
+
+
+
+

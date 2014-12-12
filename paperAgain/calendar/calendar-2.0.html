@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="pcalendar.css" media="all" />
+        <title>calendar</title>
+        <script type="text/javascript" src="calendar-2.0.js"></script>
+		<style type="text/css">
+			#date{
+				margin:100px;
+			}
+		</style>
+    </head>
+    <body>
+      
+      <input type="text" id="date" readonly="readonly" />
+	<input type="text" id="date2" readonly="readonly" />
+	   
+       <script type="text/javascript">
+       	
+			PCalendar({
+				'node':'date',
+				'chooseAll':true
+			});
+			
+			PCalendar({
+				'node':'date2'
+			});
+        </script>
+    </body>
+</html>

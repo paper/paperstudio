@@ -1,0 +1,239 @@
+@charset"utf-8";
+html{
+	overflow:hidden;
+	background:#eee url(../images/tile.gif) repeat;
+}
+#main{
+	width:800px;
+	margin:0 auto;
+}
+h1{
+	font-size:24px;
+	text-align:center;
+	margin-bottom:20px;
+	text-shadow:0 1px 1px #fff;
+}
+/*=============================================
+ * =Sprites
+ * ===========================================*/
+.you,.end,.wall,
+.up1,.up2,.down1,.down2,
+.minus,.minus1,.minus2,.dot,.x,
+.cover,.air{
+	background:url(../images/s.png) no-repeat;
+	width:59px;
+	height:59px;
+	display:block;
+	position:absolute;
+	overflow:hidden;
+	z-index:10;
+}
+/*==============================*/
+.you{
+	z-index:100;
+	background-position:0 0;
+}
+.wall{
+	z-index:1;
+	background-position:-131px 0;
+}
+.end{
+	background-position:-66px 0;
+}
+/*==============================*/
+.up1{
+	background-position:0 -65px;
+}
+.up2{
+	background-position:-131px -65px;
+}
+.down1{
+	background-position:-66px -65px;
+}
+.down2{
+	background-position:-197px -65px;
+}
+/*==============================*/
+.minus,.minus1{
+	z-index:11;
+	background-position:0 -133px;
+}
+.minus2{
+	background-position:-66px -133px;
+}
+.dot{
+	background-position:-131px -133px;
+}
+.x{
+	background-position:-197px -133px;
+}
+/*==============================*/
+.cover,.air{
+	z-index:1;
+	height:66px;
+	width:66px;
+	padding:6px 0 0 6px;
+}
+.cover{
+	background-position:0 -206px;
+}
+.air{
+	background-position:-81px -206px;
+}
+
+/*=============================================
+ * =impasse-hd
+ * ===========================================*/
+#impasse-hd{
+	background-color:#403426;
+	height:80px;
+}
+#impasse-hd h2{
+	font:normal 28px/80px 'Handlee',Tahoma;
+	color:#fff;
+	text-align:center;
+	text-shadow:0 -1px 1px #000;
+	letter-spacing:0.05em;
+}
+
+/*=============================================
+ * =impasse-bd
+ * ===========================================*/
+#impasse-bd{
+	position:relative;
+	height:240px;
+	width:800px;
+}
+#impasse-game-wrap{
+	background-color:#EBE1C5;
+	position:relative;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+.impasse-bd-cover{
+	background-color:#403426;
+	position:absolute;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+	z-index:999;
+	left:0;
+	top:0;
+}
+#impasse-gameover{}
+#impasse-gameover p{
+	color:#ccc;
+	text-align:center;
+	padding-top:100px;
+	font-size:14px;
+}
+#impasse-old-browser{
+	background-color:#EBE1C5;
+}
+#impasse-old-browser div{
+	padding:60px 0 0;
+}
+#impasse-old-browser p{
+	text-align:center;
+	padding-bottom:5px;
+	font-size:14px;
+}
+#impasse-old-browser p a{
+	color:#003399;
+	padding:0 3px;
+}
+
+/*游戏胜利了*/
+/*=============impasse-success=============*/
+#impasse-success{
+	background-color:#eee;
+}
+#impasse-success p{
+	text-align:center;
+	padding-top:90px;
+	font-size:14px;
+	text-shadow:0 1px 1px #fff;
+}
+/*=============impasse-help=============*/
+#impasse-help{
+	background-color:#eee;
+	z-index:9999;
+}
+#impasse-help ol{
+	padding:20px 0 0 50px;
+	overflow:hidden;
+}
+
+#impasse-help li{
+	width:100%;
+	float:left;
+	padding:15px 0 0 5px;
+	list-style:decimal;
+	margin-bottom:20px;
+	font-size:14px;
+	text-shadow:0 1px 1px #fff;
+}
+#impasse-help span{
+	position:static;
+	float:left;
+	margin:-16px 10px 10px 0;
+}
+#impasse-help strong{
+	margin:0 2px;
+}
+/*=============================================
+ * =impasse-ft
+ * ===========================================*/
+#impasse-ft{
+	background-color:#403426;
+	height:80px;
+}
+#impasse-ft ol{
+	overflow:hidden;
+	padding:38px 0 0 24px;
+}
+#impasse-ft ol li{
+	float:left;
+	display:inline;
+	width:5px;
+	height:5px;
+	border-radius:10px;
+	background-color:#594936;
+	margin-right:27px;
+}
+#impasse-ft ol li.pass{
+	background-color:#AF987E;
+}
+#impasse-ft ol li.cur{
+	background-color:#AF987E;
+	width:9px;
+	height:9px;
+	margin-top:-2px;
+	margin-left:-1px;
+	box-shadow:0 -1px 0 #333;
+}
+
+/*=============================================
+ * =footer
+ * ===========================================*/
+footer{
+	opacity:0.6;
+	padding-top:25px;
+}
+footer p,footer p a{
+	color:#333;
+}
+footer p{
+	text-align:center;
+	text-shadow:0 1px 1px #fff;
+}
+footer p a[target="_blank"]{
+	padding-right:8px;
+	background:url(../images/target_blank.gif) no-repeat right 2px;
+}
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>boxChange</title>
+	<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		.box{
+			border:1px solid #454545;
+			padding:10px;
+			background-color:#f3f3f3;
+			overflow:hidden;
+			width:200px;
+			height:200px;
+			position:absolute;
+			left:10px;
+			top:90px;
+		}
+	</style>
+</head>
+<body>
+<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	<input type="button" value="click me" onclick="cm();" />
+	<div id="box1" class="box">
+		<p>加上一些文字吧</p>
+	</div>
+	<script type="text/javascript" src="../../js/Fuee-1.0-mini.js"></script>
+	<script type="text/javascript" src="boxChange.js"></script>
+	<script type="text/javascript">
+		var time;
+		function cm(){
+			BoxChange({
+				"elem": document.getElementById('box1'),
+				'position': {
+					'from': [10, 90],
+					'to': [700, 250]
+				},
+				'width': {
+					'from':200,
+					'to': 100
+				},
+				'height': {
+					'from':200,
+					'to': 100
+				},
+				'speed':30,
+				beginCallback:function(p){
+					clearTimeout(time);
+					//Fuee(this).show();
+				},
+				doingCallback: function(p){
+					time=p.time;
+					
+					this.style.left = p.left + 'px';
+					this.style.top = p.top + 'px';
+					this.style.width = p.width + 'px';
+					this.style.height = p.height + 'px';
+				},
+				endCallback:function(){
+					//Fuee(this).hide();
+					//Fuee(this).remove();
+				}
+			});
+		}
+	</script>
+</body>
+</html>

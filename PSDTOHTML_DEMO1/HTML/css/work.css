@@ -1,0 +1,10 @@
+@charset"utf-8";
+.main .twitter{float:right;}
+.works{clear:both;border-top:1px solid #dbdbdb;padding:20px 20px 0 546px;margin-top:20px;min-height:200px;_height:200px;position:relative;}
+.works h3,.works p{margin-bottom:20px;}
+.works h3 a{color:#202020;font-size:20px;}
+.works h3 a img{width:509px;height:188px;position:absolute;left:0px;top:20px;border:2px solid #eee;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.works h3 a:hover{zoom:1;}
+.works h3 a:hover img, .works h3 a:focus img{border-color:#AC5600;}
+.works a.bt{color:#fff;background-color:#2b2b2b;padding:7px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+.works a.bt:hover, .works a.bt:focus{background-color:#AB5500;text-decoration:none;}

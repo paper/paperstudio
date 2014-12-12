@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="pcalendar.css" media="all" />
+        <title>pcalendar</title>
+		<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="pcalendar-3.0-min.js"></script>
+		<style type="text/css">
+			html{
+				overflow-y:scroll;
+			}
+			.fr{
+				float:right;
+			}
+			.fl{
+				float:left;
+			}
+			a{
+				color:#002299;
+				text-decoration:underline;
+			}
+			#main{
+				font-size:12px;
+				width:1000px;
+				margin:20px auto 0;
+				padding-bottom:200px;
+			}
+			.block{
+				float:left;
+			}
+			.l{
+				width:480px;
+			}
+			
+			.c{
+				clear:both;
+				height:1px;
+				overflow:hidden;
+				border-bottom:1px dashed #cecece;
+				margin-bottom:25px;
+				padding-bottom:25px;
+			}
+			label{
+				font-size:12px;
+			}
+			h4{
+				color:#5a5a2e;
+				font-size:14px;
+			}
+			pre{
+				color:#000073;
+			}
+			pre span{
+				color:#999;
+			}
+			table td{
+				padding:2px;
+				vertical-align:top;
+			}
+			table td input{
+				padding:3px;
+				height:16px;
+			}
+			#pcalendar-w{
+				border:1px solid #aaa;
+				border-radius:2px;
+				width:125px;
+				height:20px;
+				float:left;
+				padding:1px 5px;
+				color:#5a5a2e;
+				margin:0 1px 0 0;
+			}
+			#date2{
+				cursor:pointer;
+			}
+			
+		</style>
+    </head>
+    <body>
+     <div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://paperagain.wordpress.com">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>	
+		
+    <div id="main">
+    	<h1 class="fl">PCalendar Examples</h1>
+		<a  href="http://paperagain.wordpress.com/2011/07/09/code-mind-manager/" class="fr" title="最好是说明：浏览器版本，什么情况，能截图就截图。我好进行bug重现，不然我很难调试。谢谢 :)">Bug提交地址</a>
+		<div class="c"></div>
+		
+        <div class="block l">
+            <h4>默认情况（日期可以全部选择，中文界面，格式是：yyyy-mm-dd）</h4>
+			<pre>
+PCalendar({
+  'node':'date1'
+});
+
+PCalendar({
+  'node':'date2',
+  'callback':function(s){
+    document.getElementById('pcalendar-w').innerHTML=s;
+  },
+  'clearCallback':function(){
+    document.getElementById('pcalendar-w').innerHTML='';
+  }
+});
+			</pre>
+            
+			<table>
+				<tr>
+					<td><label for="date1">传统的</label></td>
+					<td>不是输入框</td>
+				</tr>
+				<tr>
+					<td><input type="text" id="date1" readonly="readonly" /><br /></td>
+					<td><div id="pcalendar-w"></div><img src="pcalendar24.png" id="date2" alt="pcalendar" /></td>
+				</tr>
+			</table>
+			<br />
+			<select>
+				<option>Just For IE6</option>
+			</select>
+        </div>
+		
+		 <div class="block">
+			<h4>设置了（日期以今天为分界线，英文界面，日历位置出现在右边，日期格式）</h4>
+			<pre>
+PCalendar({
+  'node':'date3',
+  'allValide':false,
+  'lang':'en',
+  'position':'right',
+  'format':'yyyy/m/d'
+});
+			</pre>
+       	 	<input type="text" id="date3" />
+		</div>
+		
+		<div class="c"></div>
+		
+		 <div class="block l">
+			<h4>设置了（关联）</h4>
+			<pre>
+PCalendar({
+  'node':'date4',
+  'endDateNode':'date5'
+});
+PCalendar({
+  'node':'date5',
+  'beginDateNode':'date4'
+});
+			</pre>
+			<table>
+				<tr>
+					<td><label for="date4">开始时间</label></td>
+					<td><label for="date5">结束时间</label></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="date4" /></td>
+					<td><input type="text" id="date5" /></td>
+				</tr>
+			</table>
+		</div>
+		
+		 <div class="block">
+			<h4>设置了（自定义的日期范围）</h4>
+			<pre>
+PCalendar({
+  'node':'date6',
+   <span>//这里设置：[2011,6,4]就是指6月4号，而不是指7月4号（不是从0开始）</span>
+  'beginDate':[2011,6,4],
+  'endDate':[2012,3,2]
+});
+
+PCalendar({
+  'node':'date7',
+   <span>//只是设置了：beginDate。当然你也可以单独设置endDate</span>
+   <span>//设置的内容不能为空</span>
+  'beginDate':[2011,6,4]
+});
+			</pre>
+			<table>
+				<tr>
+					<td><label for="date6">date6</label></td>
+					<td><label for="date7">date7</label></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="date6" /></td>
+					<td><input type="text" id="date7" /></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="c"></div>
+    </div><!--end #main-->
+		
+   
+	   
+       <script type="text/javascript">
+			PCalendar({
+				'node':'date2',
+				'callback':function(s){
+					document.getElementById('pcalendar-w').innerHTML=s;
+				},
+				'clearCallback':function(){
+					document.getElementById('pcalendar-w').innerHTML='';
+				}
+			});
+			
+			PCalendar({
+				'node':'date1'
+			});
+			
+			PCalendar({
+				'node':'date3',
+				'allValide':false,
+				'lang':'en',
+				'position':'right',
+				'format':'yyyy/m/d'
+			});
+			
+			PCalendar({
+				'node':'date4',
+				'endDateNode':'date5'
+			});
+			
+			PCalendar({
+				'node':'date5',
+				'beginDateNode':'date4'
+			});
+			
+			PCalendar({
+				'node':'date6',
+				'beginDate':[2011,6,4],
+				'endDate':[2012,3,2]
+			});
+			
+			PCalendar({
+				'node':'date7',
+				'beginDate':[2011,6,4]
+			});
+        </script>
+    </body>
+</html>

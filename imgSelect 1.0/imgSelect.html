@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>imgSelect</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="imgSelect.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	 <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+	
+	<div id="main">
+		<div class="exp area">
+			<h1>图片选择 1.0</h1>
+			<ul>
+				<li><span>(1)</span>支持<strong>单击选择</strong>，<strong>ctrl选择(取消)</strong>，<strong>shift选择</strong>。</li>
+				<li><span>(2)</span>支持<strong>拖拽选择</strong>。</li>
+			</ul>
+			<div id="msg">这里是提示消息</div>
+			
+			<div class="op">
+				<a href="javascript:;" id="changeBox">改变box大小</a>
+			</div>
+		</div>
+		<div class="box area" id="box">
+			<div class="content" id="content">
+				<div class="images-wrapper" id="imagesWrapper">
+					<ul class="images-list clearfix" id="imagesList">
+						<li>
+							<div><img src="images/1.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/2.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/3.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/4.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/5.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/6.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/7.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/8.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/9.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/10.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/11.jpg" alt=""></div>
+						</li>
+						<li>
+							<div><img src="images/12.jpg" alt=""></div>
+						</li>
+					</ul>
+					<div id="selectBox" style="display:none;"></div>
+				</div>
+			</div>
+		</div>
+	</div><!--end main-->
+	
+	<script type="text/javascript" src="../js/bj-1.2.9-mini.js"></script>
+	<script type="text/javascript" src="imgSelect-1.0.js"></script>
+	<script type="text/javascript">
+		var min=240,max=900,begin=580,box=BJ('#box'),
+			//基本动画函数
+			animate=function(obj){
+			 var elem = obj.elem, //元素
+		        //obj.begin,				//起始位置
+		        //obj.end,					//结束位置
+		        callback = obj.callback, //调用的函数
+				timeStep = obj.speed || 10; //时间频率
+				endCallback=obj.endCallback;	//动作结束后的回调函数
+				
+		        (function(){
+		            if (obj.begin == obj.end){
+						if(endCallback) endCallback.call(elem,obj.begin);
+						return;
+					} 
+		                
+		            var step;
+		            if (obj.begin < obj.end) {
+		                step = Math.ceil((obj.end - obj.begin) / 10);
+		                obj.begin += step;
+		            }
+		            else {
+		                step = Math.ceil((obj.begin - obj.end) / 10);
+		                obj.begin -= step;
+		            }
+		            callback.call(elem, obj.begin);
+		            
+		            setTimeout(arguments.callee, timeStep);
+		        })();
+			};
+							
+		BJ('#changeBox').onclick=function(){
+			var len=~~(Math.random()*(max-min)+min);
+
+			animate({
+				elem:box,
+				begin:begin,
+				end:len,
+				callback:function(w){
+					this.style.width=w+'px';
+				},
+				endCallback:function(){
+					begin=len;
+				}
+			})
+		};
+	</script>
+</body>
+</html>

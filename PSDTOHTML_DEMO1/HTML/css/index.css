@@ -1,0 +1,37 @@
+@charset"utf-8";
+.gallery{clear:both;height:378px;background:url(../images/home_bg.gif) top repeat-x;}
+.gallery-main{height:378px;background:url(../images/home_top_bg.jpg) top center no-repeat;position:relative;}
+#gallery-prev,#gallery-next{display:block;position:absolute;top:170px;width:28px;height:29px;text-indent:-9999px;overflow:hidden;}
+#gallery-prev{left:0;background:url(../images/arrow_toleft.gif) no-repeat;}
+#gallery-next{right:0;background:url(../images/arrow_toright.gif) no-repeat;}
+.gallery-wrap{width:860px;height:378px;overflow:hidden;margin:0 auto;position:relative;}
+.gallery-wrap-inner{width:9999px;height:378px;}
+.gallery-wrap .block{width:860px;height:378px;float:left;position:relative;}
+.gallery-wrap .block h2{color:#fff;font-size:36px;line-height:36px;}
+.gallery-wrap .block p{color:#242424;margin-top:20px;}
+.gallery-wrap .block a.more{display:block;width:133px;height:30px;background:url(../images/more_information.gif) no-repeat;text-indent:-9999px;}
+.gallery-wrap img{position:absolute;right:10px;top:43px;}
+.gallery-wrap .block-main{padding:70px 470px 0 0;}
+.company-about{height:234px;overflow:hidden;clear:both;background:url(../images/banner_bar_bg.jpg) top repeat-x;}
+.company-about .block{float:left;_display:inline;width:290px;margin-top:30px;}
+.company-about .block h3{color:#fff;font-size:20px;border-bottom:1px solid #3c3c3c;padding-bottom:10px;margin-bottom:10px;}
+.company-about .block .info{padding-left:70px;}
+.company-about .block .info p{color:#ababab;margin-bottom:5px;}
+.company-about .block .more{color:#AE5900;font-weight:bolder;}
+.company-about .business-plan{margin-left:40px;margin-right:40px;}
+.company-about .web-developmen .info{background:url(../images/banner_bar_img1.gif) left top no-repeat;}
+.company-about .business-plan .info{background:url(../images/banner_bar_img2.gif) left top no-repeat;}
+.company-about .our-support .info{background:url(../images/banner_bar_img3.gif) left top no-repeat;}
+.featured-services{width:600px;overflow:hidden;}
+.featured-services .f11{color:#B0B0B0;}
+.featured-services .foreword{margin-top:20px;}
+.featured-services .block{position:relative;padding:0 0 25px 75px;margin-top:25px;border-bottom:1px solid #dcdcdc;margin-bottom:-1px;min-height:80px;_height:80px;}
+.featured-services .block h4{}
+.featured-services .block h4 a{color:#AE5500;}
+.featured-services .block img{position:absolute;left:0;top:5px;width:60px;height:60px;}
+.featured-services .block a.more{color:#626262;font-weight:bolder;text-decoration:underline;}
+.news-events{width:283px;}
+.news-events p.date{color:#AB5A0B;margin-bottom:5px;}
+.news-events p.detail{padding-bottom:15px;border-bottom:1px solid #dbdbdb;margin-bottom:15px;}
+.news-events a.more{color:#606060;font-weight:bolder;}
+.news-events a.more:hover, .news-events a.more:focus{color:#AB5A0B;}

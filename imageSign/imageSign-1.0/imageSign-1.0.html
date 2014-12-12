@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>imageSign</title>
+	<link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="imageSign.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+            <div class="header-main">
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+				
+                <div class="copyright">
+                    made by zhang binjue
+                </div>
+            </div>
+        </div><!--end header-->
+		
+		<div id="main">
+			<div id="msg"></div>
+			<input type="button" value="清除全部缓存" id="removeImageSign" />
+			
+			<!--后台完全可以获取图片的大小，然后赋值在页面上-->
+			<div id="imageWrap" class="image-wrap" style="width:921px;height:570px;background:url(images/apple_desk.jpg) no-repeat;">
+				<input type="hidden" id="curZIndex" value="10" />
+			</div>
+		</div><!--end main-->
+	</div><!--end wrap-->
+	
+	<script type="text/javascript" src="../../js/bj-1.2.9-mini.js"></script>
+	<script type="text/javascript" src="imageSign-1.0.js"></script>
+	<script type="text/javascript">
+		BJ('#removeImageSign').onclick=function(){
+			imageSign.removeAll();
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>imageFocus</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="imageFocus.css" />
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+		<div class="image-focus" id="image_focus">
+			
+			<div class="image-focus-main" id="image_focus_main">
+				<img id="image" class="image" src="mm.jpg" alt="mm" />
+				<div id="shade" class="shade"></div>
+				<div id="focus" class="focus" style="display:none;"></div>
+				<div id="forCode" class="for-code"></div>
+			</div>
+			
+		</div>	
+	</div>
+	
+	<script type="text/javascript" src="../js/Fuee-1.3.js"></script>
+	<script type="text/javascript" src="imageFocus.js"></script>
+	<script type="text/javascript">
+		ImageFocus('image_focus_main','focus','forCode');
+	</script>
+</body>
+</html>

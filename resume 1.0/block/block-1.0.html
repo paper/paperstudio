@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<link href="css/g.css" rel="stylesheet" media="all" type="text/css" />
+		<link href="css/block.css" rel="stylesheet" media="all" type="text/css" />
+		<script type="text/javascript" src="js/bj-1.2.8.js"></script>
+		<script type="text/javascript" src="js/block-1.0.js"></script>
+		<title>俄罗斯方块</title>
+	</head>
+	<body>
+		<div id="message" style="display:none;"></div>
+		<div id="temp_block" style="display:none;"></div>
+		
+		<div id="page">
+			<div id="header">
+				<h1>俄罗斯方块</h1>
+			</div>
+			
+			<div id="content" class="clearfix">
+				<!--游戏主要窗口-->
+				<div id="main">
+					<div id="block" class="block bg1">
+						
+					</div>
+					
+					<div id="blocks_dead" class="block bg1">
+						
+					</div>
+				</div><!--end main-->
+				
+				<div id="window">
+					<div id="window_block" class="block bg1">
+						
+					</div>
+					
+					<div id="msg"></div>
+				</div><!--end window-->
+				
+				<div class="block-info">
+					<dl>
+						<dt>游戏说明</dt>
+						<dd>方向键 <strong>上、下、左、右</strong> 进行操作。<br /><br />
+						<strong>P</strong> 暂停； <strong>空格</strong> 继续
+						</dd>
+					</dl>
+					
+					<dl class="change-theme">
+						<dt>更换主题</dt>
+						<dd id="theme">
+							<a class="c1 select" href="javascript:;" onclick="block.changeTheme(1);"></a><a class="c2" href="javascript:;" onclick="block.changeTheme(2);"></a>
+							<a class="c3" href="javascript:;" onclick="block.changeTheme(3);"></a><a class="c4" href="javascript:;" onclick="block.changeTheme(4);"></a>
+							<a class="c5" href="javascript:;" onclick="block.changeTheme(5);"></a>
+						</dd>
+					</dl>
+					
+					<dl class="change-speed">
+						<dt>调节速度</dt>
+						<dd id="speed">
+							<input type="button" value="慢" onclick="block.changeSpeed(1000,0);" />
+							<input type="button" value="中" class="select" onclick="block.changeSpeed(300,1)"/> 
+							<input type="button" value="快" onclick="block.changeSpeed(100,2)"/>
+						</dd>
+					</dl>
+					
+					<dl class="mark">
+						<dt>您的成绩</dt>
+						<dd>
+							<em id="your_mark">0</em>
+						</dd>
+					</dl>
+					
+					<dl class="test-info">
+						<dt>测试说明</dt>
+						<dd>
+							<P>到目前为止，FF和IE6测试我和朋友都没有发现问题，可惜IE7会出问题<span>(就是突然死机一样，我初步猜想是内存机制的问题)</span>，但是不报错。
+							非常抱歉，如果你知道什么问题，请告诉我。谢谢~~~</p>
+						</dd>
+					</dl>
+				</div>
+			</div><!--end content-->
+			
+			<div id="footer">
+				<div class="ft">
+					<p><span>Version 1.0</span>Made By Zhang Binjue <a href="http://hi.baidu.com/paperstudio" target="_blank" title="welcome">My Blog</a></p>
+					<p>Copyright &copy; No Rights Reserved <span class="c">:)</span></p>
+				</div>
+			</div><!--end footer-->
+		</div><!--end page-->
+		
+		
+	<script type="text/javascript">
+		BJ.ieImage();
+		
+		var block=new Block();
+		block.init();		//游戏初始化
+		block.move_down(); //游戏开始
+		block.listenKeyDown();//键盘监控
+	</script>
+	</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>changeBgColor</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:900px;
+			margin:0 auto;
+		}
+		
+		#box{
+			background-color:#fff;
+			border:2px solid #000;
+			width:300px;
+			height:300px;
+		}
+		#boxWord{
+			padding:20px;
+			font-size:14px;
+			font-weight:bolder;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	 <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+    <!--end header-->
+	
+	<div id="main">
+		<div id="box">
+			<span id="boxWord">我就是这里面的文字了</span>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/bj-1.2.9-supermini.js"></script>
+	<script type="text/javascript">
+		BJ.drag({
+			node:'box'
+		});
+		
+		function t(){
+			BJ('box').changeColor({
+				from: '#fff',
+				to: '#002299',
+				speed: 'slow',
+				end: function(){
+					BJ('box').changeColor({
+						to: '#fff',
+						speed: 'fast',
+						end: function(){
+							t();
+						}
+					});
+				}
+			});
+		};
+		
+		function w(){
+			BJ('boxWord').changeColor({
+				type:'color',
+				from: '#000',
+				to: '#fff',
+				speed: 'slow',
+				end: function(){
+					BJ('boxWord').changeColor({
+						type:'color',
+						to: '#000',
+						speed: 'fast',
+						end: function(){
+							w();
+						}
+					});
+				}
+			});
+		};
+		
+		w();
+		t();
+	</script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>index</title>
+        <link href="../reset.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            
+            #main {
+                width: 980px;
+                margin: 0 auto;
+            }
+            
+            .hidden {
+                position: absolute;
+                left: -9999px;
+            }
+            
+            h1 {
+                font-size: 16px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #222;
+                margin-bottom: 20px;
+            }
+            
+            .box {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .box h2 {
+                color: #004000;
+                font-size: 14px;
+                padding-bottom: 10px;
+            }
+            
+            .box h2 a {
+                text-decoration: underline;
+                color: #003399;
+            }
+            
+            .gmap {
+            }
+            
+            .gmap .block {
+               
+            }
+            
+            .gmap a.open,.gmap a.close {
+                background: url(images/yn-1.png) no-repeat;
+                display: inline-block;
+                display: block\9; /*for all IE*/
+				width:74px;
+				height:34px;
+				text-indent:-9999px;
+				overflow:hidden;
+			}
+			.gmap a.close{
+				background-position:-74px 0;
+			}
+			.gmap a.open{
+				background-position:0 0;
+			}                       		
+			div.ml-select {
+			    position: relative;
+			    width: 684px;
+				border: 1px solid black;
+				padding:8px;
+				background-color:#D5DDF3;
+			}
+			div.ml-header, div.ml-footer {
+			    background-color: #E8ECF9;
+			    height: 35px;
+			}
+			div.ml-header {
+			    padding: 0 15px;
+			}
+			div.ml-footer {
+			    height: auto;
+			    overflow: hidden;
+			    width: 684px;
+			}
+			div.ml-buttons {
+			    float: left;
+			    margin: 8px 15px;
+			}
+			div.ml-conf-mid {
+			    margin: 8px 15px;
+			}
+			div.ml-conf-mid p {
+			    margin: 8px 0;
+			}
+			div.ml-conf-foot {
+			    background-color: #E8ECF9;
+			    padding: 8px 15px;
+			    text-align: right;
+			}
+			div.ml-conf-foot *:first-child, div.ml-buttons *:first-child {
+			    font-weight: bold;
+			}
+			div.ml-conf-foot button {
+			    margin-left: 8px;
+			}
+			div.ml-login {
+			    padding: 8px 15px;
+			}
+			div.ml-header span.ml-close {
+			    float: right;
+			    margin-top: 10px;
+			}
+			div.ml-header div.ml-title {
+			    font-size: 123%;
+			    font-weight: bold;
+			    padding-top: 10px;
+			}
+			div.ml-header span.ml-close a {
+			    background: url("http://maps.gstatic.com/mapfiles/close_button.png") no-repeat scroll 0 0 transparent;
+			    cursor: pointer;
+			    display: block;
+			    height: 15px;
+			    width: 15px;
+			}
+			div.ml-header span.ml-close img {
+			    height: 15px;
+			    width: 15px;
+			}
+			div.ml-header span.ml-close a.ml-close-hover {
+			    background-position: 0 -15px;
+			}
+			div.ml-header span.ml-close a.ml-close-hover.ml-close-active {
+			    background-position: 0 -30px;
+			}
+			div.ml-content {
+			    height: 464px;
+			    overflow: auto;
+			    padding: 0 15px;
+				background-color:#fff;
+			}
+			div.ml-blurb{
+				padding:10px 0;
+			}
+			ul.ml-dir, ul.ml-conf-list {
+			    list-style: none outside none;
+			    margin: 0;
+			    padding: 0;
+			}
+			ul.ml-dir li {
+			    border-top: 2px solid #E8ECF9;
+			    overflow: hidden;
+			    padding: 15px 0;
+			}
+			ul.ml-dir li:hover{
+				background-color:#f4f4f4;
+			}
+			ul.ml-conf-list li {
+			    border-left: 2px solid #E8ECF9;
+			    margin-left: 15px;
+			    padding-left: 15px;
+			}
+			ul.ml-dir li.ml-disabled {
+			    border-top: 5px solid #FF0000;
+			}
+			div.ml-opt {
+				margin:20px 0 0;
+			    float: right;
+			    width: 115px;
+			}
+			div.ml-opt label {
+			    font-weight: bold;
+			}
+			div.ml-thumb {
+			    float: left;
+			    width: 122px;
+			}
+			div.ml-thumb img {
+			    border: 1px solid #000000;
+			    height: 60px;
+			    width: 120px;
+			}
+			div.ml-meta {
+			    margin: 0 130px 0 137px;
+			}
+			div.ml-title {
+			    font-weight: bold;
+			}
+			div.ml-author {
+			    color: #666666;
+			    font-size: 85%;
+			    padding-bottom: 6px;
+			}
+			div.ml-intext {
+			    color: #FF0000;
+			    float: right;
+			    font-weight: bold;
+			}  
+        </style>
+		<script type="text/javascript">
+			 try {
+            	document.execCommand("BackgroundImageCache", false, true);
+       		} catch (e) {}
+			
+            function gmapBtn(me){
+                me.className = me.className == 'close' ? 'open' : 'close';
+            };
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-main">
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://paperagain.wordpress.com">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    made by zhang binjue
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <h1>一点要清晰！一定要一目了然！</h1>
+            <div id="gmap_lab" class="gmap box">
+                <!--
+                http://maps.google.com
+                google地图实验室
+                -->
+				<h2><a target="_blank" href="http://maps.google.com/">gmap lab</a></h2>
+                <div class="block">
+                    <div class="w" style="background-color: white;">
+                        <div class="c" style="cursor: default;">
+                            <div class="ml-select" jstcache="0">
+                                <div class="ml-header" jstcache="0">
+                                    <span class="ml-close" jstcache="0"><a jseval="prepClose(this);" class="ml-close-inactive" jstcache="31"><img src="http://maps.gstatic.com/mapfiles/transparent.png" jstcache="0"></a></span>
+                                    <div class="ml-title" jstcache="0">
+                                        Google 地图实验室
+                                    </div>
+                                </div>
+                                <div class="ml-content" jstcache="0">
+                                    <div class="ml-blurb" jstcache="0">
+                                        <p jstcache="0">
+                                            Google 地图实验室是试验性功能的演练场，展示一些尚不成熟的功能。这些功能随时可能<b jstcache="0">更改</b>、<b jstcache="0">中断</b>甚至<b jstcache="0">撤消</b>。
+                                        </p>
+                                        <p jsvalues="innerHTML:escapeMsg" jstcache="32">
+                                            如果某个功能中断，导致您无法载入 Google 地图，请使用此应急路径：<a href="/maps?ftr=0" jstcache="0">/maps?ftr=0</a>。
+                                        </p>
+                                    </div>
+                                    <ul class="ml-dir" jstcache="0">
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="0" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/misc/distance_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="open">启用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    距离测量工具
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Adam S, Andrey S, James M, Seth L
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    在 Google 地球上测量某条路线的距离
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="1" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/misc/shorturl_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    简短网址
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Ben A, Holly D
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    将地图“链接”缩减为更简洁的网址。
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="2" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/controls/showmehere_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    在此显示！
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Cornelius Q
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    向右键菜单中添加一个选项，利用该选项可在光标位置处直接缩放到最大缩放级别。
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="3" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/controls/dragzoom_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    划定区域放大
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Dave D
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    现在，您可以简单快捷地放大地图中的特定区域。只需点击“划定区域放大”按钮，在地图上绘制一个方框，就可以放大方框中的区域！十分简单！
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="4" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/misc/beta_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="open">启用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    回到测试版
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    David S
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    Gmail 并不是唯一能使用测试版的产品。
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="5" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/games/witw_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    游戏：猜猜这是哪儿
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Jez F
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    测试您的世界地理知识！根据卫星图像猜出国家/地区名称，不断刷新高分纪录！
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="6" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/search/starsearch_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    这附近有什么？
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Michael A
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    添加一个功能按钮，让它显示当前地图视图中最受人们欢迎的地方，从而大大地方便您浏览地图。
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="7" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/misc/latlngtooltip_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    经纬度工具提示
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Marcelo C
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    在鼠标光标旁显示一条工具提示（说明光标所指位置的经纬度）。按 Shift 可激活工具提示。
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="8" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/misc/latlngmarker_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    经纬度标记
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Marcelo C
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    可向右键菜单中添加一个选项；添加后，当您调出右键菜单并选择这个选项时，就可以放置一个显示光标所指位置的经纬度信息的小标记。
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li jsvalues="className:ftr_disabled ? 'ml-disabled' : ''" jsselect="experiments" jstcache="33" jsinstance="*9" class="">
+                                            <div class="ml-thumb" jstcache="0">
+                                                <img src="http://maps.gstatic.com/mapfiles/ftr/misc/maxzoom_thumb.png" jsvalues="src:thumb_src" jstcache="37">
+                                            </div>
+                                            <div jseval="prepRadio(this, $ftr_id, $ftr_url, enabled, ftr_disabled)" class="ml-opt" jstcache="36">
+                                                <a href="javascript:;" onclick="gmapBtn(this);return false;" class="close">停用</a>
+                                            </div>
+                                            <div class="ml-meta" jstcache="0">
+                                                <div jsdisplay="intext" jscontent="intext" class="ml-intext" jstcache="38" style="display: none;">
+                                                </div>
+                                                <div jscontent="title" class="ml-title" jstcache="39">
+                                                    智能放大
+                                                </div>
+                                                <div jscontent="author" class="ml-author" jstcache="40">
+                                                    Jez F
+                                                </div>
+                                                <div jsvalues="innerHTML:desc" class="ml-desc" jstcache="41">
+                                                    您是否曾经因为过度放大图像而看到类似“我们没有能放大到此级别的图像”的提示？智能放大功能可以预先检查现有的图像，防止出现超范围放大的情况。
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ml-footer" jstcache="0">
+                                    <div class="ml-buttons" jstcache="0">
+                                        <input type="submit" value="保存更改" jseval="prepSubmit(this)" jstcache="34"><input type="button" value="取消" jseval="prepCancel(this)" jstcache="35">
+                                    </div>
+                                    <div jsvalues="innerHTML:notLoggedInMsg" jsdisplay="notLoggedInMsg" jseval="prepUpdateAnchor(this)" class="ml-login" jstcache="30" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end gmap_lab-->
+        </div>
+        <!--end main-->
+    </body>
+</html>

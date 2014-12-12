@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<style type="text/css">
+			body,html{
+				background-color:#fefefe;
+				font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+			}
+			body,html,div,h1,p{
+				padding:0;
+				margin:0;
+			}
+			#wrapper{
+				width:600px;
+				margin:0 auto;
+				padding:40px 10px 10px;
+			}
+			.hd{}
+			.hd h1{
+				font-size:14px;
+				padding:5px 5px 5px 10px;
+				background-color:#005599;
+				border-bottom:2px solid #003399;
+				color:#fff;
+				margin-bottom:20px;
+			} 
+			.ft{
+				padding-top:20px;
+				clear:both;
+				font-size:12px;
+				color:#007799;
+			}
+			.ft p{
+				border-top:1px solid #ccc;
+				padding-top:10px;
+				line-height:1.5;
+			}
+			.ft a{
+				color:#003399;
+			}
+			.mini{
+				float:left;
+				width:261px;
+				height:142px;
+				border:1px solid #ccc;
+				position:relative;
+			}
+			.mini #box{
+				border:2px solid #000;
+				width:71px;
+				height:71px;
+				position:absolute;
+				left:0;
+				top:0;
+			}
+			.mini img{
+				display:block;
+				width:261px;
+				height:142px;
+			}
+			.full{
+				width:300px;
+				height:300px;
+				overflow:hidden;
+				border:1px solid #ccc;
+				float:right;
+				position:relative;
+			}
+			.full #full-image{
+				position:absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+		<title>image amplifier</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="hd">
+				<h1>图片放大器</h1>
+			</div>
+			<div class="mini" id="mini">
+				<div id="box" style="display:none;"></div>
+				
+				<img src="CarClarity_1007.jpg" />
+			</div>
+			<div class="full" id="full">
+				<img id="full-image" src="CarClarity_1007.jpg" style="display:none;" /> 
+			</div>
+			
+			<div class="ft">
+				<p>Made by Zhang Binjue <br />No Rights Reserved. my <a href="http://hi.baidu.com/paperstudio">space</a></p>
+			</div>
+		</div>
+		<script type="text/javascript" src="bj-1.2.9-mini.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			
+				//获取mini相对页面的位置    加上了border的宽度
+				var leftMini=BJ("mini").getElementPos().x+parseInt(BJ("mini").css("borderTopWidth")),
+					topMini=BJ("mini").getElementPos().y+parseInt(BJ("mini").css("borderLeftWidth")),
+					widthMini=261,heightMini=142,		//缩略图的框的大小
+					widthFull=300,heightFull=300,		//大图预览框的大侠
+					widthBox=75,heightBox=75,			//跟随鼠标动的框的大小
+					widthImage=1024,heightImage=768;	//图片尺寸
+					
+				BJ("mini").bind({
+					mouseover:function(e){
+						//box和full-image显示出来
+						BJ("box").show();
+						BJ("full-image").show();
+					},
+					
+					mousemove:function(e){
+						//获取鼠标相对位置
+						var mx=BJ.getMouse(e).x-leftMini;
+							my=BJ.getMouse(e).y-topMini;
+							
+						//设置box的显示位置
+						var boxLeft,boxTop;
+						if(mx-widthBox/2<0){
+							boxLeft=0;
+						}else if(mx-widthBox/2>widthMini-widthBox){
+							boxLeft=widthMini-widthBox;
+						}else{
+							boxLeft=mx-widthBox/2;
+						}
+						
+						if(my-heightBox/2<0){
+							boxTop=0;
+						}else if(my-heightBox/2>heightMini-heightBox){
+							boxTop=heightMini-heightBox;
+						}else{
+							boxTop=my-heightBox/2;
+						}
+						
+						//设置box的位置
+						BJ("box").css({
+							"left":boxLeft+"px",
+							"top":boxTop+"px"
+						});
+						
+						//设置full-iamge的位置
+						BJ("full-image").css({
+							"left":-boxLeft*Math.round((widthImage-widthFull)/(widthMini-widthBox))+"px",
+							"top":-boxTop*Math.round((heightImage-heightFull)/(heightMini-heightBox))+"px"
+						});
+					},
+					
+					mouseout:function(e){
+						//如果用户是不小心离开了预览框，给他一个反应时间
+						BJ(this).hold({
+							timeOut:300,
+							out:function(){
+								//box和full-image隐藏
+								BJ("box").fOut(80);
+								BJ("full-image").hide()
+							}
+						});
+					}
+				});
+			
+			//]]
+		</script>
+	</body>
+</html>

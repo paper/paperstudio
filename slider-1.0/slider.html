@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>slider</title>
+	<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="slider.css" media="all" />
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div><!--end header-->
+	<div id="msg"></div>
+	
+	<div id="main">
+		<div class="block">
+			<h2><span>横向拖动(width=150px)</span></h2>
+			<div id="sliderA" class="slider" style="width:150px;">正在加载...</div>
+		</div>
+		
+		<div class="block">
+			<h2><span>横向拖动(width=200px，初始化为20%，提示一直显示)</span></h2>
+			<div id="sliderB" class="slider" style="width:200px;">正在加载...</div>
+		</div>
+		
+		<div class="block">
+			<h2><span>横向拖动(width=300px，step是20)</span></h2>
+			<div id="sliderC" class="slider" style="width:300px;">正在加载...</div>
+		</div>
+	</div><!--end main-->
+	
+	<script type="text/javascript" src="../js/bj-1.2.9-mini.js"></script>
+	<script type="text/javascript" src="slider-1.0.js"></script>
+	<script type="text/javascript">		
+		Slider('sliderA');
+		Slider('sliderB',{
+			//初始化百分比
+			'initPercent':20,
+			'tipShow':true,
+			'mousemove':function(o){
+				o.sliderTip.innerHTML=o.x+'%';
+				//o.sliderInput.value=o.x;
+			}
+		});
+		Slider('sliderC',{
+			'step':20
+		});
+	</script>
+	
+	<!--<input type="hidden" name="sliderA_value" />
+	<div class="slider-point br5"></div>
+	<div class="slider-line br5"></div>
+	<div class="slider-tip br5 bs5" style="display:none;"></div>-->
+</body>
+</html>

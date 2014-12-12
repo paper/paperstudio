@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>stop!Human</title>
+		<link href="../reset.css" rel="stylesheet" type="text/css" />
+		<style>
+			#main{
+				width:980px;
+				margin:0 auto;
+			}
+			#space{
+				margin:60px auto 0;
+				width:850px;
+				height:400px;
+				overflow:hidden;
+				position:relative;
+				
+				box-shadow:0 0 10px #444;
+				-moz-box-shadow:0 0 10px #444;
+				-webkit-box-shadow:0 0 10px #444;
+				
+				border-radius:4px;
+				-moz-border-radius:4px;
+				-webkit-border-radius:4px;
+			}
+			#space img{
+				position:absolute;
+			}
+			#space img#plane{
+				z-index:6;
+			}
+			#space img#word{
+				z-index:5;
+			}
+			#space img#cat{
+				z-index:4;
+			}
+			#space img#dog{
+				z-index:3;
+			}
+			#space img#moon{
+				z-index:2;
+			}
+			#space img#bg{
+				z-index:1;
+			}
+		</style>
+		<!--[if lte IE 6]>
+			<script type="text/javascript" src="DD_belatedPNG_0.0.8a-min.js"></script>
+			<script type="text/javascript">
+				DD_belatedPNG.fix('.ie6png');
+			</script>
+		<![endif]-->
+	</head>
+	<body>
+		 <div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://paperagain.wordpress.com">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+		<div id="main">
+			<div id="space">
+				<img class="ie6png" id="plane" src="images/plane.png" width="310" height="210" alt="plane" style="left:96px;top:131px;" />
+				<img class="ie6png" id="cat" src="images/ET-cat.png" width="128" height="128" alt="外星猫" style="left:535px;top:249px;" />
+				<img class="ie6png" id="word" src="images/word.png" width="158" height="117" alt="stop!Human" style="left:570px;top:133px;" />
+				<img class="ie6png" id="dog" src="images/ET-dog.png" width="100" height="100" alt="外星狗" style="left:680px;top:208px;" />
+				<img class="ie6png" id="moon" src="images/ET-moon.png" width="64" height="64" alt="外星月亮" style="left:724px;top:34px;" />
+				<img class="ie6png" id="bg" src="images/bg.jpg" width="900" height="490" alt="space" style="left:0;top:0;" />
+			</div>
+		</div>
+		<script type="text/javascript" src="3D-image.js"></script>
+		<script type="text/javascript">
+	        image3D({
+	            'image3D_wrapId': 'space',
+	            'image3D_images': {
+	                'plane': 30,
+	                'cat': 30,
+	                'word': 30,
+	                'dog': 25,
+	                'moon': 20,
+					'bg':40
+	            }
+	        })
+		</script>
+	</body>
+</html>

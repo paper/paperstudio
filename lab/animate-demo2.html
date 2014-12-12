@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>animate-demo</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<link href="https://paperstudio.googlecode.com/svn/trunk/css/reset.css" type="text/css" rel="stylesheet" />
+		<style type="text/css">
+			
+			#header {
+			    height: 40px;
+			    background-color: #444;
+			    border-bottom: 1px solid #000;
+			    margin-bottom: 20px;
+			}
+			
+			#header .header-main {
+			    width: 960px;
+			    margin: 0 auto;
+			    height: 40px;
+			    line-height: 40px;
+			}
+			
+			#header .nav {
+			    float: left;
+			}
+			
+			#header .nav ul {
+			}
+			
+			#header .nav ul li {
+			}
+			
+			#header .nav ul li a {
+			    color: #00ff00;
+			}
+			
+			#header .copyright {
+			    float: right;
+			    color: #777;
+			}
+			
+			#footer {
+			    width: 960px;
+			    margin: 0 auto;
+			}
+			
+			#container {
+			    min-height: 400px;
+				_height:400px;
+			    width: 960px;
+			    margin: 0 auto;
+			    border: 1px solid #ccc;
+			    border-radius: 10px;
+			    -moz-border-radius: 10px;
+			    -webkit-border-radius: 10px;
+			    -khtml-border-radius: 10px;
+			}
+			h1{
+				font-size:14px;
+				padding:20px;
+			}
+			#box{
+				width:100px;
+				height:100px;
+				border:1px solid #000;
+				margin:20px;
+				padding:10px;
+				background-color:#eee;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<div class="header-main">
+					<div class="nav">
+						<ul>
+							<li>
+								<a href="http://hi.baidu.com/paperstudio" target="_blank">HOME</a>
+							</li>
+						</ul>
+					</div>
+					<div class="copyright"> copyright &copy; zhang binjue</div>
+				</div>
+			</div>
+			<div id="container">
+				<h1>请等待一会~~~</h1>
+			
+				<div id="box">
+					I am box
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+
+			//<![CDATA[
+			var animate = (function(){
+			    var f = function(obj){
+			        var elem = obj.elem, 
+			        	begin=obj.begin,				
+			        	end=obj.end,					
+			       		callback = obj.callback, 
+			       		callbackOver=obj.callbackOver,
+					 	speed = obj.speed || 10; //时间频率
+			        
+					(function(){
+			           if (begin == end){
+							if(callbackOver)  callbackOver.call(elem, begin);
+							return;
+						}
+			            
+			            var step;
+			            if (begin < end) {
+			                step = Math.ceil((end - begin) / 10);
+			                begin += step;
+			            }
+			            else {
+			                step = Math.ceil((begin - end) / 10);
+			                begin -= step;
+			            }
+			            callback.call(elem, begin);
+			            
+			            setTimeout(arguments.callee, speed);
+			        })();
+			    };
+			    
+			    return f;
+			})();
+			
+			setTimeout(function(){
+				animate({
+				    "elem": document.getElementById('box'), //需要改变的节点
+				    "begin": 20, //它的起始位置
+				    "end": 500, //它的结束位置
+				    "speed": 20, //它的时间频率，即滚动的速度，默认是10
+				    "callback": function(begin){ //回调函数，传出的是被动态改变的begin，这样里面的就可以调用了。
+				        this.style.marginLeft = begin + "px"; //this就是上面的elem
+				    },
+					"callbackOver":function(){
+						alert('over')
+					}
+				});
+			},2000);
+			
+			//]]
+		</script>
+	</body>
+</html>

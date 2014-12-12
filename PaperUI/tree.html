@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>tree</title>
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/tree.css" />
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/tree.js"></script>
+	<style type="text/css">
+		.wrapper{
+			width:960px;
+			margin:0 auto;
+			padding:50px 0;
+		}
+		h1{
+			border-bottom:1px solid #ccc;
+		}
+		h2{
+			font-size:12px;
+		}
+		
+		.personalTable{
+			width:650px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="wrapper">
+	
+		<h1 class="mb20">树状菜单 1.0</h1>
+		
+		
+		<!--<div class="ptree">
+			<ul class="ptree-root">
+				<li>
+					<div class="ptree-branch-root"><span class="ptree-branch-minus"></span><a href="javascript:;">用户管理</a></div>
+					
+					<ul class="ptree-branch-main">
+						<li>
+							<div class="ptree-branch-root"><span class="ptree-branch-minus"></span><a href="javascript:;">用户列表</a></div>
+							
+							<ul class="ptree-branch-main" style="display:;">
+								<li><span class="ptree-branch-link"></span><a href="javascript:;">用户列表1</a></li>
+								<li><span class="ptree-branch-link"></span><a href="javascript:;">用户列表2</a></li>
+								<li><span class="ptree-branch-link"></span><a href="javascript:;">用户列表3</a></li>
+							</ul>
+						</li>				
+						
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">添加用户</a></li>
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">编辑用户</a></li>
+						<li>
+							<div class="ptree-branch-root"><span class="ptree-branch-add"></span><a href="javascript:;">删除用户</a></div>
+							
+							<ul class="ptree-branch-main" style="display:none;">
+								<li><span class="ptree-branch-link"></span><a href="javascript:;">删除用户1</a></li>
+								<li><span class="ptree-branch-link"></span><a href="javascript:;">删除用户2</a></li>
+								<li><span class="ptree-branch-link"></span><a href="javascript:;">删除用户3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				
+				<li>
+					<div class="ptree-branch-root"><span class="ptree-branch-minus"></span><a href="javascript:;">任务管理</a></div>
+					
+					<ul class="ptree-branch-main">
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">任务列表</a></li>
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">添加任务</a></li>
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">修改任务</a></li>
+					</ul>
+				</li>
+				
+				<li>
+					<div class="ptree-branch-root"><span class="ptree-branch-minus"></span><a href="javascript:;">消息管理</a></div>
+					 
+					<ul class="ptree-branch-main">
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">消息列表</a></li>
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">添加消息</a></li>
+						<li><span class="ptree-branch-link"></span><a href="javascript:;">修改消息</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>-->
+		
+		<!--
+			脚本动态生成树状菜单
+		-->
+		<div id="j-ptree">
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			PTree(data,'j-ptree');
+		</script>
+		
+		
+	</div><!--/wrapper-->
+</body>
+</html>

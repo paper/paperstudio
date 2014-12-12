@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>bjDialog googleCode22</title> 
+		<style type="text/css">
+        body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td, from {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, button, input, select, textarea {
+            font: 12px / 1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+        }
+		h1{
+			padding:5px 0 5px 10px;
+			margin:0 0 10px 0;
+			background-color:#2d6a22;
+			border-top:4px solid #454545;
+			border-left:4px solid #454545;
+			
+			border-bottom:4px solid #000;
+			border-right:4px solid #000;
+			color:#fff;
+			font-size:14px;
+		}
+		ul,li{
+			list-style:none;
+		}
+        em{
+        	font-style:normal;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        #dilei {
+            width: 600px;
+            margin: 50px auto 0 auto;
+        }
+        #dilei table {}
+        #dilei table td {
+        	font-size:14px;
+            border: 1px solid #2e2d18;
+            color: #000;
+            height: 29px;
+            width: 29px;
+            text-align: center;
+            vertical-align: middle;
+            cursor: default;
+            overflow: hidden;
+			background:#999 url(dilei_style1.png) no-repeat 0 0;
+        }
+        
+		#dilei table td.sign{
+			background:#999 url(dilei_style1.png) no-repeat -29px 0;
+		}
+		#dilei table td.empty{
+			background:none;
+		}
+		
+        #dilei table td:hover {
+        
+        }
+		#footer{
+			color:#999;
+			margin:10px 0 0 0;
+		}
+		#footer a{
+			color:#004276;
+		}
+		#footer sup{
+			color:#004276;
+			font-size:8px;
+			margin:0 0 0 -2px;
+			padding:2px 0 0 0;
+		}
+		#msg li{
+			margin:15px 0;
+		}
+		</style>
+    </head>
+    <body>
+    	<div id="msg"></div>
+		
+    	<div id="wrapper">
+    		
+        	<div id="dilei">
+        		<h1>扫雷 2.0</h1>
+				
+        		<div id="msg">
+        			<ul>
+    				<li>1. <strong style="color:#003399;">地雷总数：</strong><span id="dileiSum">30</span>
+					&nbsp;&nbsp;&nbsp;<strong style="color:#003399;">你标记的个数：</strong><span id="biaojisum">0</span></li>
+					
+					<li>2. <strong style="color:#003399;">游戏说明：</strong>点击<strong> 左键 </strong>打开，<strong> 右键 </strong>标记，<strong> 双击数字 </strong>打开周围格子</li>
+					
+					<li>3. <strong style="color:#003399;">游戏时间：</strong>
+					<span id="time">
+						<em id="h">00</em> : <em id="m">00</em> : <em id="s">00</em>
+					</span></li>
+					</ul>
+    			</div>
+			
+        	 	<table id="dilei-table" onselectstart="return false;">
+        	 		<tr>
+        	 			<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+        	 		</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td><td></td><td></td>
+					</tr>
+        	 	</table>
+				
+				<div id="footer">
+				<p>Made by Zhang Binjue &nbsp;&nbsp;  Version:2.0<br />No Rights Reserved. my 
+					<a target="_blank" href="http://hi.baidu.com/paperstudio">space</a><sup>◥</sup>
+				</p>
+			</div>
+				
+        	</div>
+		</div><!--end wrapper-->	
+        <script type="text/javascript" src="dilei-2.0.js"></script>
+   </body>
+</html>

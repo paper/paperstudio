@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>position_relative_bug</title>
+		<style type="text/css">
+			body{
+				padding:30px;
+			}
+			button{
+				margin:0 10px 10px 0;
+				padding:2px 5px;
+			}
+			#wrap{
+				/*
+				 * 去掉背景色，bug会消失，但是这个方法并不合理
+				 * 
+				 * 添加个zoom:1 或者overflow:hidden;，可以解除这个怪异的bug
+				 */
+				background-color:#ccc;
+				zoom:1;
+				/*position:relative; 不可以*/
+				/*overflow:hidden; 可以*/
+				/*zoom:1; 可以*/
+			}
+			#word,#page{
+				/*
+				 *只是为了看的清楚，去掉不影响 
+				 */
+				border:1px solid #000;
+			}
+			#word{
+				font-size:14px;
+			}
+			/*
+			 * 相对的框，设置了高度，或者宽度时。
+			 * 去掉的话，bug也会消失。
+			 */
+			#page{
+				position:relative;
+				height:144px;
+				width:612px;
+			}
+			
+			/*
+			 * 总结:感觉就是大容器里面的有个相对的位置的框，如果改变其他的原始，影响外面大框的大小时，
+			 * 要让它知道容器框的大小变化了!!
+			 * 
+			 * 通常的做法就是给#wrap添加zoom:1,overflow:hidden;
+			 * 证明这样做是可以解决这个bug的
+			 * 给#wrap添加：position:relative;不行
+			 */
+		</style>
+	</head>
+	<body>
+		<button onclick="b();">bigSize</button><button onclick="s();">smallSize</button>
+		
+		<div id="wrap">
+			
+			<div id="word">
+				<p>我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们</p>
+				<p>我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们</p>
+				<p>我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们</p>
+				<p>我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们</p>
+				<p>我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们我们</p>
+			</div>
+		
+			<div id="page">
+				你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们你们
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var word=document.getElementById("word");
+			
+			function b(){
+				word.style.fontSize="24px";
+			};
+			function s(){
+				word.style.fontSize="12px";
+			};
+		</script>
+	</body>
+</html>

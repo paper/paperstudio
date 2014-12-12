@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8" />
+		<title>cannonball</title>
+		<style type="text/css">
+			#canvas{
+				border:1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body onload="init();">
+		<canvas id="canvas" width="600" height="400">
+			Your browser doesn't support the HTML5 element canvas.
+		</canvas>
+		
+		<script type="text/javascript">
+//			function Ball(sx,sy,rad,stylestring){
+//				
+//			};
+			
+			var cwidth=600;
+			var cheight=400;
+			
+			var ctx;
+			var PI=Math.PI;
+			
+			var everything=[];
+			var tid;
+			var horvelocity;
+			
+			var verticalvel1,
+				verticalvel2;
+				
+			var gravity=2;
+			var iballx=20;
+			var ibally=300;
+			
+			function Ball(sx,sy,rad,stylestring){
+				this.sx=sx;
+				this.sy=sy;
+				this.rad=rad;
+				this.draw=drawball;
+				this.moveit=moveball;
+				this.fillstyle=stylestring;
+			};
+			
+			function drawball(){
+				ctx.fillStyle=this.fillstyle;
+				ctx.beginPath();
+				ctx.arc(this.sx,this.sy,this.rad,PI*2,true);
+				ctx.fill();
+			};
+			
+			function moveball(){
+				this.sx+=dx;
+				this.sy+=dy;
+			};
+			
+			var cball=new Ball(iballx,ibally,10,"rgb(250,0,0)");
+			
+			function Myrectangle(sx,sy,swidth,sheight,stylestring){
+				this.sx=sx;
+				this.sy=sy;
+				this.swidth=swidth;
+				this.sheight=sheight;
+				this.fillstyle=stylestring;
+				this.draw=drawrects;
+				this.moveit=moveball;
+			};
+			
+			function drawrects(){
+				ctx.fillStyle=this.fillstyle;
+				ctx.fillRect(this.sx,this.sy,this.swidth,this.sheight);
+			};
+			
+			var target=new Myrectangle(300,100,80,200,"rgb(0,5,90)");
+			var ground=new Myrectangle(0,300,600,30,"rgb(10,250,0)");
+			
+			everything.push(target);
+			everything.push(ground);
+			everything.push(cball);
+			
+			function init(){
+				ctx=document.getElementById("canvas").getContext("2d");
+				
+//				ctx.save();
+//				ctx.fillStyle="rgb(250,0,0)";
+//				//ctx.translate(50,50);
+//				ctx.rotate(-PI/6);
+//				//ctx.translate(-10,-10);
+//				ctx.fillRect(50,50,100,200);
+//				ctx.restore();
+//				
+//				ctx.fillStyle="rgb(0,0,250)";
+//				//ctx.rotate(Math.PI/6);
+//				ctx.fillRect(50,50,5,5);
+				
+				drawall();	
+			};
+			
+			function fire(){
+				cball.sx=iballx;
+				cball.sy=ibally;
+				
+				horvelocity=1;
+				verticalvel1=1;
+				
+				drawall();
+				
+				tid=setInterval(change,100);
+				
+				return false;
+			};
+			
+			function drawall(){
+				ctx.clearRect(0,0,cwidth,cheight);
+				
+				for(var i=0;i<everything.length;i++){
+					everything[i].draw();
+				}
+			};
+			
+			function change(){
+				var dx=horvelocity;
+				verticalvel2=verticalvel1+gravity;
+				
+				var dy=(verticalvel1+verticalvel2)*0.5;
+				verticalvel1=verticalvel2;
+				cball.moveit(dx,dy);
+				
+				var bx=cball.sx;
+				var by=cball.sy;
+				
+				if( (bx>=target.sx)&&(bx<=(target.sx+target.swidth))
+					&& (by>=target.sy) && (by<=(target.sy+target.sheight))
+				 ){
+				 	clearInterval(tid);
+				 }
+				
+				if(by>=ground.sy){
+					clearInterval(tid);
+				}
+				
+				drawall();
+			};
+			
+//			function drawSling(){
+//				ctx.strokeStyle="#000";
+//				ctx.lineWidth=4;
+//				ctx.beginPath();
+//				ctx.moveTo(this.bx,this.by);
+//				ctx.lineTo(this.s1x,this.s1y);
+//				
+//				ctx.moveTo(this.bx,this.by);
+//				ctx.lineTo(this.s2x,this.s2y);
+//				
+//				ctx.moveTo(this.s1x,this.s1y);
+//				ctx.lineTo(this.s2x,this.s2y);
+//				
+//				ctx.lineTo(this.s3x,this.s3y);
+//				
+//				ctx.stroke();
+//			};
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>div等高</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+		#main{
+			padding-left:100px;
+		}
+		h1{margin-bottom:15px;}
+		.a{
+			width:960px;
+			overflow:hidden;
+			clear:both;
+			border-top:1px solid #ccc;
+		}
+		.b,.c,.d{
+			overflow:hidden;
+			float:left;
+			_display:inline;
+			margin-bottom:-1000px;
+			padding-bottom:1000px;
+			border-right:1px solid #ccc;
+		}
+		.b p,.c p,.d p{
+			padding:10px 20px;
+		}
+
+		.last{border-bottom:1px solid #ccc;}
+	  
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-main">
+        <div class="nav">
+          <ul>
+            <li>
+              <a target="_blank" href="http://paperagain.diandian.com">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          made by zhang binjue
+        </div>
+      </div>
+    </div>
+		
+    <div id="main">
+		<h1>DIV 等高布局</h1>
+		<div class="a">
+			<div class="b"><p>I Am a</p></div>
+		
+			<div class="c"><p>I Am b</p></div>
+			<div class="d">
+				<p> I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+				</p>
+			</div>
+		</div>
+		
+		<div class="a last">
+			<div class="b"><p>I Am a</p></div>
+		
+			<div class="c">
+				<p> I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+					I Am long <br />
+				</p>
+			</div>
+			<div class="d">
+				<p>I Am d</p>
+			</div>
+		</div>
+		
+    </div>
+
+  </body>
+</html>

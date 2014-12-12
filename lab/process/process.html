@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>process</title>
+        <link href="../../css/reset.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+		
+        <script type="text/javascript" src="process.js"></script>
+        <script type="text/javascript">
+            var tt = new Process();
+            tt.create(function(){
+                var len = 0, 
+					t = setInterval(function(){
+	                    tt.setProcess(len);
+	                    if (len >= 100) {
+	                        tt.setProcess(100);
+	                        tt.setProgressTitle('加载完毕,3秒后这个层消失！');
+	                        clearInterval(t);
+							
+							setTimeout(function(){
+								tt.remove();
+							},3000);
+	                    }
+	                    len++;
+                	}, 50);
+            });
+            
+            var tt2 = new Process({
+                title: 'HAHA',
+                progressTitle: '说明文字',
+				progressWrap:{
+					borderColor:'#000',
+					borderWidth:'2px'
+				}
+            });
+            tt2.create(function(){
+                var tipForm = this.tipForm;
+                tipForm.style.top = '350px';
+            });
+        </script>
+    </body>
+</html>

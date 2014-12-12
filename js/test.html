@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>test</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+	
+		#paper{
+			filter:alpha(opacity=50);
+			opacity:0.5;
+			zoom:1;
+		}
+		
+		#paper ul{
+			background-color:#000;
+			color:#fff;
+
+		}
+		#paper ul li{
+			
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="ok1" id="ok1" />
+	<input type="button" value="ok2" id="ok2" />
+	<div id="paper">
+		dafasdfdsa
+		<br />
+		<br /><br />
+		<br />
+		<ul id="iamul">
+			fdsafds
+			<li>123</li>df
+			<li>555</li>
+			<!--lolo-->
+			<br />
+			<li>adfsaf</li>
+		</ul>
+		
+		<ul id="dsafdas">
+			<li>3213213</li>
+			<li>3213213</li>
+			<li>3213213</li>
+			<li>3213213</li>
+			<li>3213213</li>
+			<li>3213213</li>
+			<li>3213213</li>
+			<li>3213213</li>
+		</ul>
+	</div>
+	
+	<em id="dd">000000000</em>
+	<script type="text/javascript" src="Fuee-1.3.js"></script>
+	<script type="text/javascript">
+		function fn1(){
+			alert('I am ok1');
+		};
+		function fn2(){
+			alert('I am ok2');
+		};
+		function fn3(s){
+			alert('I am okokokokokok'+s);
+		};
+		
+		Fuee('#ok1').bind('click',fn1);
+		
+		Fuee('#ok2').bind('click',fn2);
+		Fuee('#ok2').bind('click',fn3);
+		//document.getElementById('ok2').addEventListener('click',fn2,false);
+		//document.getElementById('ok2').removeEventListener('click',fn2,false);
+		Fuee('#ok2').unbind('click',fn2);
+		
+//		var el=Fuee('#abc').children().getElem();
+//		
+
+//	Fuee('#paper').getOpacity();
+//	
+//	
+//		function ss(){
+//			Fuee('#paper').find('ul').hide('slow');
+//			//Fuee.lightbox();
+//		};
+//		
+//		function ss2(){
+//			Fuee('#paper').find('ul').show('slow');
+//			//Fuee.lightbox();
+//			//Fuee('#paper').find('ul').show();
+//		};
+		
+		//var cc=document.getElementById('cc')
+//		Fuee('abc').css({
+//			'margin':'10px'
+//		});
+//		
+//		Fuee('abc').removeClass('a c');
+//		
+//		//alert(document.getElementById('abc').nodeType);
+//		
+//		Fuee('#dd').bind('click',function(e){
+//			alert(this.innerHTML+'  '+e);
+//		});
+//		
+//		Fuee('#abc').bind({
+//			'click':function(e){
+//				alert(this.innerHTML+'  '+e);
+//			}
+//		});
+		
+		//Fuee('abc').css('margin','10px');
+		
+//		BJ.ajax({
+//			url:'test.html',
+//			type:'post',
+//			params:'id=10',
+//			before:function(){},
+//			success:function(m){
+//				alert(m);
+//			}
+//		});
+
+		//alert(document.body.tagName);
+		
+		
+	</script>
+</body>
+</html>

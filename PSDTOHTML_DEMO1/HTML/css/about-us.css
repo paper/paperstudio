@@ -1,0 +1,13 @@
+@charset"utf-8";
+.content{float:left;width:600px;}
+.content .foreword{margin-top:30px;padding-left:270px;position:relative;min-height:240px;_height:240px;}
+.content .foreword img{height:226px;width:226px;position:absolute;left:0;top:0;padding:6px;border:1px solid #d5d5d5;}
+.content .foreword p{margin-bottom:20px;}
+.content .foreword p.t{font-style:italic;color:#383838;}
+.content h4,.content h5{margin:30px 0 0 0;}
+.content h4{font-size:16px;}
+.content p.hp{margin-top:12px;}
+.sider{float:right;width:284px;}
+.sider blockquote,.sider author{font-style:italic;}
+.sider blockquote{text-indent:-0.3em;color:#6f6f6f;}
+.sider .author{border-bottom:1px dashed #DCDCDC;margin:5px 0 18px;padding-bottom:7px;color:#393939;}

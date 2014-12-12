@@ -1,0 +1,78 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>Impasse help</title>
+		<link href="../reset.css" rel="stylesheet" type="text/css" />
+		<link href="css/impasse.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			html{
+				overflow:auto;
+			}
+			#impasse-cheats{
+				overflow: hidden;
+    			padding: 5px 0 0 50px;
+			}
+			#impasse-cheats h3{
+				color:#888;
+				float:left;
+				clear:both;
+				margin-bottom:10px;
+			}
+			#impasse-cheats-list{
+				display:none;
+				float:left;
+				clear:both;
+			}
+			#impasse-cheats-list ol{
+				margin-bottom:10px;
+			}
+			#impasse-cheats-list ol li{
+				padding:3px;
+			}
+			#impasse-cheats-list ol li:nth-child(odd){
+				background:#e1e1e1;
+			}
+			#impasse-cheats-list ol li span{
+				display:inline-block;
+				font-weight:bolder;
+				width:80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="impasse-help">
+			<ol>
+				<li>方向键控制; W , S 键选关。</li>
+				<li><span class="wall"></span>固定障碍，不会移动。</li>
+				<li><span class="up1"></span><span class="down1"></span>当你<strong>上/下</strong>移动时，会按照它的箭头方向移动。</li>
+				<li><span class="up2"></span><span class="down2"></span>当你<strong>左/右</strong>移动时，会按照它的箭头方向移动。</li>
+				<li><span class="minus"></span>当你<strong>上/下</strong>移动时会改变状态，消失时(表示为虚线圈)可以通过。</li>
+				<li><span class="dot"></span><span class="x"></span> X 默认激活，当激活时不可通过。可以通过走到 ◎ 上（走上去后这个◎消失）来改变 X 的状态。</li>
+			</ol>
+		</div>	
+		
+		<div id="impasse-cheats">
+			<h3 onclick="showList();">如果你实在是不知道如何解决，就点我吧～</h3>
+			<div id="impasse-cheats-list">
+				<ol>
+					<li><span>axis</span> URRDR DURDD RLDRR RURUL URR</li>
+					<li><span>sweep</span> RLRLR RRURU RURUD URURU R</li>
+					<li><span>gate</span> DDRLR LRRUR RURDD DRLDR LDRRU RLLRU RR</li>
+					<li><span>unzip</span> UUUUR LRRRR UURDR LDRRR RD</li>
+					<li><span>twins</span> UUUDU DRLRL RRRRD DDRDL RLRUD UDRRR UUR</li>
+					<li><span>machine</span> UURLU URRLR DRDUD RLDUD UDRRR DRDLD RRRLU RU</li>
+					<li><span>reduction</span> URRRR RLRUL UURRD RRR</li>
+					<li><span>lure</span> DDRLR LRRRR RRDUD UDLLU LRULL LDLDD UURLR LRRRR RRDRR R</li>
+					<li><span>final dance</span> DDRLD RRRRU RLURL RDLDL DRRLR DLRDR LDLLU ULLLU URRRR URLUR URRRR </li>
+				</ol>
+				<p>仅供参考。。。</p>
+			</div>
+		</div>	
+		<script type="text/javascript">
+			function showList(){
+				document.getElementById('impasse-cheats-list').style.display='block';
+			};
+		</script>	
+	</body>
+</html>

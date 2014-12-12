@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<link href="sixButton.css" rel="stylesheet" type="text/css" media="all" />
+		<title>sixButton</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1>7键游戏</h1>
+			</div>
+			<div id="content">
+				<div class="main">
+					<ul class="sixButton" id="sixButton">
+						<li class="down" rel="0"></li>
+						<li class="down" rel="1"></li>
+						<li class="down" rel="2"></li>
+						<li class="empty" rel="3"></li>
+						<li class="up" rel="4"></li>
+						<li class="up" rel="5"></li>
+						<li class="up" rel="6"></li>
+					</ul>
+					
+					<br /><br />
+					<input type="button" value="重置" id="re" />
+				</div>
+				
+				<div class="side">
+					<h2>游戏说明:</h2>
+					<p>1）游戏初始状态是：3个箭头向下，3个箭头向上。</p>
+					<p>2）通过点击箭头，可以使得它向它指的方向移动，但是只能移动一格或者跳过前面的一个移到另一格。</p>
+					<p>3）使得上一组箭头到下一组箭头的位置，下一组箭头到上一组箭头的位置，就像跳棋一样。</p>
+					<p>4) 这样的话，游戏就结束了。</p>
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+			<div id="footer">
+				<p>Made By Zhang Binjue</p>
+				<p>Welcome To My <a target="_blank" href="http://hi.baidu.com/paperstudio">Space</a></p>
+			</div>
+		</div>
+		<script type="text/javascript" src="sixButton.js"></script>
+	</body>
+</html>

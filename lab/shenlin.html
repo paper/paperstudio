@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link href="" rel="stylesheet" type="text/css"/>
+		<style type="text/css">
+			
+			#box01 {
+			    width: 100px;
+			    height: 30px;
+			    background-color: blue;
+			    position: relative;
+				z-index:999;
+			}
+			
+			#box02 {
+			    display: none;
+			    width: 100px;
+			    height: 100px;
+			    background-color: red;
+			    position: absolute;
+			    left: 0;
+			    top: 30px;
+			}
+			
+			select{
+				zoom:1;
+				position:relative;
+				z-index:998;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="msg">dd</div>
+		
+		<div id="box01">
+			<div id="box02">
+				<select id="ss">
+					<option>sdsd</option>
+					<option>dsdssd</option>
+				</select>
+			</div>
+			<script type="text/javascript">
+				var msg = document.getElementById("msg");
+				var key=false;
+				var box01 = document.getElementById("box01");
+				var box02 = document.getElementById("box02");
+				var s = document.getElementById("ss");
+				box01.onmouseover = function(){
+					msg.innerHTML='box01 in';
+					
+					key=true;
+					
+				    box02.style.display = "block";
+				}
+				
+				box01.onmouseout = function(){
+					msg.innerHTML='box01 out';
+					
+					if(key){
+						 box02.style.display = "none";
+					}
+				   
+				}
+				
+				s.onmouseover = function(){
+					msg.innerHTML='s in';
+					
+				    box02.style.display = "block";
+				}
+				
+				s.onmouseout = function(){
+					msg.innerHTML='s out';
+					key=false;
+				    box02.style.display = "block";
+				}
+				
+			</script>
+		</div>
+	</body>
+</html>

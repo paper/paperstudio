@@ -1,0 +1,21 @@
+@charset "utf-8"; 
+#main{}
+
+#box{
+	width:500px;
+	height:500px;
+	border:2px solid #444;
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+}
+
+#you{
+	position:absolute;
+	overflow:hidden;
+	width:25px;
+	height:30px;
+	left:250px;
+	top:250px;
+	background:url(images/plane.png) no-repeat;
+}

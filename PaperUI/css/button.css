@@ -1,0 +1,186 @@
+@charset "utf-8";
+/*==================================================================
+	按钮的公共样式
+==================================================================*/
+
+.link-btn{
+	text-decoration:none;
+	position:relative;
+	display:inline-block;
+}
+.link-btn span{
+	display:inline-block;
+	cursor:pointer;
+	padding:3px 13px 4px;
+	_padding-bottom:2px;
+}
+.link-btn:active{top:1px;}
+
+/*================================
+  link-btn-disabled
+*/
+.link-btn-disabled{
+	border:1px solid #ADB2B5;
+	cursor:default;
+}
+.link-btn-disabled span{
+	color:#a0a0a0;
+	border-top:1px solid #fcfcfc;
+	background-color:#f4f4f4;
+	cursor:default;
+	text-shadow:0 1px 0 #fff;
+}
+.link-btn-disabled:active{top:0;}
+
+/*================================
+  link-btn-cancel
+*/
+.link-btn-cancel{
+	border:1px solid #967B79;
+}
+.link-btn-cancel span{
+	color:#F0EBEB;
+	border-top:1px solid #CDB5B3;
+	background-color:#AE9391;
+	text-shadow:0 -1px 0 #777;
+}
+.link-btn-cancel:hover{zoom:1;}
+.link-btn-cancel:hover span{
+	color:#fff;
+}
+
+/*================================
+  link-btn-style1
+*/
+.link-btn-style1{
+	border:1px solid #65658F;
+}
+.link-btn-style1 span{
+	color:#f3f3f3;
+	border-top:1px solid #a6a6cd;
+	background-color:#8080AB;
+	text-shadow:0 -1px 0 #666;
+}
+.link-btn-style1:hover{
+	border-color:#3e3e65;
+}
+.link-btn-style1:hover span{
+	color:#fff;
+}
+
+/*================================
+  link-btn-style2
+*/
+.link-btn-style2{
+	border:1px solid #72896A;
+}
+.link-btn-style2 span{
+	color:#f3f3f3;
+	border-top:1px solid #B2C7AB;
+	background-color:#8EA586;
+	text-shadow:0 -1px 0 #666;
+}
+.link-btn-style2:hover{
+	border-color:#54674d;
+}
+.link-btn-style2:hover span{
+	color:#fff;
+}
+/*================================
+  link-btn-style3
+*/
+.link-btn-style3{
+	border:1px solid #b3b3b3;
+}
+.link-btn-style3 span{
+	color:#444;
+	border-top:1px solid #efefef;
+	background-color:#DFDFDF;
+	text-shadow:0 1px 0 #fff;
+}
+.link-btn-style3:hover{
+	border-color:#888;
+}
+
+/*===========================================================================
+  btn-btn input , button的按钮样式
+*/
+.btn-btn{
+	display:inline-block;
+	position:relative;
+	cursor:pointer;
+}
+.btn-btn input,
+.btn-btn button{
+	line-height:125%;
+	padding:4px 15px 5px;
+	_padding:4px 16px 2px;
+	background:none;
+	border:0 none;
+	margin:0;
+	_width:0;
+	overflow:visible;
+	cursor:pointer;
+	display:inline-block;
+	
+	color:#f6f6f6;
+	text-shadow:0 -1px 0 #666;
+}
+.btn-btn:active{top:1px;}
+
+/*====================================
+  btn-btn-style1
+*/
+.btn-btn-style1{
+	border:1px solid #65658F;
+	background-color:#8080AB;
+}
+.btn-btn-style1 input,
+.btn-btn-style1 button{
+	border-top:1px solid #a6a6cd;
+	_border-top:0 none;
+}
+.btn-btn-style1:hover{
+	border-color:#3e3e65;
+}
+/*====================================
+  btn-btn-style2
+*/
+.btn-btn-style2{
+	border:1px solid #72896A;
+	background-color:#8EA586;
+}
+.btn-btn-style2 input,
+.btn-btn-style2 button{
+	border-top:1px solid #B2C7AB;
+	_border-top:0 none;
+}
+.btn-btn-style2:hover{
+	border-color:#54674d;
+}
+/*====================================
+  btn-btn-style3
+*/
+.btn-btn-style3{
+	border:1px solid #b3b3b3;
+	background-color:#DFDFDF;
+}
+.btn-btn-style3 input,
+.btn-btn-style3 button{
+	border-top:1px solid #efefef;
+	_border-top:0 none;
+	color:#444;
+	text-shadow:0 1px 0 #fff;
+}
+.btn-btn-style3:hover{
+	border-color:#888;
+}
+
+
+
+
+
+
+
+
+

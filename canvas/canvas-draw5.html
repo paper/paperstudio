@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>canvas 不规则线条</title>
+		<style>
+			* {
+			    padding: 0;
+			    margin: 0;
+			}
+			
+			body {
+			    margin: 10px;
+				padding:10px;
+				position:relative;
+			}
+			
+			#myCanvas {
+				border:3px solid #000;
+				position:relative;
+			}
+		</style>
+	</head>
+	<body>
+	<canvas id="myCanvas" height="600" width="600">
+		<p>Unfortunately, your browser is currently unsupported by our web 
+			application.  We are sorry for the inconvenience. Please use one of the  
+			supported browsers listed below, or draw the image you want using an 
+			offline tool.
+		</p>
+		<p>
+			Supported browsers: 
+			<a href="http://www.opera.com">Opera</a>
+			, 
+			<a href="http://www.mozilla.com">Firefox</a>
+			, 
+			<a href="http://www.apple.com/safari">Safari</a>
+			, and 
+			<a href="http://www.konqueror.org">Konqueror</a>
+			.
+		</p>
+	</canvas>
+		<script type="text/javascript">
+			//<![CDATA[
+			
+			var elem=document.getElementById('myCanvas'),
+				elem_width=elem.width,
+				elem_height=elem.height;
+				
+			var context=elem.getContext('2d');
+			
+			context.strokeStyle="#003399";
+			
+			var map=[[0,10],[15,15],[30,5],[45,15],[60,40],[75,20]];
+			
+			context.beginPath();
+			context.moveTo(map[0][0],600-map[0][1]);
+			
+			for(var i=1;i<map.length;i++){
+				context.lineTo(map[i][0],600-map[i][1]);
+				context.stroke();
+			};
+			
+//			/*
+//			 * context.beginPath();
+//33
+//34 // Arguments: x, y, radius, start angle, end angle, anticlockwise
+//35 context.arc(125, 115, 30, 0, 360, false);
+//36 context.stroke();
+//37 context.closePath(); 
+//			 */
+//			
+//			// Get the mouse position relative to the canvas element.
+//			function getPos(ev){
+//				// Get the mouse position relative to the canvas element.
+//				if (ev.layerX || ev.layerX == 0) { // Firefox
+//					return {
+//						x : ev.layerX,
+//						y : ev.layerY
+//					}
+//				}
+//				else 
+//					if (ev.offsetX || ev.offsetX == 0) { // Opera
+//						return {
+//							x : ev.offsetX,
+//							y : ev.offsetY
+//						}
+//					}
+//			};
+//
+//			var elem=document.getElementById('myCanvas'),
+//				elem_width=elem.width,
+//				elem_height=elem.height;
+//				
+//			elem.addEventListener('mousedown', drawRect, false);
+//			elem.addEventListener('mousemove', drawRect, false);
+//			elem.addEventListener('mouseup', drawRect, false);
+//			
+//			var context=elem.getContext('2d');
+//			context.strokeStyle="#003399";
+//			
+//			function drawRectMain(){
+//				var key=false,
+//					_this=this;
+//					
+//				this.mousedown=function(ev){
+//					//context.clearRect(0,0,elem.width,elem.height);
+//					
+//					_this.beginX=getPos(ev).x;
+//					_this.beginY=getPos(ev).y;
+//					
+//					//context.beginPath();
+//					//context.arc(300, 300, 30, 0, Math.PI*2, false);
+//					//context.stroke();
+//					
+//					key=true;
+//				};
+//				
+//				this.mousemove=function(ev){
+//					if(key){
+//						 context.clearRect(0,0,elem_width,elem_height);
+//						
+//						var //minX=Math.min(_this.beginX,_this.endX),
+//							//minY=Math.min(_this.beginY,_this.endY);
+//						
+//							width=Math.abs(_this.beginX-getPos(ev).x),
+//							height=Math.abs(_this.beginY-getPos(ev).y);
+//							
+//						r=Math.sqrt(width*width+height*height);	
+//						
+//						
+//						 // Arguments: x, y, radius, start angle, end angle, anticlockwise
+//						  
+//						 context.arc(_this.beginX, _this.beginY, r, 0, Math.PI*2, true);
+//						context.stroke();
+//						
+//						 
+//					}
+//				};
+//				
+//				this.mouseup=function(ev){
+//					key=false;
+//					//context.closePath(); 
+//				};
+//			};
+//			
+//			
+//			var d=new drawRectMain();
+//			function drawRect(ev){
+//				var x=getPos(ev).x,
+//					y=getPos(ev).y;
+//					
+//				var func=d[ev.type];
+//				if(func){
+//					func(ev);
+//				}
+//			};
+			
+			//]]
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>grayImage</title>
+	<link rel="stylesheet" href="../../css/reset.css" type="text/css" />
+	<style type="text/css">
+		#main{
+			width:960px;
+			margin:0 auto;
+		}
+		.my-image{
+			padding:2px;
+			border:1px solid #ccc;
+			float:left;
+		}
+		
+		.op{
+			float:left;
+			margin:0 0 0 20px;
+		}
+		.op a{
+			float:left;
+			clear:left;
+			margin:0 0 10px 0;
+			font-size:14px;
+			color:#003399;
+			padding:2px 20px;
+			border:1px solid #003399;
+			
+			border-radius:3px;
+			-moz-border-radius:3px;
+			-webkit-border-radius:3px;
+		}
+		.op a:hover{
+			background-color:#003399;
+			color:#fff;
+			text-decoration:none;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"><div class="header-main"><div class="nav"><ul><li><a target="_blank" href="http://hi.baidu.com/paperstudio">HOME</a></li></ul></div><div class="copyright">made by zhang binjue</div></div></div>
+	
+	<div id="main">
+		<img src="hoho.jpg" alt="just test" id="myImage" class="my-image" />
+		
+		<div class="op">
+			<a href="javascript:;" onclick="delColor()">去色</a>
+			<a href="javascript:;" onclick="addColor()">还原</a>
+		</div>
+		
+	</div>
+	
+	<script type="text/javascript" src="grayImage.js"></script>
+	<script type="text/javascript">
+		var img=document.getElementById('myImage');
+		
+		function delColor(){
+			garyImage.discolor(img);
+		};
+		
+		function addColor(){
+			garyImage.restore(img);
+		};
+	</script>
+</body>
+</html>
